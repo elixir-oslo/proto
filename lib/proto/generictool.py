@@ -24,9 +24,9 @@ from collections import namedtuple, OrderedDict
 from urllib import quote, unquote
 #from gold.application.GalaxyInterface import GalaxyInterface
 #from quick.webtools.GeneralGuiToolsFactory import GeneralGuiToolsFactory
-#from quick.webtools.GeneralGuiTool import HistElement
 #from quick.util.StaticFile import StaticImage
-#from gold.result.HtmlCore import HtmlCore
+from proto.tools.GeneralGuiTool import HistElement
+from proto.HtmlCore import HtmlCore
 from proto.config.Config import URL_PREFIX, GALAXY_BASE_DIR
 #from gold.application.LogSetup import usageAndErrorLogging
 #from gold.util.CommonFunctions import getClassName

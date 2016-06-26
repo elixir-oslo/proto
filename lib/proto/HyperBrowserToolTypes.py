@@ -4,6 +4,7 @@ from galaxy.tools import Tool, DataSourceTool
 from galaxy.tools.parser.output_actions import ToolOutputActionGroup
 from galaxy.tools.parser.output_objects import ToolOutput
 from galaxy.util.odict import odict
+from galaxy.tools.parser.output_collection_def import DEFAULT_DATASET_COLLECTOR_DESCRIPTION
 
 log = logging.getLogger( __name__ )
 
@@ -103,6 +104,7 @@ class HyperBrowserGenericTool( HyperBrowserTool ):
                         output.hidden = item[3] if len(item) > 3 else False
                         output.tool = self
                         output.actions = ToolOutputActionGroup( output, None )
+                        output.dataset_collector_descriptions = [DEFAULT_DATASET_COLLECTOR_DESCRIPTION]
                         self.outputs[ output.name ] = output
 
             except:
