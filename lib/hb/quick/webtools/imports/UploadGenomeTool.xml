@@ -1,0 +1,4 @@
+<tool id="hb_upload_genome" name="Upload genome" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.imports.UploadGenomeTool" proto_tool_class="UploadGenomeTool">
+  <description></description>
+</tool>

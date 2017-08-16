@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<tool id="hb_google_map" name="Create a google map">
+	<description></description>
+	<command interpreter="python">
+        createGoogleMap.py $image $output $dpi
+	</command>	
+	<inputs>
+        <param format="png" name="image" type="data" label="Image" help="Choose image from history" />
+        <param name="dpi" type="text" value="72" label="DPI" help="Image resolution (DPI)" />
+
+      </inputs>
+
+	<outputs>
+		<data format="html" name="output" />
+	</outputs>
+
+
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_download_files" name="Convert GSuite tracks from remote to primary (Download tracks)" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteDownloadFiles" proto_tool_class="GSuiteDownloadFiles">
+  <description></description>
+</tool>

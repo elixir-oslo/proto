@@ -1,0 +1,4 @@
+<tool id="hb_universal_converter_tool" name="Convert between GTrack/BED/WIG/bedGraph/GFF/FASTA files" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.manipulate.UniversalConverterTool" proto_tool_class="UniversalConverterTool">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_bioxsd_to_gtrack_converter_tool" name="BioXSD to GTrack Converter Tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gtrack.BioXSDtoGtrackConverterTool" proto_tool_class="BioXSDtoGtrackConverterTool">
+  <description></description>
+</tool>

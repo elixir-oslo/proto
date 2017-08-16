@@ -1,0 +1,4 @@
+<tool id="hb_null_model_article_tool" name="Tools used in article: Monte Carlo null models for genomic data" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.article.NullModelArticleTool" proto_tool_class="NullModelArticleTool">
+  <description></description>
+</tool>

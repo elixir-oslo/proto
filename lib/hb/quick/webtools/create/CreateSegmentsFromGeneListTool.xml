@@ -1,0 +1,4 @@
+<tool id="hb_genelist" name="Generate segment track from gene IDs" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.create.CreateSegmentsFromGeneListTool" proto_tool_class="CreateSegmentsFromGeneListTool">
+  <description></description>
+</tool>

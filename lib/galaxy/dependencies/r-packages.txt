@@ -1,3 +1,38 @@
 # This file contains the names of the R libraries required.
 # The run.sh script will install these libraries in the
 # .venv/R/library virtualenv directory.
+
+Biobase
+bioDist
+flashClust
+cluster
+gdata
+gtools
+bitops
+caTools
+gplots
+maptree
+qvalue
+pi0
+plotrix
+sm
+vioplot
+mvtnorm
+sfsmisc
+polycor
+
+
+# Todo: Experimental packages (from developer), double-check these
+
+DBI
+AnnotationDbi
+RSQLite
+org.Hs.eg.db
+hgu133plus2.db
+locfit
+DESeq
+limma
+edgeR
+DESeq2
+MASS
+calibrate

@@ -1,0 +1,503 @@
+<?xml version='1.0' encoding='utf-8'?>
+<toolbox monitor="true">
+  <label text="GSuite HyperBrowser tools" id="hb_gsuite_tools" />
+
+  <section name="Create a GSuite of genomic tracks" id="gsuite_compile_tools">
+    <label text="From an external source" id="gsuite_from_remote"/>
+      <tool file="proto/hyperbrowser/imports/TrackGlobalSearchTool.xml" />
+      <tool file="proto/hyperbrowser/imports/TrackSourceTestTool.xml" />
+    <label text="From history" id="gsuite_from_history"/>
+      <tool file="proto/hyperbrowser/gsuite/CreateGSuiteFileFromHistoryElementsTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/CompileGSuiteFromSingleTrackAttributeTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/CompileGSuiteFromArchiveTool.xml" />
+    <label text="From HyperBrowser repository" id="gsuite_from_hb"/>
+      <tool file="proto/hyperbrowser/track/ExtractSubtracksTool.xml" />
+  </section>
+
+  <section name="Customize a GSuite" id="gsuite_customize_tools">
+    <label text="Convert GSuite tracks (remote/ primary/ preprocessed )" id="gsuite_convert"/>
+      <tool file="proto/hyperbrowser/gsuite/GSuiteDownloadFiles.xml" />
+      <tool file="proto/hyperbrowser/gsuite/PreprocessGSuiteTracksTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/GSuiteConvertFromPreprocessedToPrimaryTool.xml" />
+    <label text="Modify GSuites" id="gsuite_modify"/>
+      <tool file="proto/hyperbrowser/gsuite/GSuiteSelectRows.xml" />
+      <tool file="proto/hyperbrowser/gsuite/GSuiteSelectColumns.xml" />
+      <tool file="proto/hyperbrowser/gsuite/ConcatenateGSuitesTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/EditGsuiteMetadataTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/UnionOfGSuiteTracksTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/MultiTrackIntersectTool.xml" />
+    <label text="Modify datasets referred to in a GSuite" id="gsuite_dataset_modify"/>
+      <tool file="proto/hyperbrowser/gsuite/GSuiteManipulateTextFiles.xml" />
+    <label text="Export GSuite datasets" id="gsuite_export_tools"/>
+      <tool file="proto/hyperbrowser/gsuite/GSuiteExportToHistoryTool.xml" />
+  </section>
+
+  <section name="Quantitative overview of GSuites" id="gsuite_overview_tools">
+    <label text="Metadata overview" id="metadata_overview"/>
+      <tool file="proto/hyperbrowser/gsuite/GSuiteMetadataOverviewTool.xml" />
+    <label text="Track overview" id="data_overview"/>
+      <tool file="proto/hyperbrowser/gsuite/PilotPageBasicOverviewOfTracksInGSuiteTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/PilotPageSimilarityAndUniquenessOfTracksTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/PilotPageClusteringInTracksTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/PilotPageCombinedOverviewOfTracksTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/GSuiteSingleValueAnalysisPerTrackTool.xml" />
+  </section>
+
+  <section name="Statistical analysis of GSuites" id="stat_analysis_gsuites">
+    <label text="Similarity-based analysis of tracks in GSuites" id="gsuite_track_similarity"/>
+      <tool file="proto/hyperbrowser/gsuite/GSuiteRepresentativeAndUntypicalTrackTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/GSuiteTracksCoincidingWithQueryTrackTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/CoincidingTracksFromTwoGSuitesTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/DetermineSuiteTracksCoincidingWithAnotherSuite.xml" />
+    <label text="Distribution of suite data along the genome" id="gsuite_genome_distribution"/>
+      <tool file="proto/hyperbrowser/gsuite/MultiTrackCountOverrepresentationBins.xml" />
+      <tool file="proto/hyperbrowser/gsuite/MultiTrackCooccurrenceBins.xml" />
+  </section>
+
+  <section name="Visual analysis of GSuites" id="gsuite_visual_analysis_tools">
+    <tool file="proto/hyperbrowser/restricted/SegmentsOverlapVisualizationTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/SegmentsOverlapVisualizationHeatmapTool.xml" />
+    <tool file="proto/hyperbrowser/plot/CreateBpsVennDIagram.xml" />
+  </section>
+
+  <section name="Domain-specific analysis" id="analyse_domain_specific">
+    <label text="TF workbench" id="tf_workbench_tools"/>
+      <tool file="proto/hyperbrowser/tfbs/AllTargetsOfTfs.xml" />
+      <tool file="proto/hyperbrowser/tfbs/AllTfsOfRegions.xml" />
+      <tool file="proto/hyperbrowser/article/TfBindingDisruption.xml" />
+      <tool file="proto/hyperbrowser/gsuite/MatchTfWithPWM.xml" />
+    <label text="Repeats analysis tools" id="repeats_analysis_tools"/>
+      <tool file="proto/hyperbrowser/gsuite/FindMonomerRepeatsForFastaGSuiteTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/ExtractTrackFromRepositoryFromBinsDefinedByGSuiteTool.xml" />
+  </section>
+
+  <section name="GSuite documentation" id="gsuite_docs">
+    <tool file="hyperbrowser/gsuite_spec.xml" />
+  </section>
+
+  <!--<section name="Assorted tools (Beta)" id="gsuite_beta_tools">-->
+  <!--</section>-->
+
+  <section name="Experimental tools for GSuite HB manuscript" id="gsuite_experimental_tools">
+    <tool file="proto/hyperbrowser/article/ClusTrackTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/GenericPlotDataTool.xml" />
+  </section>
+
+  <section name="Not part of current submission" id="gsuite_other_tools">
+      <tool file="proto/hyperbrowser/gsuite/PilotPageOverlapBetweenTracksTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/GsuiteOverviewTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/NormalizeTracksInGSuiteTool.xml" />
+      <tool file="proto/hyperbrowser/gsuite/QueryTrackCoincidingWithTwoGSuitesTool.xml" />
+      <tool file="proto/hyperbrowser/restricted/ScreenTwoTrackCollectionsAgainstEachOther2LevelDepth.xml" />
+      <tool file="proto/hyperbrowser/gsuite/HeatmapOfTwoGsuitesTool.xml" />
+    <label text="Analyse multiple pairwise relations" id="analyse_dataset_pairwise"/>
+      <tool file="proto/hyperbrowser/restricted/TrackVsCollectionAnalysisTool.xml" />
+      <tool file="proto/hyperbrowser/restricted/TrackCollectionsAnalysis.xml" />
+    <label text="Analyse higher order relations" id="analyse_dataset_relations"/>
+      <tool file="proto/hyperbrowser/restricted/MultiTrackAnalysisTool.xml" />
+  </section>
+
+  <label text="HyperBrowser analysis" id="hb_analysis" />
+
+  <section name="Statistical analysis of tracks" id="hyperbrowser">
+    <tool file="hyperbrowser/analysis.xml" />
+  </section>
+
+  <section name="Visual analysis of tracks" id="visualization_tools">
+    <label text="Raw visualization" id="raw_visualization" />
+      <tool file="proto/hyperbrowser/util/VisualizeTrackPresenceOnGenome.xml" />
+      <tool file="proto/hyperbrowser/util/VisualizeSingleTrackAsHeatmap.xml" />
+      <tool file="proto/hyperbrowser/restricted/VisualizeTracksAsHeatmap.xml" />
+    <label text="Derived visualization" id="derived_visualization" />
+      <tool file="proto/hyperbrowser/plot/ScatterPlotTool.xml" />
+      <tool file="proto/hyperbrowser/plot/BinScaledPlotTool.xml" />
+      <tool file="proto/hyperbrowser/restricted/SegmentsOverlapVisualizationTool.xml" />
+      <tool file="proto/hyperbrowser/restricted/SegmentsOverlapVisualizationHeatmapTool.xml" />
+  </section>
+
+  <section name="Genomic variation analysis" id="genomic_variation_tools">
+    <tool file="proto/hyperbrowser/track/AnalyzeFunctionalGenomicsOfGwasTracks.xml" />
+  </section>
+    
+  <section name="Specialized analysis of tracks" id="specialized_analysis">
+    <tool file="proto/hyperbrowser/threeD/ColocalizationIn3DTool.xml" />
+    <tool file="hyperbrowser/clusteringTool.xml" />
+    <tool file="proto/hyperbrowser/nmer/NmerAnalyzeTool.xml" />
+    <tool file="proto/hyperbrowser/nmer/NmerInspectTool.xml" />
+    <tool file="proto/hyperbrowser/track/AnalyzeMultiTrackRelations.xml" />
+    <tool file="proto/hyperbrowser/util/CalculateWeekdayProfits.xml" />
+    <tool file="proto/hyperbrowser/gsuite/GenerateGsuiteFileWithHotSpotRegions.xml" />
+  </section>
+
+  <section name="Text-based analysis interface" id="batch">
+    <tool file="proto/hyperbrowser/util/BatchRunTool.xml" />
+    <tool file="proto/hyperbrowser/track/ExtractHistoryTrackNames.xml" />
+      <tool file="proto/hyperbrowser/util/ConcatenateHistoryResultsTool.xml" />
+  </section>
+
+  <label text="HyperBrowser track processing" id="hb_tracks" />
+
+  <section name="HyperBrowser track repository" id="hb_repository">
+    <tool file="hyperbrowser/extract.xml" />
+  </section>
+
+  <section name="Customize tracks" id="customize_tracks">
+    <tool file="proto/hyperbrowser/manipulate/ExpandBedSegmentsTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/MakeGenomePartionAccordingToSegments.xml" />
+    <!--<tool file="hyperbrowser/targetcontrol.xml" />-->
+    <tool file="proto/hyperbrowser/manipulate/CreateCaseControlTrack.xml" />
+    <tool file="proto/hyperbrowser/util/CreateCategoricalTrackTool.xml" />
+    <tool file="proto/hyperbrowser/create/SplitSegmentsTool.xml" />
+    <!-- <tool file="hyperbrowser/segments2points.xml" /> -->
+    <!-- <tool file="hyperbrowser/wigvstep.xml" /> -->
+    <tool file="proto/hyperbrowser/create/SmoothedTrackTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/CollapseOverlappingCategorySegments.xml" />
+    <tool file="proto/hyperbrowser/track/ReplaceSegmentsWithBorderPoints.xml" />
+    <tool file="proto/hyperbrowser/track/MakePartitionTrackAccordingToBinAndPoints.xml" />
+    <tool file="proto/hyperbrowser/manipulate/FindSegmentNeighbourhoods.xml" />
+    <tool file="proto/hyperbrowser/track/FilterTrackBasedOnOverlap.xml" />
+    <tool file="proto/hyperbrowser/manipulate/ExtractSegmentsByThresholding.xml" />
+    <tool file="proto/hyperbrowser/track/ExtractGenomicElementsOfSelectedCategories.xml" />
+    <tool file="proto/hyperbrowser/track/GetMutatedSequence.xml" />
+    <tool file="proto/hyperbrowser/track/CollapseIntoUnionRegionsForEachCategory.xml" />
+    <tool file="proto/hyperbrowser/track/TransformGenomicTrack.xml" />
+    <tool file="proto/hyperbrowser/track/ExtractIndividualTracksFromCategoryTrack.xml" />
+  </section>
+
+  <section name="Generate tracks" id="generate_tracks">
+    <tool file="proto/hyperbrowser/create/CreateDnaBasedCustomTrackTool.xml" />
+    <tool file="proto/hyperbrowser/create/CreateFunctionTrackAsDistanceToNearestSegments.xml" />
+    <tool file="hyperbrowser/intensity.xml" />
+    <tool file="proto/hyperbrowser/nmer/NmerExtractTool.xml" />
+    <tool file="hyperbrowser_localized/coremine_import.xml" />
+    <tool file="proto/hyperbrowser/create/CreateSegmentsFromGeneListTool.xml" />
+    <!-- <tool file="hyperbrowser/custom_track.xml" /> -->
+    <tool file="proto/hyperbrowser/track/CreateCategoryBasedOnTresholdIntervals.xml" />
+  </section>
+
+  <section name="Format and convert tracks" id="format_convert_tracks">
+    <tool file="proto/hyperbrowser/gtrack/TabularToGtrackTool.xml" />
+    <tool file="proto/hyperbrowser/manipulate/UniversalConverterTool.xml" />
+  </section>
+
+  <section name="Export and import tracks" id="export_import_tracks">
+    <tool file="proto/hyperbrowser/restricted/DownloadHistoryItems.xml" />
+
+    <label text="StoreBioInfo" id="storebioinfo" />
+
+    <tool file="proto/hyperbrowser/restricted/ListStorebioProjects.xml" />
+    <tool file="proto/hyperbrowser/restricted/UploadDataToStorebio.xml" />
+    <tool file="proto/hyperbrowser/export/AddMetadataToDataset.xml" />
+    <tool file="proto/hyperbrowser/restricted/AddFilesToStorebioinfoDataset.xml" />
+  </section>
+
+  <section name="GTrack tools" id="gtrack_tools">
+    <tool file="hyperbrowser/gtrack_spec.xml" />
+    <tool file="proto/hyperbrowser/gtrack/TabularToGtrackTool.xml" />
+    <tool file="proto/hyperbrowser/gtrack/ExpandGtrackHeaderTool.xml" />
+    <tool file="proto/hyperbrowser/gtrack/ValidateGtrackFile.xml" />
+    <tool file="proto/hyperbrowser/gtrack/ConvertToLinkedValuedSegments.xml" />
+    <tool file="proto/hyperbrowser/gtrack/SortGtrackFile.xml" />
+    <tool file="proto/hyperbrowser/gtrack/ComplementTrackElementInformation.xml" />
+    <tool file="proto/hyperbrowser/manipulate/UniversalConverterTool.xml" />
+    <!-- <tool file="proto/hyperbrowser/gtrack/BioXSDtoGtrackConverterTool.xml" /> -->
+  </section>
+
+
+  <label text="Article/domain-specific tools" id="article_domain_tools" />
+
+  <section name="Skeletal RNA interaction map" id="skeletomes">
+    <tool file="hyperbrowser/skeletome_top_1000.xml" />
+    <tool file="hyperbrowser/skeletome_bottom_1000.xml" />
+  </section>
+
+  <section name="The differential disease regulome" id="regulomes">
+    <tool file="hyperbrowser/regulomes.xml" />
+    <tool file="hyperbrowser/regulomes_matrix.xml" />
+    <tool file="proto/hyperbrowser/regulome/SelectTfTool.xml" />
+    <tool file="proto/hyperbrowser/regulome/SelectDiseaseTool.xml" />
+    <tool file="proto/hyperbrowser/regulome/CreateRegulomeTool.xml" />
+      <tool file="proto/hyperbrowser/regulome/CreateGoogleMap.xml" />
+    <tool file="proto/hyperbrowser/regulome/SetGoogleMapImageBorders.xml" />
+  </section>
+
+  <section name="MCFDR" id="mcfdr_tools">
+    <tool file="proto/hyperbrowser/restricted/McFdrSimulationTool.xml" />
+    <!-- <tool file="hyperbrowser/mcfdr_specification.xml" /> -->
+    <tool file="proto/hyperbrowser/restricted/McfdrExplorationTool.xml" />
+  </section>
+
+  <section name="Monte Carlo null models" id="null_model_tools">
+    <tool file="proto/hyperbrowser/article/NullModelArticleTool.xml" />
+  </section>
+
+  <section name="Transcription factor analysis" id="tf_tools">
+    <tool file="proto/hyperbrowser/tfbs/TfTargetsTool.xml" />
+    <tool file="proto/hyperbrowser/tfbs/GeneSetRegulatorsTool.xml" />
+    <tool file="proto/hyperbrowser/tfbs/FindCooperativeTfsTool.xml" />
+    <tool file="proto/hyperbrowser/tfbs/GenerateRandomFastaFile.xml" />
+    <tool file="proto/hyperbrowser/tfbs/TestOverrepresentationOfPwmInDna.xml" />
+    <tool file="proto/hyperbrowser/restricted/ExtractPwms.xml" />
+      <tool file="proto/hyperbrowser/tfbs/AnalyzeTfsVersusSnv.xml" />
+  </section>
+
+  <section name="Gene tools" id="gene_tools">
+    <tool file="proto/hyperbrowser/export/ExtractIntersectingGenesTool.xml" />
+  </section>
+
+  <section name="Variant melting profiles" id="varmelt_tools">
+    <tool file="proto/hyperbrowser/restricted/VariantMeltingProfile.xml" />
+  </section>
+
+  <label text="HyperBrowser internal tools" id="hb_internal_tools" />
+
+  <section name="Admin of genomes and tracks" id="manage_tracks_genomes">
+    <tool file="proto/hyperbrowser/track/GenomeInfoTool.xml" />
+    <tool file="proto/hyperbrowser/imports/UploadGenomeTool.xml" />
+    <tool file="proto/hyperbrowser/imports/InstallGenomeTool.xml" />
+    <tool file="proto/hyperbrowser/cleanup/RemoveGenomeTool.xml" />
+    <tool file="hyperbrowser/metadata.xml" />
+    <tool file="hyperbrowser/integrate_track.xml" />
+    <tool file="hyperbrowser/preprocess.xml" />
+    <tool file="proto/hyperbrowser/track/RenameTrackTool.xml" />
+    <tool file="proto/hyperbrowser/util/TouchStandardizedTrack.xml" />
+    <tool file="proto/hyperbrowser/util/StandardizeTrackFilesTool.xml" />
+    <tool file="proto/hyperbrowser/InstallUcscTool.xml" />
+    <tool file="proto/hyperbrowser/track/IntegrateCategoricalTrackFromHistory.xml" />
+  </section>
+
+  <section name="Development tools" id="debug_tools">
+    <tool file="proto/hyperbrowser/restricted/DebugAnalysisTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/DebugAnalysisListTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/DebugBatchLine.xml" />
+    <tool file="proto/hyperbrowser/util/ShowTailOfLogFile.xml" />
+    <tool file="proto/hyperbrowser/restricted/GetDiskPathForHistoryElement.xml" />
+    <tool file="proto/hyperbrowser/restricted/ListSubtrackNames.xml" />
+    <tool file="proto/hyperbrowser/restricted/gsuite/ConvertPrimaryGsuiteToLocalPathsTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/InspectMemmapFile.xml" />
+    <tool file="hyperbrowser/rt_link.xml" />
+    <tool file="hyperbrowser/agilezen_link.xml" />
+    <tool file="proto/hyperbrowser/util/AddBatchLineToTestCollection.xml" />
+    <tool file="proto/hyperbrowser/util/AddTestTool.xml" />
+  </section>
+
+  <section name="Assorted tools" id="assorted_tools">
+    <!-- <tool file="hyperbrowser/batchrun-titan.xml" /> -->
+    <!--<tool file="hyperbrowser/batchrun.xml" />-->
+    <!-- <tool file="hyperbrowser/filterMarkedSegments.xml" /> -->
+    <!-- <tool file="hyperbrowser/createCustomTrack.xml" /> -->
+    <tool file="hyperbrowser/staale_prog.xml"/>
+    <tool file="hyperbrowser/heatmaps.xml" />
+    <tool file="proto/hyperbrowser/restricted/ConcatenateHistoryItems.xml" />
+    <!--<tool file="hyperbrowser/tf_mappings.xml" />-->
+    <!-- <tool file="proto/hyperbrowser/tfbs/GeneRegulatorsTool.xml" /> -->
+    <tool file="hyperbrowser/createRegulomeMap.xml" />
+    <tool file="hyperbrowser/createGoogleMap.xml" />
+    <!-- <tool file="hyperbrowser/clusteringTool.xml" /> -->
+    <tool file="proto/hyperbrowser/misc/Tool1.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool2.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool3.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool4.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool5.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool6.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool7.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool8.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool9.xml" />
+    <tool file="proto/hyperbrowser/misc/Tool10.xml" />
+    <tool file="proto/hyperbrowser/restricted/ReportTrackProperties.xml" />
+
+    <tool file="hyperbrowser/extractTrack.xml" />
+    <tool file="hyperbrowser/importGenelist.xml" />
+    <tool file="hyperbrowser/createCombinationTrack.xml" />
+    <!-- <tool file="hyperbrowser_localized/coremine_import_test.xml" /> -->
+    <tool file="hyperbrowser/trackster-test.xml" />
+    <tool file="hyperbrowser/segmentation.xml" />
+    <tool file="proto/hyperbrowser/restricted/FilterHistoryElementOnCohosenValues.xml" />
+    <tool file="proto/hyperbrowser/restricted/EditHistoryItem.xml" />
+    <tool file="proto/hyperbrowser/restricted/AssortedSmallTools.xml" />
+    <tool file="proto/hyperbrowser/restricted/GenerateCircosImage.xml" />
+    <tool file="proto/hyperbrowser/util/HalfdansTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/SigvesTool.xml" />
+    <tool file="proto/hyperbrowser/tfbs/CreatePwmScoreTracksTool.xml" />
+    <!--<tool file="proto/hyperbrowser/restricted/TonysTool.xml" />-->
+    <tool file="proto/hyperbrowser/restricted/MicroArrayBrowserTool.xml" />
+    <tool file="hyperbrowser/mcmc_clust/mcmc_gene_corr.xml" />
+    <tool file="proto/hyperbrowser/export/ValidateHistoryItems.xml" />
+    <tool file="proto/hyperbrowser/restricted/CreateOverlappingTrack.xml" />
+    <tool file="proto/hyperbrowser/restricted/VariantMeltingProfile.xml" />
+    <tool file="proto/hyperbrowser/restricted/ExecuteBatchCommandsV2.xml" />
+    <tool file="proto/hyperbrowser/restricted/AbdulrahmansTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/AbdulrahmansTool1.xml" />
+    <!-- <tool file="hyperbrowser/abdulrahman/abdulrahman_test1.xml" />-->
+    <tool file="proto/hyperbrowser/tfbs/AntoniosTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/NullModelRandomizer.xml" />
+    <tool file="proto/hyperbrowser/restricted/PrintInternalTrackURITool.xml" />
+    <tool file="proto/hyperbrowser/restricted/WizardTestTool1.xml" />
+    <tool file="proto/hyperbrowser/restricted/WizardTestTool2.xml" />
+    <tool file="proto/hyperbrowser/restricted/BorisesTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/DianasTool.xml" />
+    <tool file="proto/hyperbrowser/article/IvarsTool.xml" />
+    <tool file="proto/hyperbrowser/article/IvarsTool.xml" />
+    <tool file="proto/hyperbrowser/nmer/CreateKmersTool.xml" />
+    <tool file="proto/hyperbrowser/nmer/FilterOutSeqsFromFasta.xml" />
+  </section>
+
+  <section name="User bookmarks" id="usr_bookmarks">
+    <tool file="proto/hyperbrowser/util/AddToolsToBookmark.xml" />
+    <tool file="proto/hyperbrowser/util/ViewBookmarks.xml" />
+  </section>
+
+  <section name="Exam analysis" id="exam_analysis">
+    <tool file="proto/hyperbrowser/restricted/ExamAnalysisTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/IndividualTaskAnalysisTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/ExamTaskScatterPlotTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/TaskCorrelationAnalysisTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/ExamScoresOverviewTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/ExamDataEditTool.xml" />
+    <tool file="proto/hyperbrowser/restricted/ExamDataConcatenateTool.xml" />
+  </section>
+
+  <label text="Galaxy ProTo" id="proto_label" />
+
+  <!--<section id="protoTools" name="ProTo development tools">-->
+    <!--<tool file="proto/GenerateToolsTool.xml" />-->
+    <!--<tool file="proto/ExploreToolsTool.xml" />-->
+    <!--<tool file="proto/HideInExplorerTool.xml" />-->
+    <!--<tool file="proto/DebugToolImportTool.xml" />-->
+    <!--<tool file="proto/InstallToolsTool.xml" />-->
+
+    <!--&lt;!&ndash; hidden tools &ndash;&gt;-->
+    <!--<tool file="proto/FileImport.xml" /> -->
+    <!--&lt;!&ndash; end hidden tools &ndash;&gt;-->
+  <!--</section>-->
+
+  <section id="hbProtoTools" name="HB ProTo development tools">
+    <tool file="proto/hyperbrowser/HbGenerateToolsTool.xml" />
+    <tool file="proto/hyperbrowser/HbExploreToolsTool.xml" />
+    <tool file="proto/hyperbrowser/HbHideInExplorerTool.xml" />
+    <tool file="proto/hyperbrowser/HbDebugToolImportTool.xml" />
+    <tool file="proto/hyperbrowser/HbInstallToolsTool.xml" />
+
+    <!-- hidden tools -->
+    <tool file="proto/FileImport.xml" />
+    <!-- end hidden tools -->
+  </section>
+
+  <label text=" " id="space0"/>
+  
+  <label text="Standard Galaxy tools" id="galaxy_tools" />
+  
+  <section id="getext" name="Get Data">
+    <tool file="data_source/upload.xml" />
+    <tool file="data_source/ucsc_tablebrowser.xml" />
+    <tool file="data_source/ucsc_tablebrowser_test.xml" />
+    <tool file="data_source/ucsc_tablebrowser_archaea.xml" />
+    <tool file="data_source/ebi_sra.xml" />
+    <tool file="data_source/microbial_import.xml" />
+    <tool file="data_source/biomart.xml" />
+    <tool file="data_source/cbi_rice_mart.xml" />
+    <tool file="data_source/gramene_mart.xml" />
+    <tool file="data_source/fly_modencode.xml" />
+    <tool file="data_source/flymine.xml" />
+    <tool file="data_source/flymine_test.xml" />
+    <tool file="data_source/modmine.xml" />
+    <tool file="data_source/mousemine.xml" />
+    <tool file="data_source/ratmine.xml" />
+    <tool file="data_source/yeastmine.xml" />
+    <tool file="data_source/metabolicmine.xml" />
+    <tool file="data_source/worm_modencode.xml" />
+    <tool file="data_source/wormbase.xml" />
+    <tool file="data_source/wormbase_test.xml" />
+    <tool file="data_source/zebrafishmine.xml" />
+    <tool file="data_source/eupathdb.xml" />
+    <tool file="data_source/hbvar.xml" />
+    <tool file="genomespace/genomespace_file_browser_prod.xml" />
+    <tool file="genomespace/genomespace_importer.xml" />
+    <tool file="validation/fix_errors.xml" />
+  </section>
+  <section id="send" name="Send Data">
+    <tool file="genomespace/genomespace_exporter.xml" />
+  </section>
+  <section id="liftOver" name="Lift-Over">
+    <tool file="extract/liftOver_wrapper.xml" />
+  </section>
+  <section id="textutil" name="Text Manipulation">
+    <tool file="filters/fixedValueColumn.xml" />
+    <tool file="filters/catWrapper.xml" />
+    <tool file="filters/cutWrapper.xml" />
+    <tool file="filters/mergeCols.xml" />
+    <tool file="filters/convert_characters.xml" />
+    <tool file="filters/CreateInterval.xml" />
+    <tool file="filters/cutWrapper.xml" />
+    <tool file="filters/changeCase.xml" />
+    <tool file="filters/pasteWrapper.xml" />
+    <tool file="filters/remove_beginning.xml" />
+    <tool file="filters/randomlines.xml" />
+    <tool file="filters/headWrapper.xml" />
+    <tool file="filters/tailWrapper.xml" />
+    <tool file="filters/trimmer.xml" />
+    <tool file="filters/wc_gnu.xml" />
+    <tool file="filters/secure_hash_message_digest.xml" />
+  </section>
+  <section id="filter" name="Filter and Sort">
+    <tool file="stats/filtering.xml" />
+    <tool file="filters/sorter.xml" />
+    <tool file="filters/grep.xml" />
+    
+    <label id="gff" text="GFF" />
+    <tool file="filters/gff/extract_GFF_Features.xml" />
+    <tool file="filters/gff/gff_filter_by_attribute.xml" />
+    <tool file="filters/gff/gff_filter_by_feature_count.xml" />
+    <tool file="filters/gff/gtf_filter_by_attribute_values_list.xml" />
+  </section>
+  <section id="group" name="Join, Subtract and Group">
+    <tool file="filters/joiner.xml" />
+    <tool file="filters/compare.xml" />
+    <tool file="stats/grouping.xml" />
+  </section>
+  <section id="convert" name="Convert Formats">
+    <tool file="filters/axt_to_concat_fasta.xml" />
+    <tool file="filters/axt_to_fasta.xml" />
+    <tool file="filters/axt_to_lav.xml" />
+    <tool file="filters/bed2gff.xml" />
+    <tool file="filters/gff2bed.xml" />
+    <tool file="filters/lav_to_bed.xml" />
+    <tool file="maf/maf_to_bed.xml" />
+    <tool file="maf/maf_to_interval.xml" />
+    <tool file="maf/maf_to_fasta.xml" />
+    <tool file="filters/wiggle_to_simple.xml" />
+    <tool file="filters/sff_extractor.xml" />
+    <tool file="filters/gtf2bedgraph.xml" />
+    <tool file="filters/wig_to_bigwig.xml" />
+    <tool file="filters/bed_to_bigbed.xml" />
+  </section>
+  <section id="features" name="Extract Features">
+    <tool file="filters/ucsc_gene_bed_to_exon_bed.xml" />
+  </section>
+  <section id="fetchSeq" name="Fetch Sequences">
+    <tool file="extract/extract_genomic_dna.xml" />
+  </section>
+  <section id="fetchAlign" name="Fetch Alignments">
+    <tool file="maf/interval2maf_pairwise.xml" />
+    <tool file="maf/interval2maf.xml" />
+    <tool file="maf/maf_split_by_species.xml" />
+    <tool file="maf/interval_maf_to_merged_fasta.xml" />
+    <tool file="maf/genebed_maf_to_fasta.xml" />
+    <tool file="maf/maf_stats.xml" />
+    <tool file="maf/maf_thread_for_species.xml" />
+    <tool file="maf/maf_limit_to_species.xml" />
+    <tool file="maf/maf_limit_size.xml" />
+    <tool file="maf/maf_by_block_number.xml" />
+    <tool file="maf/maf_reverse_complement.xml" />
+    <tool file="maf/maf_filter.xml" />
+  </section>
+  <section id="stats" name="Statistics">
+    <tool file="stats/gsummary.xml" />
+    <tool file="filters/uniq.xml" />
+  </section>
+  <section id="plots" name="Graph/Display Data">
+    <tool file="plotting/bar_chart.xml" />
+    <tool file="plotting/boxplot.xml" />
+    <tool file="maf/vcf_to_maf_customtrack.xml" />
+  </section>
+</toolbox>

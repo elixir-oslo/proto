@@ -1,0 +1,4 @@
+<tool id="hb_touch_standardized_track" name="Touch standardized track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.TouchStandardizedTrack" proto_tool_class="TouchStandardizedTrack">
+  <description></description>
+</tool>

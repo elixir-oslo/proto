@@ -1,0 +1,4 @@
+<tool id="hb_edit_history_item" name="Edit history item" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.EditHistoryItem" proto_tool_class="EditHistoryItem">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_track_global_search_tool" name="Create a GSuite from an integrated catalog of genomic datasets" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.imports.TrackGlobalSearchTool" proto_tool_class="TrackGlobalSearchTool">
+  <description></description>
+</tool>

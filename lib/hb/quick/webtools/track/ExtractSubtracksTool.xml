@@ -1,0 +1,4 @@
+<tool id="hb_extract_subtracks_tool" name="Create a GSuite from the HyperBrowser repository" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.ExtractSubtracksTool" proto_tool_class="ExtractSubtracksTool">
+  <description></description>
+</tool>

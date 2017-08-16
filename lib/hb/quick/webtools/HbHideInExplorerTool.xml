@@ -1,0 +1,4 @@
+<tool id="hb_hide_in_explorer_tool" name="Hide HB ProTo tool modules" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="proto.tools.hyperbrowser.HbHideInExplorerTool" proto_tool_class="HbHideInExplorerTool">
+  <description>from 'Explore HB ProTo tools'</description>
+</tool>

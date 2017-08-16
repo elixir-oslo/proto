@@ -20,6 +20,7 @@ database/tmp
 database/*.sqlite
 database/openid_consumer_cache
 database/proto-tool-cache.shelve
+database/hb_config.shelve
 
 # Python bytecode
 *.pyc
@@ -126,6 +127,12 @@ doc/build
 .DS_Store
 *.rej
 *~
+\#*
 .idea
 .stversions
 .stfolder
+.stignore
+.stglobalignore
+.syncthing*
+.svn
+./**/.svn

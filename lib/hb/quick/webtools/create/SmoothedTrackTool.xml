@@ -1,0 +1,4 @@
+<tool id="hb_create_smoothed_track" name="Create smoothing or density track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.create.SmoothedTrackTool" proto_tool_class="SmoothedTrackTool">
+  <description></description>
+</tool>

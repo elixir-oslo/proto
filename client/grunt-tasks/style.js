@@ -8,8 +8,8 @@ module.exports = function( grunt ){
 
     var _ = grunt.util._,
         fmt = _.sprintf,
-    	theme = grunt.option( 'theme', 'blue' ),
-        styleDistPath = '../static/style/blue',
+    	theme = grunt.option( 'theme', 'HB' ),
+        styleDistPath = '../static/style/' + theme,
         imagesPath = '../static/images',
         lessPath = './galaxy/style/less',
         lessFiles = [
@@ -17,11 +17,13 @@ module.exports = function( grunt ){
             'autocomplete_tagging',
             'embed_item',
             'iphone',
-            'masthead',
             'library',
             'trackster',
             'circster',
-            'reports'
+            'reports',
+            'proto',
+            'welcome',
+            'hb_base'
         ];
 
 

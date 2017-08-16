@@ -1,0 +1,4 @@
+<tool id="hb_genome_info" name="Edit genome info" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.GenomeInfoTool" proto_tool_class="GenomeInfoTool">
+  <description></description>
+</tool>

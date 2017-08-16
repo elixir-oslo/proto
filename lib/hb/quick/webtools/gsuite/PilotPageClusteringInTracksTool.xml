@@ -1,0 +1,4 @@
+<tool id="hb_pilot_page_clustering_in_tracks_tool" name="Tendency of track elements to clump together along the genome (Ripleys K)" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.PilotPageClusteringInTracksTool" proto_tool_class="PilotPageClusteringInTracksTool">
+  <description></description>
+</tool>

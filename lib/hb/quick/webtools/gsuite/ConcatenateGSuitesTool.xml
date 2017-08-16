@@ -1,0 +1,4 @@
+<tool id="hb_concatenate_gsuites_tool" name="Concatenate two or more GSuites" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.ConcatenateGSuitesTool" proto_tool_class="ConcatenateGSuitesTool">
+  <description></description>
+</tool>

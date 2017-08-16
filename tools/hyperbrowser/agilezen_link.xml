@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<tool name="Link to AgileZen" id="agilezen_spec">
+        
+        <description></description>
+        
+        <command></command>
+        
+        <display></display>
+        
+        <inputs action="http://www.agilezen.com/project/29261/board" check_values="false" method="get"> 
+        <param name="x" type="hidden" value="x" />
+	</inputs>
+    <uihints minwidth="800"/>  
+                        
+</tool>
+

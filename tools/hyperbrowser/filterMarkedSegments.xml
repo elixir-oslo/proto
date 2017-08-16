@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<tool id="hb_filtermarkedsegments" name="Filter valued segments">
+	<description></description>
+	<command interpreter="python">
+        filterMarkedSegments.py '$input' '$output' '$criteria' $dbkey
+	</command>	
+	<inputs>
+        <param format="wig" name="input" type="data" label="Input file" help="Wig-file to filter" />
+
+        <param type="text" area="true" size="20x250" name="criteria" label="Criteria" help="" />
+
+        <param name="dbkey" type="select" help="Choose genome build" label="Genome">
+          <option value="hg18">Human Mar. 2006 (hg18/NCBI36)</option>
+          <!-- <option value="hg17">Human May 2004 (hg17/NCBI35)</option> -->
+        </param>
+	
+      </inputs>
+
+	<help>
+	</help>
+
+
+	<outputs>
+		<data format="wig" name="output" />
+	</outputs>
+
+
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_union_of_g_suite_tracks_tool" name="Generate a union track from all the tracks in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="proto.tools.hyperbrowser.gsuite.UnionOfGSuiteTracksTool" proto_tool_class="UnionOfGSuiteTracksTool">
+  <description></description>
+</tool>

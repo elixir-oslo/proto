@@ -1,34 +1,34 @@
-# Copyright (C) 2009, Geir Kjetil Sandve, Sveinung Gundersen and Morten Johansen
-# This file is part of The Genomic HyperBrowser.
-#
-#    The Genomic HyperBrowser is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    The Genomic HyperBrowser is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with The Genomic HyperBrowser.  If not, see <http://www.gnu.org/licenses/>.
+from __future__ import absolute_import
 
-import sys, os
+import logging
+import os
+import pkgutil
+import traceback
 
-from galaxy.web.base.controller import *
-import logging, sets, time
+from multiprocessing import Process, Pipe, Queue
+from importlib import import_module
+
+from galaxy.web.base.controller import web, error, BaseUIController
+
 
 log = logging.getLogger( __name__ )
 
-import traceback
-from multiprocessing import Process, Pipe, Array, Queue
-from importlib import import_module
+#from sqlalchemy import create_engine, event, exc
+#from sqlalchemy.orm.session import Session, sessionmaker
+#from sqlalchemy.orm.scoping import scoped_session
+
+
 
 class ProtoController( BaseUIController ):
 
-    @staticmethod
-    def __index_pipe(response, trans, tool):
+    def run_fork(self, response, trans, mako):
+        # this can close active connections in parent threads, since db server endpoint closes
+        #trans.sa_session.get_bind().dispose()
+
+        # don't know why this has no effect
+        #engine = create_engine(trans.app.config.database_connection, pool_size=1)
+        #trans.app.model.context = scoped_session(sessionmaker(bind=engine, autoflush=False, autocommit=True))
+
         # logging locks and/or atexit handlers may be cause of deadlocks in a fork from thread
         # attempt to fix by shutting down and reloading logging module and clear exit handlers
         # logging.shutdown()
@@ -47,62 +47,102 @@ class ProtoController( BaseUIController ):
         exc_info = None
         html = ''
         #response.send_bytes('ping')
+
         try:
-#            from gold.application.GalaxyInterface import GalaxyInterface
-#            template_mako = '/hyperbrowser/' + tool + '.mako'
-            template_mako = '/proto/' + tool + '.mako'
-            toolController = None
-            try:
-                #toolModule = __import__('proto.' + tool, globals(), locals(), ['getController'])
-                toolModule = import_module('proto.' + tool)
-                toolController = toolModule.getController(trans)
-            except Exception, e:
-                print e
-                exc_info = sys.exc_info()
-                pass
-            
-            #html = trans.fill_template(template_mako, trans=trans, hyper=GalaxyInterface, control=toolController)
-            html = trans.fill_template(template_mako, trans=trans, control=toolController)
+            html = self.run_tool(mako, trans)
         except Exception, e:
             html = '<html><body><pre>\n'
-            if exc_info:
-                html += str(e) + ':\n' + ''.join(traceback.format_exception(exc_info[0],exc_info[1],exc_info[2])) + '\n\n'
-            html += str(e) + ':\n' + traceback.format_exc() + '\n</pre></body></html>'
+            html += str(e) + ':\n' + traceback.format_exc()
+            html += '\n</pre></body></html>'
 
         response.send_bytes(html)
         response.close()
 
+        #trans.sa_session.flush()
+        #engine.dispose()
+
+    @staticmethod
+    def _convert_mako_from_rel_to_abs(mako):
+        return '/proto/' + mako
+
+    @staticmethod
+    def _get_controller_module_name(rel_mako):
+        return 'proto.' + rel_mako
+
+    def _parse_mako_filename(self, mako):
+        if not mako.startswith('/'):
+            rel_mako = mako
+            mako = self._convert_mako_from_rel_to_abs(mako)
+        else:
+            rel_mako = mako.split('/')[-1]
+
+        controller_module_name = self._get_controller_module_name(rel_mako)
+        template_mako = mako + '.mako'
+        return controller_module_name, template_mako
+
+    @staticmethod
+    def _fill_mako_template(template_mako, tool_controller, trans):
+        return trans.fill_template(template_mako, trans=trans, control=tool_controller)
+
+    def run_tool(self, mako, trans):
+        controller_module_name, template_mako = self._parse_mako_filename(mako)
+
+        controller_loader = pkgutil.find_loader(controller_module_name)
+        if controller_loader:
+            tool_module = import_module(controller_module_name)
+            tool_controller = tool_module.getController(trans)
+        else:
+            tool_controller = None
+
+        html = self._fill_mako_template(template_mako, tool_controller, trans)
+
+        return html
 
     @web.expose
-    def index(self, trans, mako = 'generictool', **kwd):
+    def index(self, trans, mako='generictool', **kwd):
+        return self._index(trans, mako, **kwd)
+
+    def _index(self, trans, mako, **kwd):
+
         if kwd.has_key('rerun_hda_id'):
             self._import_job_params(trans, kwd['rerun_hda_id'])
                     
         if isinstance(mako, list):
             mako = mako[0]
-        
-        #trans.sa_session.flush()
-        # trans.sa_session.close()
 
-        done = False
-        while not done:
-            trans.sa_session.flush()
+        timeout = 60
+        retry = 3
+        while retry > 0:
+            retry -= 1
 
             my_end, your_end = Pipe()
-            proc = Process(target=self.__index_pipe, args=(your_end,trans,str(mako)))
+            proc = Process(target=self.run_fork, args=(your_end,trans,str(mako)))
+
+            #trans.sa_session.flush()
+
+            # this avoids database exceptions in fork, but defies the point of having a
+            # connection pool
+            #trans.sa_session.get_bind().dispose()
+
+            # attempt to fully load history/dataset objects to avoid "lazy" loading from
+            # database in forked process
+            if trans.get_history():
+                for hda in trans.get_history().active_datasets:
+                    _ = hda.visible, hda.state, hda.dbkey, hda.extension, hda.datatype
+
             proc.start()
             html = ''
             if proc.is_alive():
-                if my_end.poll(10):
+                if my_end.poll(timeout):
                     #ping = my_end.recv_bytes()
                     html = my_end.recv_bytes()
                     my_end.close()
-                    done = True
+                    break
                 else:
-                    log.warn('Fork timed out after 10 sec. Retrying...')
+                    log.warn('Fork timed out after %d sec. Retrying...' % (timeout,))
             else:
                 log.warn('Fork died on startup.')
-                done = True
+                break
 
             proc.join(1)
             if proc.is_alive():

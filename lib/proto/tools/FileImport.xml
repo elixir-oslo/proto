@@ -1,0 +1,4 @@
+<tool id="file_import" name="Import file to history" version="1.0.0" hidden="True"
+  tool_type="proto_generic" proto_tool_module="proto.tools.FileImport" proto_tool_class="FileImport">
+  <description></description>
+</tool>

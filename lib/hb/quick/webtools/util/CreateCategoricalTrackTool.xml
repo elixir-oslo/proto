@@ -1,0 +1,4 @@
+<tool id="hb_create_categorical_track_tool" name="Merge multiple BED files into single categorical track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.CreateCategoricalTrackTool" proto_tool_class="CreateCategoricalTrackTool">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_all_targets_of_tfs" name="Scan targets of a transcription factor" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.AllTargetsOfTfs" proto_tool_class="AllTargetsOfTfs">
+  <description></description>
+</tool>

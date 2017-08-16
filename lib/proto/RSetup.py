@@ -12,7 +12,7 @@ try:
     numpy2ri.activate()
 
     def replaceNone(obj):
-        if isinstance(obj, str):
+        if isinstance(obj, basestring):
             return obj
 
         if isinstance(obj, collections.Iterable):

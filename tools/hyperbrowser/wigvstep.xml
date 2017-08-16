@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<tool id="hb_wigvstep" name="Convert wig to variable step">
+	<description></description>
+	<command interpreter="python">
+        wigvstep.py '$input' '$output' '$gap'
+	</command>	
+	<inputs>
+        <param format="wig" name="input" type="data" label="Input file" help="Wig-file to convert" />
+
+        <param type="text" name="gap" label="Gap value" help="Value to fill gaps with" />
+
+        <param name="dbkey" type="select" help="Choose genome build" label="Genome">
+          <option value="hg18">Human Mar. 2006 (hg18/NCBI36)</option>
+          <!-- <option value="hg17">Human May 2004 (hg17/NCBI35)</option> -->
+        </param>
+	
+      </inputs>
+
+	<help>
+This tool converts bedGraph files to wig variable step format.
+
+-----
+
+**Gap value**
+
+Variable step files are defined over all base pairs. Areas with no segments in 
+the bedGraph file will be filled with this value.
+	</help>
+
+
+	<outputs>
+		<data format="wig" name="output" />
+	</outputs>
+
+
+</tool>

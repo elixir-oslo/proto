@@ -1,0 +1,4 @@
+<tool id="hb_create_bps_venn_d_iagram" name="Generate a Venn diagram of overlap between tracks in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.plot.CreateBpsVennDIagram" proto_tool_class="CreateBpsVennDIagram">
+  <description></description>
+</tool>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<tool id="hb_mcfdr_specification" name="MCFDR supplementary data">
+	<description></description>
+	<command></command>
+	
+	<display></display>
+	
+	<inputs action="/u/sandve/p/mcfdr" check_values="false" method="get">
+        <param name="tool_id" type="hidden" value="hb_mcfdr_specification" />
+    </inputs> 
+	<uihints minwidth="800"/>  
+
+</tool>

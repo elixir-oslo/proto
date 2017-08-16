@@ -1,0 +1,4 @@
+<tool id="hb_pilot_page_combined_overview_of_tracks_tool" name="Calculate all summary statistics for tracks in GSuite (all of the above)" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.PilotPageCombinedOverviewOfTracksTool" proto_tool_class="PilotPageCombinedOverviewOfTracksTool">
+  <description></description>
+</tool>

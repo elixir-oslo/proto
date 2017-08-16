@@ -1,0 +1,4 @@
+<tool id="hb_proto_install_tools_tool" name="Install HB ProTo tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.HbInstallToolsTool" proto_tool_class="HbInstallToolsTool">
+  <description></description>
+</tool>

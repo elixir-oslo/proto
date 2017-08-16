@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_select_columns" name="Select a subset of metadata columns in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteSelectColumns" proto_tool_class="GSuiteSelectColumns">
+  <description></description>
+</tool>

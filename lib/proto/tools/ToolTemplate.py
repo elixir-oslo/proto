@@ -96,6 +96,10 @@ class ToolTemplate(GeneralGuiTool):
         Genome selection box:   '__genome__'
         - Returns: string
 
+        Track selection box:    '__track__'
+        - Requires genome selection box.
+        - Returns: colon-separated string denoting track name
+
         History selection box:  ('__history__',) |
                                 ('__history__', 'bed', 'wig')
         - Only history items of specified types are shown.
@@ -303,7 +307,8 @@ class ToolTemplate(GeneralGuiTool):
     #     batch run line can be fetched from the info box at the bottom of the
     #     tool.
     #
-    #     Deprecated method, will be removed.
+    #     Optional method. Default return value if method is not defined:
+    #         same as isHistoryTool()
     #     """
     #     return cls.isHistoryTool()
     #
@@ -390,3 +395,13 @@ class ToolTemplate(GeneralGuiTool):
     #     'html'
     #     """
     #     return 'html'
+    #
+    # @classmethod
+    # def getOutputName(cls, choices=None):
+    #     return cls.getToolSelectionName()
+    #     """
+    #     The title (name) of the main output history element.
+    #
+    #     Optional method. Default return value if method is not defined:
+    #     the name of the tool.
+    #     """

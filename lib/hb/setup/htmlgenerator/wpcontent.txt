@@ -1,0 +1,336 @@
+- Explore disease-associated variation (GWAS SNPs)
+	- Are the supplied trait-associated variants particularly active in certain cell types?
+		- Analysis details
+			An analysis assessing to what extent variants from a given query set fall into the active chromatin regions (determined by DNase-Seq, FAIRE-Seq or histone modification ChIP-Seq) of selected cell types. Any number of cell types can be uniformly investigated within a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How does a query track overlap the different tracks of a suite?", where:
+The query track is a dataset of genomic features (e.g. the genomic locations of specific SNP variants);
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the areas of active chromatin, with each dataset describing the genomic regions of DNaseI accessibility for a separate cell type).
+
+		- Analysis steps
+			- Fetch the query track (a set of genomic locations representing the variants, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable query track available in your current HyperBrowser history;
+				- click here to load a __dt_ms__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Fetch the suite of tracks (a collection of genomic location datasets, each representing the active chromatin regions of a separate cell type, in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_dnase__ (you will be automatically redirected back to this page if you choose this option);
+				- import active chromatin data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import active chromatin data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded cell type specific files can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the query track against the tracks of the suite by utilizing the tool __tc_tool__.
+	- Are the supplied trait-associated variants preferentially located in certain chromatin states (in a given cell type)?
+		- Analysis details
+			An analysis assessing the enrichment of query variants in regions associated with a particular chromatin state (determined by histone modification ChIP-Seq or computationally) in a cell type of interest. Any number of chromatin states can be uniformly investigated within a single analysis run. Various information, including genomic locations of individual histone modifications or their combinations, can be used to denote a chromatin state.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How does a query track overlap the different tracks of a suite?", where:
+The query track is a dataset of genomic features (e.g. the genomic locations of specific SNP variants);
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the areas of various chromatin states, with each dataset describing the genomic regions associated with a separate chromatin state of a given cell type).
+		- Analysis steps
+			- Fetch the query track (a set of genomic locations representing the variants, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable query track available in your current HyperBrowser history;
+				- click here to load a __dt_ms__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Fetch the suite of tracks (a collection of genomic location datasets related to a given cell type, each dataset representing the regions of a separate chromatin state; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_hist_k562__ (you will be automatically redirected back to this page if you choose this option);
+				- import chromatin state data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import chromatin state data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific chromatin states can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the query track against the tracks of the suite by utilizing the tool __tc_tool__.
+	- Are the supplied trait-associated variants potentially disrupting the regulatory function of a given transcription factor (in certain cell types)?
+		- Analysis details
+			An analysis assessing the enrichment of query variants within the binding sites of a particular transcription factor (TF). Disruption of binding sites (whether these were determined by TF ChIP-Seq, DamID or computational predictions based on binding motifs) of the selected TF can be uniformly investigated for any number of cell types in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How does a query track overlap the different tracks of a suite?", where:
+The query track is a dataset of genomic features (e.g. the genomic locations of specific SNP variants);
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of TF binding sites, with each dataset representing the binding sites of a given TF in a separate cell type).
+		- Analysis steps
+			- Fetch the query track (a set of genomic locations representing the variants, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable query track available in your current HyperBrowser history;
+				- click here to load a __dt_ms__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Fetch the suite of tracks (a collection of genomic location datasets related to a given TF, each dataset representing the binding sites of this TF in a separate cell type; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_cmyc__ (you will be automatically redirected back to this page if you choose this option);
+				- import TF binding-site data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import TF binding-site data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific cell types can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the query track against the tracks of the suite by utilizing the tool __tc_tool__.
+	- How similar are the supplied traits in terms of sharing their lead SNPs?
+		- Analysis details
+			An analysis assessing the degree to which annotated lead SNPs are shared across selected traits. Any number of traits (each represented by a corresponding set of variants) can be included in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How do the individual tracks of a single suite overlap each other?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of trait-associated SNP variants, with each dataset representing a separate trait).
+		- Analysis steps
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the variants associated with a separate trait; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_gwas__ (you will be automatically redirected back to this page if you choose this option);
+				- import trait-associated SNP data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import trait-associated SNP data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific traits can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the tracks of the suite by utilizing one of the following tools:
+				- the __cc_tool__ tool provides a selection of multiple methods for calculating a pair-wise overlap table for all the tracks of the suite;
+				- the __pp_obt_tool__ tool calculates overall overlap statistics (e.g. a table showing how many SNPs are shared among 1, 2, …, n tracks of the suite).
+	- How do the supplied traits cluster based on the location of their lead SNPs?
+		- Analysis details
+			An analysis exploring the clustering tendencies of selected traits. Any number of traits (each represented by a corresponding set of variants) can be included in a single analysis run. One of multiple measures, each of which assesses the distribution of individual traits’ associated variants along the genome, can be used as a basis for the clustering.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How do the individual tracks of a single suite form clusters?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of trait-associated SNP variants, with each dataset representing a separate trait).
+		- Analysis steps
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the variants associated with a separate trait; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_gwas__ (you will be automatically redirected back to this page if you choose this option);
+				- import trait-associated SNP data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import trait-associated SNP data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific traits can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the tracks of the suite by utilizing the __cgst_tool__ tool.
+	- Which of the supplied traits is represented by the most (or the least) unique lead SNP set?
+		- Analysis details
+			An analysis calculating the relative ranking of each submitted trait based on its average enrichment ratio against the other supplied traits. Any number of traits (each represented by a corresponding set of variants) can be included in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "Given a suite of tracks, which tracks are the most or the least unique ones relative to the other tracks in the suite?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of trait-associated SNP variants, with each dataset representing a separate trait).
+		- Analysis steps
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the variants associated with a separate trait; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_gwas__ (you will be automatically redirected back to this page if you choose this option);
+				- import trait-associated SNP data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import trait-associated SNP data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific traits can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the tracks of the suite by utilizing the __pp_sau_tool__ tool.
+	- What I am interested in does not match any of the suggestions above..
+		The GSuite HyperBrowser is a generic system for analyzing suites of tracks, and as such is not in any way restricted to the specific example scenarios described above.
+
+If you are interested in a question that does not directly match any of the examples above, you might still get an idea of how to perform your analysis of interest by reading through the examples above and looking for parallels to your question.
+
+Alternatively, you can switch to <a href="javascript:;"  onclick="showDiv('tab1', 'tab3’);">advanced mode</a>, and look at the general descriptions of the analytical options provided by the GSuite HyperBrowser.
+
+Does any of the following generic tools seem suitable for the problem at hand?
+__c_tool__ - intended for analyzing single collections.
+__tc_tool__ - intended for analysis of a single track of interest against a collection of tracks.
+__cc_tool__ - intended for analyzing two collections of tracks against each other.
+
+You are also more than welcome to contact us at <a href="#" onclick="this.href='mailto:'+ this.innerHTML.split('').reverse().join('')" class="codedirection">on.oiu.tisu@sgub-resworbrepyh</a>. We have provided help for a broad range of investigations before, and are happy to provide noncommittal advice as well as take part in collaborations.
+
+- Explore cancer mutations (somatic variation)
+	- Are the supplied somatic variants (e.g. variants associated with a particular cancer type) particularly active in certain cell types?
+		- Analysis details
+			An analysis assessing to what extent somatic variants from a given query set fall into the active chromatin regions (determined by DNase-Seq, FAIRE-Seq or histone modification ChIP-Seq) of selected cell types. Any number of cell types can be uniformly investigated within a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How does a query track overlap the different tracks of a suite?", where:
+The query track is a dataset of genomic features (e.g. the genomic locations of specific somatic variants);
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the areas of active chromatin, with each dataset describing the genomic regions of DNaseI accessibility for a separate cell type).
+
+		- Analysis steps
+			- Fetch the query track (a set of genomic locations representing the variants, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable query track available in your current HyperBrowser history;
+				- click here to load a __dt_tcga__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Fetch the suite of tracks (a collection of genomic location datasets, each representing the active chromatin regions of a separate cell type; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_dnase__ (you will be automatically redirected back to this page if you choose this option);
+				- import active chromatin data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import active chromatin data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded cell type specific files can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the query track against the tracks of the suite by utilizing the tool __tc_tool__.
+	- Are the supplied somatic variants (e.g. variants associated with a particular cancer type) preferentially located in certain chromatin states (in a given cell type)?
+		- Analysis details
+			An analysis assessing the enrichment of query somatic variants in regions associated with a particular chromatin state (determined by histone modification ChIP-Seq or computationally) in a cell type of interests. Any number of chromatin states can be uniformly investigated within a single analysis run. Various information, including genomic locations of individual histone modifications or their combinations, can be used to denote a chromatin state.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How does a query track overlap the different tracks of a suite?", where:
+The query track is a dataset of genomic features (e.g. the genomic locations of specific somatic variants);
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the areas of various chromatin states, with each dataset describing the genomic regions associated with a separate chromatin state of a given cell type).
+		- Analysis steps
+			- Fetch the query track (a set of genomic locations representing the variants, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable query track available in your current HyperBrowser history;
+				- click here to load a __dt_tcga__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Fetch the suite of tracks (a collection of genomic location datasets related to a given cell type, each dataset representing the regions of a separate chromatin state; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_hist_k562__ (you will be automatically redirected back to this page if you choose this option);
+				- import chromatin state data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import chromatin state data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific chromatin states can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the query track against the tracks of the suite by utilizing the tool __tc_tool__.
+	- Are the supplied somatic variants (e.g. variants associated with a particular cancer type) potentially disrupting the regulatory function of certain transcription factors (in a given cell type)? (Example of a specialized tool.)
+		- Analysis details
+			An analysis assessing the enrichment and impact of query somatic variants within the binding sites of selected transcription factors (TFs) in a cell type of interest. For every case of a binding site co-location with a variant, the change in affected motif’s ability to bind its associated TF is evaluated (both increases and decreases in binding probability are being reported). Any number of TFs, represented by their binding sites (determined by TF ChIP-Seq, DamID or computational predictions based on binding motifs), can be uniformly investigated within a single analysis run.
+
+		- Info-box
+			This example task can be seen as a special instance of the more general question "How does a query track overlap the different tracks of a suite?", where:
+The query track is a dataset of genomic features (e.g. the genomic locations of specific somatic variants);
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of TF binding sites, with each dataset representing the binding sites of a separate TF in a given cell type).
+		- Analysis steps
+			- Fetch the query track (a set of genomic locations representing the variants, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable query track available in your current HyperBrowser history;
+				- click here to load a __dt_lica_cn__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Fetch the suite of tracks (a collection of genomic location datasets related to a given cell type, each dataset representing the binding sites of a separate TF; in GSuite format, with a metadata column named "pwm" that for each TF lists Transfac PWM IDs, which should be used in the TF binding change analyses). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __tfs_with_pwms__ (you will be automatically redirected back to this page if you choose this option);
+				- import TF binding-site data from a public data source using the curated search tool __bs_tool__ (the __tf_to_pwm_tool__ tool can be used for automatically attaching a well-formed "pwm" column to the resulting GSuite);
+				- (recommended for advanced users only) import TF binding-site data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific TFs can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool); the __tf_to_pwm_tool__ tool can be used for automatically attaching a well-formed "pwm" column to the resulting GSuite (this column can be further manually edited with the __edit_mdc_tool__ tool);
+			- Analyze the query track against the tracks of the suite by utilizing the tool __ftbd_tool__.
+	- Do the supplied somatic variants occur preferentially in certain genes?
+		- Analysis details
+			An analysis assessing absolute and patient-wise somatic mutation rates within individual genes. A normalization factor is calculated for each gene based on the cumulative length of genomic regions assigned to it (in case of targeted assays, only the targeted regions should be taken into account). Multiple patients (each corresponding to a set of somatic variants) and genes (each represented by a set of genomic regions, e.g., exons) can be uniformly investigated in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How are the track elements of one suite distributed among the tracks of another suite?” Two input collections, each being a separate GSuite instance, are required:
+A dataset of cases: independent sets of genomic events/features (e.g. multiple patients, each with an own list of genomic locations that represent somatic variants);
+A collection of potential targets: datasets of closely related genomic features (e.g. a collection of datasets which map the genomic locations of exons, with each dataset corresponding to one gene).
+		- Analysis steps
+			- Fetch the suite of patient tracks (a collection of genomic location datasets, each dataset representing the somatic variants of a separate patient; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_sv_colade__ (you will be automatically redirected back to this page if you choose this option);
+				- import somatic variation data from a public data source using the curated search tool __bs_tool__ (please note that additional post-processing will be necessary for creating a patient-wise collection);
+				- (recommended for advanced users only) upload your own patient-wise somatic variation data (e.g. by using the __uf_tool__); individually uploaded files representing specific patients can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Fetch the suite of gene tracks (a collection of genomic location datasets, each dataset representing the exons of a separate gene; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_tcga_exome__ (you will be automatically redirected back to this page if you choose this option);
+				- (recommended for advanced users only) upload your own gene-region data (e.g. by using the __uf_tool__); individually uploaded files representing specific genes can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the data by utilizing the tool __event_incidence_tool__.
+	- What I am interested in does not match any of the suggestions above..
+		The GSuite HyperBrowser is a generic system for analyzing suites of tracks, and as such is not in any way restricted to the specific example scenarios described above.
+
+If you are interested in a question that does not directly match any of the examples above, you might still get an idea of how to perform your analysis of interest by reading through the examples above and looking for parallels to your question.
+
+Alternatively, you can switch to <a href="javascript:;"  onclick="showDiv('tab1', 'tab3’);">advanced mode</a>, and look at the general descriptions of the analytical options provided by the GSuite HyperBrowser.
+
+Does any of the following generic tools seem suitable for the problem at hand?
+__c_tool__ - intended for analyzing single collections.
+__tc_tool__ - intended for analysis of a single track of interest against a collection of tracks.
+__cc_tool__ - intended for analyzing two collections of tracks against each other.
+
+You are also more than welcome to contact us at <a href="#" onclick="this.href='mailto:'+ this.innerHTML.split('').reverse().join('')" class="codedirection">on.oiu.tisu@sgub-resworbrepyh</a>. We have provided help for a broad range of investigations before, and are happy to provide noncommittal advice as well as take part in collaborations.
+
+- Explore transcription factor binding
+	- How do the supplied transcription factors cluster based on the location of their binding sites (i.e. based on the targets of their regulatory activity)?
+		- Analysis details
+			An analysis exploring the clustering tendencies of selected transcription factors (TFs). Any number of TFs (each represented by a corresponding set of binding sites) can be included in a single analysis run. One of multiple measures, each of which assesses the distribution of individual TFs’ associated binding sites along the genome, can be used as a basis for the clustering.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How do the individual tracks of a single suite form clusters?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of transcription factor (TF)-associated binding sites, with each dataset representing a separate TF).
+		- Analysis steps
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the binding sites associated with a separate TF; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_tf_gm12878__ (you will be automatically redirected back to this page if you choose this option);
+				- import TF-associated binding-site data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import TF-associated binding-site data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific TFs can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the tracks of the suite by utilizing the __cgst_tool__ tool.
+	- How much does binding (i.e. the set of supplied binding sites) of a given transcription factor vary across cell types?
+		- Analysis details
+			An analysis assessing the degree to which binding sites of a given transcription factor (TF) vary across cell types. Any number of cell types, each represented by a corresponding set of binding sites for the selected TF, can be uniformly investigated in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How do the individual tracks of a single suite overlap each other?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of TF binding sites, with each dataset representing the binding sites of a given TF in a separate cell type).
+		- Analysis steps
+			- Fetch the suite of tracks (a collection of genomic location datasets related to a given TF, each dataset representing the binding sites of this TF in a separate cell type; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_cmyc__ (you will be automatically redirected back to this page if you choose this option);
+				- import TF binding-site data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import TF binding-site data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific cell types can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the suite of tracks by utilizing the tool __pp_obt_tool__.
+	- How similar are the supplied transcription factors in terms of sharing their binding sites?
+		- Analysis details
+			An analysis assessing the degree to which binding sites are shared across selected TFs. Any number of TFs (each represented by a corresponding set of binding sites) can be included in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How do the individual tracks of a single suite overlap each other?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of transcription factor (TF) binding sites, with each dataset representing a separate TF).
+		- Analysis steps
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the binding sites associated with a separate TF; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_tf_gm12878__ (you will be automatically redirected back to this page if you choose this option);
+				- import TF-associated binding-site data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import TF-associated binding-site data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific TFs can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the tracks of the suite by utilizing one of the following tools:
+				- the __cc_tool__ tool provides a selection of multiple methods for calculating a pair-wise overlap table for all the tracks of the suite;
+				- the __pp_obt_tool__ tool calculates overall overlap statistics (e.g. a table showing how many binding sites are shared among 1, 2, …, n TF tracks of the suite).
+	- Which of the supplied transcription factors is represented by the most (or the least) unique binding site set?
+		- Analysis details
+			An analysis calculating the relative ranking of each submitted transcription factor (TF) based on its average enrichment ratio against the other supplied TFs. Any number of TFs (each represented by a corresponding set of binding sites) can be included in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "Given a suite of tracks, which tracks are the most or the least unique ones relative to the other tracks in the suite?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of transcription factor (TF)-associated binding sites, with each dataset representing a separate TF).
+		- Analysis steps
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the binding sites associated with a separate TF; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_tf_gm12878__ (you will be automatically redirected back to this page if you choose this option);
+				- import trait-associated SNP data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import TF-associated binding-site data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific TFs can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the tracks of the suite by utilizing the __pp_sau_tool__ tool.
+	- In which cell types do the supplied transcription factor binding sites fall into regulatory active regions?
+		- Analysis details
+			An analysis assessing the enrichment of supplied transcription factor binding sites (for a specific transcription factor) in regulatory active regions of multiple cell types. Locations of various genomic features (including DNaseI accessibility sites, FAIRE sites or specific histone modifications, e.g. H3K4me1 and H3K27ac) can be used as a proxy for regulatory active regions. Any number of cell types (or cell type - feature combinations) can be uniformly investigated in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How does a query track overlap the different tracks of a suite?", where:
+The query track is a dataset of genomic features (e.g. the binding sites of a given transcription factor);
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the areas of active chromatin, with each dataset describing the genomic regions of DNaseI accessibility for a separate cell type).
+		- Analysis steps
+			- Fetch the query track (a set of genomic locations representing the binding sites of a given transcription factor, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable query track available in your current HyperBrowser history;
+				- click here to load a __dgs_tf_gm12878__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the active chromatin regions of a separate cell type; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_dnase__ (you will be automatically redirected back to this page if you choose this option);
+				- import active chromatin data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import active chromatin data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded cell type specific files can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the query track against the tracks of the suite by utilizing the tool __tc_tool__.
+	- How do the supplied transcription factor binding sites overlap various traits’ associated DNA variants?
+		- Analysis details
+			An analysis assessing the enrichment of trait-associated variants in the binding sites of a query transcription factor (TF). Any number of traits (each represented by its own set of associated variants, typically lead SNPs found through a GWAS) can be uniformly investigated in a single analysis run.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "How does a query track overlap the different tracks of a suite?", where:
+The query track is a dataset of genomic features (e.g. the binding sites of a given transcription factor);
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the genomic locations of trait-associated SNP variants, with each dataset representing a separate trait).
+		- Analysis steps
+			- Fetch the query track (a set of genomic locations representing the binding sites of a given transcription factor, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable query track available in your current HyperBrowser history;
+				- click here to load a __dgs_tf_gm12878__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the variants associated with a separate trait; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history;
+				- click here to load a __dgs_gwas__ (you will be automatically redirected back to this page if you choose this option);
+				- import trait-associated SNP data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import trait-associated SNP data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific traits can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Analyze the query track against the tracks of the suite by utilizing the tool __tc_tool__.
+	- Which of the supplied genomic regions contain binding sites of a given transcription factor? (Example of a specialized tool.)
+		- Analysis details
+			An analysis for determining the overlap between genomic regions of interest and the (putative) binding sites of a particular transcription factor (TF). Multiple sets of genomic regions can be uniformly investigated in a single analysis run. Input genomic regions with a TF binding site overlap are included in the output together with summary plots.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "Which track elements from a query suite of tracks overlap the target genomic track?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the putative active enhancer regions of K562 cells, with each dataset describing the enhancer regions according to a separate definition/histone modification pattern);
+The target track is a single dataset of genomic features (e.g. the putative binding sites of a particular transcription factor).
+		- Analysis steps
+			- Fetch the query track/suite of tracks (a collection of one or more genomic location datasets, each dataset representing regions which should be scanned for TF binding sites; in GSuite format). You can:
+				- skip this step if you already have a suitable track/GSuite file available in your current HyperBrowser history or if you plan to use data from the HyperBrowser repository (the tool utilized in the last step of this analysis offers a range of data collections for this purpose);
+				- click here to load a __dgs_k562_enhancers__ (you will be automatically redirected back to this page if you choose this option);
+				- import enhancer region data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import enhancer region data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific enhancer sets can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Fetch the target track (a set of genomic locations representing TF binding sites, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable track file available in your current HyperBrowser history or if you plan to use data from the HyperBrowser repository (the tool utilized in the last step of this analysis offers a range of TF binding site datasets for this purpose);
+				- click here to load a __myc_bs__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Utilize the tool __tf_scan_targets__ by
+				- selecting a genomic track (or a suite of genomic tracks) representing the regions which should be scanned for TF binding sites - either from the current HyperBrowser history or from the pre-constructed list of suitable repository items;
+				- selecting a genomic track of TF binding sites - either from the current HyperBrowser history or from the pre-constructed list of suitable repository items;
+				- running the overlap analysis.
+	- Which transcription factors have binding sites located within the given genomic region(s)? (Example of a specialized tool.)
+		- Analysis details
+			An analysis for determining the overlap between genomic regions of interest and the (putative) binding sites of multiple transcription factors (TFs). A selected set of genomic regions can be uniformly scanned against multiple TF binding site datasets in a single analysis run. Input genomic regions with a TF binding site overlap are included in the output together with a TF co-occupancy summary.
+		- Info-box
+			This example task can be seen as a concrete instance of the more general question "Which tracks of a target suite of tracks overlap the query genomic track?", where:
+The suite of tracks (a GSuite instance) is a collection of related genomic feature datasets (e.g. a collection of datasets which map the putative transcription factor binding sites, with each dataset describing the binding sites of a separate transcription factor);
+The query track is a dataset of genomic features (e.g. putative active enhancer regions of K562 cells).
+		- Analysis steps
+			- Fetch the suite of tracks (a collection of genomic location datasets, each dataset representing the binding sites of a separate TF; in GSuite format). You can:
+				- skip this step if you already have a suitable GSuite file available in your current HyperBrowser history or if you plan to use data from the HyperBrowser repository (the tool utilized in the last step of this analysis offers a range of TF binding site datasets available for selection - a GSuite collection is automatically constructed from the selected datasets);
+				- click here to load a __selected_tfbs__ (you will be automatically redirected back to this page if you choose this option);
+				- import TF binding-site data from a public data source using the curated search tool __bs_tool__;
+				- (recommended for advanced users only) import TF binding-site data from a public data source (e.g. with the help of tool __as_tool__) or upload your own data (e.g. by using the __uf_tool__ tool); individually uploaded files representing specific TFs can be combined into a single GSuite instance with the tool __ch_tool__ (alternatively, an uploaded zip/tar archive containing such files can serve as input of the __efa_tool__ tool);
+			- Fetch the query track (a set of genomic locations representing regions which should be scanned for TF binding sites, in BED, GTrack or some of the other __page_ff__). You can:
+				- skip this step if you already have a suitable track file available in your current HyperBrowser history or if you plan to use data from the HyperBrowser repository (the tool utilized in the last step of this analysis offers a range of tracks suitable for this purpose);
+				- click here to load a __dt_k562_enhancers__ (you will be automatically redirected back to this page if you choose this option);
+				- upload your own file to the current HyperBrowser history by using the __uf_tool__ tool (if the file is not in one of the __page_ff__, you can convert it to the GTrack format by using the tool __gt_tab_tool__);
+			- Utilize the tool __region_scan_tfs__ by
+				- selecting a suite of genomic tracks representing the TF binding sites - either from the current HyperBrowser history or from the pre-constructed list of suitable repository items;
+				- selecting a genomic track with regions which should be scanned for TF binding sites - either from the current HyperBrowser history or from the pre-constructed list of suitable repository items;
+				- running the overlap analysis.
+- What I am interested in does not match any of the suggestions above.
+	[the text for this part is at the start of the wppostfix.html file]
+

@@ -1,0 +1,4 @@
+<tool id="hb_print_internal_track_uri_tool" name="Print internal track uri tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.PrintInternalTrackURITool" proto_tool_class="PrintInternalTrackURITool">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_dianas_tool" name="Dianas tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.DianasTool" proto_tool_class="DianasTool">
+  <description></description>
+</tool>

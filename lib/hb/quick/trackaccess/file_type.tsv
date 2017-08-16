@@ -1,0 +1,49 @@
+fastq	fq,fastq,fq.gz,fastq.gz
+bam	bam,bai,bam.bai,bam.gz,bam.gz,bai.gz,bam.bai.gz
+bigbed	bb,bigbed,bb.gz,bigbed.gz
+bai	bam,bai,bam.bai,bam.gz,bam.gz,bai.gz,bam.bai.gz
+bed	bed,bed.gz,bed.gPk.gz,bed.gPk.gz.tbi,broad.bed.gz
+bed9	bed9,bed9.gz
+bedcluster	bedcluster,bedcluster.gz
+bedLogR	bedlogr,bedlogr.gz
+bedRnaElements	bedrnaelements,bedrnaelements.gz
+bedRrbs	bedrrbs,bedrrbs.gz
+bigWig	bigwig,bw,bigwig.gz,bw.gz
+broadPeak	broadpeak,broadpeak.gz,broad.bed.gz
+gappedPeak	gappedPeak,gappedPeak.bed,gappedPeak.gz,gPk.gz,gPk.gz.tbi
+CEL	cel,cel.gz
+csfasta	csfasta,csfasta.gz
+csqual	csqual,csqual.gz
+doc	doc,doc.gz,doc.tgz
+gff	gff,gff.gz
+gp	gp,gp.gz
+gtf	gtf,gtf.gz
+matrix	matrix,matrix.gz,matrix.tgz
+narrowPeak	narrowpeak,narrowPeak.bed,narrowpeak.gz,nPk.gz,nPk.gz.tbi
+pdf	pdf,pdf.gz
+peaks	peaks,peaks.gz
+peptideMapping	peptidemapping,peptidemapping.gz
+shortFrags	shortfrags,shortfrags.gz
+spikeins	spikeins,spikeins.gz
+tab	tab,tab.gz
+pair	pair,pair.gz,pair.tar.gz
+tsv	tsv,tsv.gz
+txt	txt,txt.gz,txt.tgz
+wig	wig,wig.gz
+tar	tar,tar.gz,tar.gz.md5
+xml	xml,xml.gz
+svs	svs,svs.gz
+maf	maf
+GTrack	gtrack
+Clinical	clinical.*
+Clinical Sample	clinicalsample.*
+Copy Number Somatic Mutation	copy_number_somatic_mutation.*
+Experiment Array	exp_array.*
+Experiment Sequence	exp_seq.*
+Method Array	meth_array.*
+Method Sequence	meth_seq.*
+Micro-RNA Sequence	mirna_seq.*
+Protein Expression	protein_expression.*
+Simple Somatic Mutation	simple_somatic_mutation.*
+Splice Variant	splice_variant.*
+Structural Somatic Mutation	structural_somatic_mutation.*

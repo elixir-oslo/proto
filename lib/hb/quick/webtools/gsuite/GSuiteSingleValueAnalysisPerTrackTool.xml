@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_single_value_analysis_per_track_tool" name="Compute a basic measure for each track in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteSingleValueAnalysisPerTrackTool" proto_tool_class="GSuiteSingleValueAnalysisPerTrackTool">
+  <description></description>
+</tool>

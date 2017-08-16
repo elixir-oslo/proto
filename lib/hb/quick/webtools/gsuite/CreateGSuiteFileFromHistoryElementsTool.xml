@@ -1,0 +1,4 @@
+<tool id="hb_create_g_suite_file_from_history_elements_tool" name="Create a GSuite from datasets in your history" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.CreateGSuiteFileFromHistoryElementsTool" proto_tool_class="CreateGSuiteFileFromHistoryElementsTool">
+  <description></description>
+</tool>

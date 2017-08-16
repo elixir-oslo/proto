@@ -1,0 +1,4 @@
+<tool id="hb_analyze_functional_genomics_of_gwas_tracks" name="Analyze functional genomics of gwas tracks" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.AnalyzeFunctionalGenomicsOfGwasTracks" proto_tool_class="AnalyzeFunctionalGenomicsOfGwasTracks">
+  <description></description>
+</tool>

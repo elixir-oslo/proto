@@ -1,0 +1,4 @@
+<tool id="hb_wizard_test_tool1" name="Wizard test tool1" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.WizardTestTool1" proto_tool_class="WizardTestTool1">
+  <description></description>
+</tool>

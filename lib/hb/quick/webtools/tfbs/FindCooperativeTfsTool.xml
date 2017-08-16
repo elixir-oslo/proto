@@ -1,0 +1,4 @@
+<tool id="hb_find_cooperative_tfs_tool" name="Find cooperative TFs" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.FindCooperativeTfsTool" proto_tool_class="FindCooperativeTfsTool">
+  <description></description>
+</tool>

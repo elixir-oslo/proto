@@ -1,0 +1,4 @@
+<tool id="hb_make_genome_partion_according_to_segments" name="Expand BED segments to cover whole genome" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.MakeGenomePartionAccordingToSegments" proto_tool_class="MakeGenomePartionAccordingToSegments">
+  <description></description>
+</tool>

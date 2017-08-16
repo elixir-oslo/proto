@@ -2,6 +2,9 @@
 
 cd `dirname $0`
 
+# HyperBrowser User settings
+ulimit -s unlimited
+
 # If there is a file that defines a shell environment specific to this
 # instance of Galaxy, source the file.
 if [ -z "$GALAXY_LOCAL_ENV_FILE" ];
@@ -52,7 +55,7 @@ do
     esac
 done
 
-./scripts/common_startup.sh $common_startup_args || exit 1
+#./scripts/common_startup.sh $common_startup_args || exit 1
 
 # If there is a .venv/ directory, assume it contains a virtualenv that we
 # should run this instance in.
@@ -91,6 +94,14 @@ if [ -z "$GALAXY_CONFIG_FILE" ]; then
     fi
     export GALAXY_CONFIG_FILE
 fi
+
+./scripts/common_startup.sh $common_startup_args || exit 1
+
+## HyperBrowser addition: Tmp dir
+export TMPDIR="$(python scripts/hyperbrowser_config.py -c GALAXY_TMP_DIR)"
+export TMP=$TMPDIR
+export TEMP=$TMPDIR
+##
 
 if [ -n "$GALAXY_RUN_ALL" ]; then
     servers=`sed -n 's/^\[server:\(.*\)\]/\1/  p' $GALAXY_CONFIG_FILE | xargs echo`

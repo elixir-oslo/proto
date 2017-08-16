@@ -785,7 +785,7 @@ class User( BaseUIController, UsesFormDefinitionsMixin, CreatesUsersMixin, Creat
                     body = 'Join Mailing list.\n'
                     to = trans.app.config.mailing_join_addr
                     frm = email
-                    subject = 'Join Mailing List'
+                    subject = trans.app.config.mailing_join_subject
                     try:
                         util.send_mail( frm, to, subject, body, trans.app.config )
                     except Exception:

@@ -230,6 +230,10 @@ page,&nbsp;use&nbsp;the&nbsp;restricted&nbsp;output&nbsp;format&nbsp;'customhtml
 Optional&nbsp;method.&nbsp;Default&nbsp;return&nbsp;value&nbsp;if&nbsp;method&nbsp;is&nbsp;not&nbsp;defined:<br>
 'html'</tt></dd></dl>
 
+<dl><dt><a name="ToolTemplate-getOutputName"><strong>getOutputName</strong></a>(cls, choices)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>The title (name) of the main output history element.<br>
+ <br>
+Optional&nbsp;method.&nbsp;Default&nbsp;return&nbsp;value&nbsp;if&nbsp;method&nbsp;is&nbsp;not&nbsp;defined:&nbsp;the name of the tool.</tt></dd></dl>
+
 <dl><dt><a name="ToolTemplate-getRedirectURL"><strong>getRedirectURL</strong></a>(cls, choices)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>This&nbsp;method&nbsp;is&nbsp;called&nbsp;to&nbsp;return&nbsp;an&nbsp;URL&nbsp;if&nbsp;the&nbsp;isRedirectTool&nbsp;method<br>
 returns&nbsp;True.<br>
 &nbsp;<br>
@@ -269,7 +273,7 @@ Mandatory&nbsp;method&nbsp;for&nbsp;all&nbsp;ProTo&nbsp;tools.</tt></dd></dl>
 batch&nbsp;run&nbsp;line&nbsp;can&nbsp;be&nbsp;fetched&nbsp;from&nbsp;the&nbsp;info&nbsp;box&nbsp;at&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the<br>
 tool.<br>
 &nbsp;<br>
-Deprecated&nbsp;method,&nbsp;will&nbsp;be&nbsp;removed.</tt></dd></dl>
+Optional&nbsp;method.&nbsp;Default&nbsp;return&nbsp;value&nbsp;if&nbsp;method&nbsp;is&nbsp;not&nbsp;defined:&nbsp;same as isHistoryTool()</tt></dd></dl>
 
 <dl><dt><a name="ToolTemplate-isDebugMode"><strong>isDebugMode</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Specifies&nbsp;whether&nbsp;the&nbsp;debug&nbsp;mode&nbsp;is&nbsp;turned&nbsp;on.&nbsp;Debug&nbsp;mode&nbsp;is<br>
 currently&nbsp;mostly&nbsp;used&nbsp;within&nbsp;the&nbsp;Genomic&nbsp;HyperBrowser&nbsp;and&nbsp;will&nbsp;make<br>

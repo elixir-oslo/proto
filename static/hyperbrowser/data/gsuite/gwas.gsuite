@@ -1,0 +1,35 @@
+##location: local
+##file format: preprocessed
+##track type: segments
+###uri	title	element count
+####genome=hg19
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Alzheimer's disease	Alzheimer's disease (NHGRI GWAS Catalog)	61
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Attention deficit hyperactivity disorder	Attention deficit hyperactivity disorder (NHGRI GWAS Catalog)	66
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Bipolar disorder	Bipolar disorder (NHGRI GWAS Catalog)	104
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Bipolar disorder and schizophrenia	Bipolar disorder and schizophrenia (NHGRI GWAS Catalog)	68
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Blood pressure	Blood pressure (NHGRI GWAS Catalog)	57
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Body mass index	Body mass index (NHGRI GWAS Catalog)	101
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Bone mineral density	Bone mineral density (NHGRI GWAS Catalog)	83
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Breast cancer	Breast cancer (NHGRI GWAS Catalog)	51
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Cholesterol total	Cholesterol total (NHGRI GWAS Catalog)	65
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Cognitive test performance	Cognitive test performance (NHGRI GWAS Catalog)	64
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Coronary heart disease	Coronary heart disease (NHGRI GWAS Catalog)	122
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Crohn's disease	Crohn's disease (NHGRI GWAS Catalog)	117
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/HDL cholesterol	HDL cholesterol (NHGRI GWAS Catalog)	96
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Height	Height (NHGRI GWAS Catalog)	269
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/HIV-1 control	HIV-1 control (NHGRI GWAS Catalog)	55
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/LDL cholesterol	LDL cholesterol (NHGRI GWAS Catalog)	75
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Metabolite levels	Metabolite levels (NHGRI GWAS Catalog)	53
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Multiple sclerosis	Multiple sclerosis (NHGRI GWAS Catalog)	118
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Parkinson's disease	Parkinson's disease (NHGRI GWAS Catalog)	67
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Phospholipid levels (plasma)	Phospholipid levels (plasma) (NHGRI GWAS Catalog)	62
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Prostate cancer	Prostate cancer (NHGRI GWAS Catalog)	72
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Prostate cancer (gene x gene interaction)	Prostate cancer (gene x gene interaction) (NHGRI GWAS Catalog)	51
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Pulmonary function	Pulmonary function (NHGRI GWAS Catalog)	55
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Rheumatoid arthritis	Rheumatoid arthritis (NHGRI GWAS Catalog)	77
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Schizophrenia	Schizophrenia (NHGRI GWAS Catalog)	68
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Systemic lupus erythematosus	Systemic lupus erythematosus (NHGRI GWAS Catalog)	64
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Triglycerides	Triglycerides (NHGRI GWAS Catalog)	78
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Type 1 diabetes	Type 1 diabetes (NHGRI GWAS Catalog)	78
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Type 2 diabetes	Type 2 diabetes (NHGRI GWAS Catalog)	126
+hb:/Phenotype and disease associations/GWAS/NHGRI GWAS Catalog/Ulcerative colitis	Ulcerative colitis (NHGRI GWAS Catalog)	85

@@ -1,0 +1,4 @@
+TRACK_ACCESS_MODULE_REGISTRY = {}
+
+def register(module):
+    TRACK_ACCESS_MODULE_REGISTRY[module.TRACK_ACCESS_MODULE_ID] = module

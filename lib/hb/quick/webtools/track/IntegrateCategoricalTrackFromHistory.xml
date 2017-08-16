@@ -1,0 +1,4 @@
+<tool id="hb_integrate_categorical_track_from_history" name="Integrate categorical track from history" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.IntegrateCategoricalTrackFromHistory" proto_tool_class="IntegrateCategoricalTrackFromHistory">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_validate_gtrack_file" name="Validate GTrack file" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gtrack.ValidateGtrackFile" proto_tool_class="ValidateGtrackFile">
+  <description></description>
+</tool>

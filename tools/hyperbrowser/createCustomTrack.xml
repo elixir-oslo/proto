@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<tool tool_type="hyperbrowser" name="Create custom track" id="hb_customtrack">
+	
+	<description></description>
+
+	<command interpreter="python">createCustomTrack.py $output</command>
+	
+	<display>$GALAXY_URL $tool_id</display>
+	
+	<inputs action="/hyper" check_values="false" method="get">
+		<param name="GALAXY_URL" type="baseurl" value="/tool_runner" />
+		<param name="tool_id" type="hidden" value="hb_customtrack" />
+		<param name="mako" type="hidden" value="customtrack" />
+	</inputs>
+	<options sanitize="False"/>
+
+	
+        
+	<outputs>
+		<data format="html" name="output" />
+	</outputs>        
+			
+</tool>
+

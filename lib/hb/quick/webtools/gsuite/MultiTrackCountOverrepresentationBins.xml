@@ -1,0 +1,4 @@
+<tool id="hb_multi_track_count_overrepresentation_bins" name="Determine regions where GSuite tracks are enriched" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.MultiTrackCountOverrepresentationBins" proto_tool_class="MultiTrackCountOverrepresentationBins">
+  <description></description>
+</tool>

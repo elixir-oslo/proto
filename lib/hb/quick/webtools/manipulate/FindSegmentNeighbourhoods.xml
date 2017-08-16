@@ -1,0 +1,4 @@
+<tool id="hb_find_segment_neighbourhoods" name="Find segments with neighbors" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.manipulate.FindSegmentNeighbourhoods" proto_tool_class="FindSegmentNeighbourhoods">
+  <description></description>
+</tool>

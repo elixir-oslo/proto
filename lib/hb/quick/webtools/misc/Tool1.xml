@@ -1,0 +1,4 @@
+<tool id="hb_generic_1" name="Geir's tools" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.Tool1" proto_tool_class="Tool1">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_add_batch_line_to_test_collection" name="Add batch line to test collection" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.AddBatchLineToTestCollection" proto_tool_class="AddBatchLineToTestCollection">
+  <description></description>
+</tool>

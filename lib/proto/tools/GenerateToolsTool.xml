@@ -1,4 +1,4 @@
-<tool id="ProTo_GenerateToolsTool" name="ProTo tool generator" version="1.0.0"
-  tool_type="hyperbrowser_generic" proto_tool_module="proto.tools.ManageTools" proto_tool_class="GenerateToolsTool">
+<tool id="proto_generate_tools_tool" name="Generate ProTo tool" version="1.0.0"
+  tool_type="proto_generic" proto_tool_module="proto.tools.GenerateToolsTool" proto_tool_class="GenerateToolsTool">
   <description></description>
 </tool>

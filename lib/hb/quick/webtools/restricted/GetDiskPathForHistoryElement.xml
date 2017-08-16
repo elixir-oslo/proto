@@ -1,0 +1,4 @@
+<tool id="hb_get_disk_path_for_history_element" name="Fetch full disk path for data behind history element" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.GetDiskPathForHistoryElement" proto_tool_class="GetDiskPathForHistoryElement">
+  <description></description>
+</tool>

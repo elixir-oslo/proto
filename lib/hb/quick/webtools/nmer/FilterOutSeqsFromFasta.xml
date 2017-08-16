@@ -1,0 +1,4 @@
+<tool id="hb_filter_out_seqs_from_fasta" name="Filter out seqs from fasta" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.nmer.FilterOutSeqsFromFasta" proto_tool_class="FilterOutSeqsFromFasta">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_individual_task_analysis_tool" name="Individual task analysis tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.IndividualTaskAnalysisTool" proto_tool_class="IndividualTaskAnalysisTool">
+  <description></description>
+</tool>

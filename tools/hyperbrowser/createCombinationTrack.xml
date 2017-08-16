@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<tool name="Create combination track" id="create_combination_track" hidden="true">
+
+	<description>
+	</description>
+	
+	<command interpreter="python">createCombinationTrack.py $input $dbkey $output</command>
+
+	<inputs>
+		<param name="input" type="text" value="" />
+		<param name="dbkey" type="text" value="hg19" />
+  </inputs>
+
+	<outputs>
+		<data format="bed" name="output" />
+	</outputs>
+
+</tool>

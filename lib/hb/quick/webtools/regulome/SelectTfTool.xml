@@ -1,0 +1,4 @@
+<tool id="hb_select_tf" name="Select TFs for regulome" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.regulome.SelectTfTool" proto_tool_class="SelectTfTool">
+  <description></description>
+</tool>

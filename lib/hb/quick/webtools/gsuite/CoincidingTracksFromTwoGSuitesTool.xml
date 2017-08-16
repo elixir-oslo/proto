@@ -1,0 +1,4 @@
+<tool id="hb_coinciding_tracks_from_two_g_suites_tool" name="Determine coinciding track combinations from two GSuites" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.CoincidingTracksFromTwoGSuitesTool" proto_tool_class="CoincidingTracksFromTwoGSuitesTool">
+  <description></description>
+</tool>

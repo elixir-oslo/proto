@@ -1,0 +1,4 @@
+<tool id="hb_generate_circos_image" name="Generate Circos image" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.GenerateCircosImage" proto_tool_class="GenerateCircosImage">
+  <description></description>
+</tool>

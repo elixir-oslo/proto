@@ -1,0 +1,4 @@
+lib/hb/data/TestGenome.tar.gz filter=lfs diff=lfs merge=lfs -text
+lib/hb/data/trackaccess/imports.db filter=lfs diff=lfs merge=lfs -text
+static/hyperbrowser/data/gsuite/demo_track_k562_enhancers.bed filter=lfs diff=lfs merge=lfs -text
+static/hyperbrowser/data/gsuite/demo_track_lica_cn.gtrack filter=lfs diff=lfs merge=lfs -text

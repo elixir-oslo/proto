@@ -1,0 +1,4 @@
+<tool id="hb_view_bookmarks" name="View bookmarks" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.ViewBookmarks" proto_tool_class="ViewBookmarks">
+  <description></description>
+</tool>

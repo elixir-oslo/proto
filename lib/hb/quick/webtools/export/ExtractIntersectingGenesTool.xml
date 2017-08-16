@@ -1,0 +1,4 @@
+<tool id="hb_intersecting_genes" name="Extract IDs of genes intersecting with track elements" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.export.ExtractIntersectingGenesTool" proto_tool_class="ExtractIntersectingGenesTool">
+  <description></description>
+</tool>

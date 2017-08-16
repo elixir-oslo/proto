@@ -60,9 +60,9 @@ var View = Backbone.View.extend({
     },
 
     render: function() {
-        this.$navbarBrandTitle.html( 'Galaxy ' + ( this.options.brand && '/ ' + this.options.brand || '' ) );
+        this.$navbarBrandTitle.html( 'v2.0b4 <a href="https://galaxyproject.org/">(powered by Galaxy)</a> ' + ( this.options.brand && '/ ' + this.options.brand || '' ) );
         this.$navbarBrandLink.attr( 'href', this.options.logo_url );
-        this.$navbarBrandImage.attr( 'src', Galaxy.root + 'static/images/galaxyIcon_noText.png' );
+        this.$navbarBrandImage.attr( 'src', Galaxy.root + 'static/hyperbrowser/images/logo/HB_logo_title_small.png' );
         this.quotaMeter.render();
         return this;
     },
@@ -75,9 +75,9 @@ var View = Backbone.View.extend({
                     '</div>' +
                     '<div class="navbar-brand">' +
                         '<a class="navbar-brand-link">' +
-                            '<img class="navbar-brand-image"/>' +
+                            '<img class="navbar-brand-image"/></a>' +
                             '<span class="navbar-brand-title"/>' +
-                        '</a>' +
+                        '' +
                     '</div>' +
                     '<div class="quota-meter-container"/>' +
                     '<div class="navbar-icons"/>' +

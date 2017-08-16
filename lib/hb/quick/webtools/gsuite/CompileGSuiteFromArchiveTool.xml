@@ -1,0 +1,4 @@
+<tool id="hb_compile_g_suite_from_archive_tool" name="Create a GSuite from an archive (Zip/tar) in history" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.CompileGSuiteFromArchiveTool" proto_tool_class="CompileGSuiteFromArchiveTool">
+  <description></description>
+</tool>

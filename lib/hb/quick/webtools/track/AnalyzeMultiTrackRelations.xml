@@ -1,0 +1,4 @@
+<tool id="hb_analyze_multi-track_relations" name="Analyze relations between multiple tracks" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.AnalyzeMultiTrackRelations" proto_tool_class="AnalyzeMultiTrackRelations">
+  <description></description>
+</tool>

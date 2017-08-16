@@ -1,0 +1,9 @@
+<tool id="staal_sitt_Tool" name="Test result Generator">
+  <command interpreter="python">staaleProg.py $nObs $out_file1</command>
+  <inputs>
+    <param name="nObs" type="integer" value="10" label="Number of Observations"/>
+  </inputs>
+  <outputs>
+    <data format="html" name="out_file1" />
+  </outputs>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_clus_track_tool" name="ClusTrack: Cluster tracks in a GSuite based on genome level similarity" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.article.ClusTrackTool" proto_tool_class="ClusTrackTool">
+  <description></description>
+</tool>

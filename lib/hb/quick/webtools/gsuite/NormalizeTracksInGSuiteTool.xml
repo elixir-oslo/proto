@@ -1,0 +1,4 @@
+<tool id="hb_normalize_tracks_in_g_suite_tool" name="Normalize tracks in g suite tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.NormalizeTracksInGSuiteTool" proto_tool_class="NormalizeTracksInGSuiteTool">
+  <description></description>
+</tool>

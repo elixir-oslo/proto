@@ -1,0 +1,45 @@
+##location: local
+##file format: preprocessed
+##track type: valued segments
+##genome: hg19
+###uri	title
+hb:/external/dev2/065/65880/0_E006-DNase.hotspot.fdr0.01.broad.bed	H1 Derived Mesenchymal Stem Cells
+hb:/external/dev2/065/65880/1_E085-DNase.hotspot.fdr0.01.broad.bed	Fetal Intestine Small
+hb:/external/dev2/065/65880/3_E046-DNase.hotspot.all.peaks.bed	Primary Natural Killer cells fromperipheralblood
+hb:/external/dev2/065/65880/4_E051-DNase.macs2.narrowPeak	Primary hematopoietic stem cells G-CSF-mobilized Male
+hb:/external/dev2/065/65880/6_E083-DNase.hotspot.all.peaks.bed	Fetal Heart
+hb:/external/dev2/065/65880/8_E055-DNase.hotspot.all.peaks.bed	Foreskin Fibroblast Primary Cells skin01
+hb:/external/dev2/065/65880/9_E029-DNase.macs2.narrowPeak	Primary monocytes fromperipheralblood
+hb:/external/dev2/065/65880/10_E086-DNase.hotspot.all.peaks.bed	Fetal Kidney
+hb:/external/dev2/065/65880/11_E125-DNase.macs2.narrowPeak	NH-A Astrocytes Cell Line
+hb:/external/dev2/065/65880/12_E089-DNase.hotspot.fdr0.01.broad.bed	Fetal Muscle Trunk
+hb:/external/dev2/065/65880/13_E046-DNase.macs2.narrowPeak	Primary Natural Killer cells fromperipheralblood 2
+hb:/external/dev2/065/65880/14_E021-DNase.hotspot.fdr0.01.broad.bed	iPS DF 6.9 Cell Line
+hb:/external/dev2/065/65880/15_E007-DNase.hotspot.all.peaks.bed	H1 Derived Neuronal Progenitor Cultured Cells
+hb:/external/dev2/065/65880/16_E088-DNase.hotspot.all.peaks.bed	Fetal Lung
+hb:/external/dev2/065/65880/17_E051-DNase.hotspot.all.peaks.bed	Primary hematopoietic stem cells G-CSF-mobilized Male 2
+hb:/external/dev2/065/65880/18_E084-DNase.macs2.narrowPeak	Fetal Intestine Large
+hb:/external/dev2/065/65880/19_E003-DNase.hotspot.all.peaks.bed	H1 Cell Line
+hb:/external/dev2/065/65880/21_E083-DNase.hotspot.broad.bed	Fetal Heart 2
+hb:/external/dev2/065/65880/23_E090-DNase.hotspot.fdr0.01.broad.bed	Fetal Muscle Leg
+hb:/external/dev2/065/65880/24_E051-DNase.hotspot.broad.bed	Primary hematopoietic stem cells G-CSF-mobilized Male 3
+hb:/external/dev2/065/65880/26_E028-DNase.hotspot.all.peaks.bed	Breast variant Human Mammary Epithelial Cells (vHMEC)
+hb:/external/dev2/065/65880/28_E055-DNase.hotspot.broad.bed	Foreskin Fibroblast Primary Cells skin01 2
+hb:/external/dev2/065/65880/29_E021-DNase.hotspot.all.peaks.bed	iPS DF 6.9 Cell Line 2
+hb:/external/dev2/065/65880/30_E033-DNase.hotspot.broad.bed	Primary T cells from cord blood
+hb:/external/dev2/065/65880/31_E003-DNase.macs2.narrowPeak	H1 Cell Line 2
+hb:/external/dev2/065/65880/33_E022-DNase.macs2.narrowPeak	iPS DF 19.11 Cell Line
+hb:/external/dev2/065/65880/34_E003-DNase.hotspot.broad.bed	H1 Cell Line 3
+hb:/external/dev2/065/65880/35_E109-DNase.macs2.narrowPeak	Small Intestine
+hb:/external/dev2/065/65880/36_E057-DNase.hotspot.all.peaks.bed	Foreskin Keratinocyte Primary Cells skin02
+hb:/external/dev2/065/65880/37_E003-DNase.hotspot.fdr0.01.broad.bed	H1 Cell Line 4
+hb:/external/dev2/065/65880/39_E084-DNase.hotspot.all.peaks.bed	Fetal Intestine Large 2
+hb:/external/dev2/065/65880/40_E088-DNase.hotspot.broad.bed	Fetal Lung 2
+hb:/external/dev2/065/65880/42_E097-DNase.hotspot.broad.bed	Ovary
+hb:/external/dev2/065/65880/43_E034-DNase.macs2.narrowPeak	Primary T cells fromperipheralblood
+hb:/external/dev2/065/65880/44_E100-DNase.macs2.narrowPeak	Psoas Muscle
+hb:/external/dev2/065/65880/45_E082-DNase.hotspot.broad.bed	Fetal Brain Female
+hb:/external/dev2/065/65880/46_E029-DNase.hotspot.all.peaks.bed	Primary monocytes fromperipheralblood 2
+hb:/external/dev2/065/65880/47_E082-DNase.macs2.narrowPeak	Fetal Brain Female 2
+hb:/external/dev2/065/65880/48_E089-DNase.hotspot.broad.bed	Fetal Muscle Trunk 2
+hb:/external/dev2/065/65880/49_E004-DNase.hotspot.fdr0.01.broad.bed	H1 BMP4 Derived Mesendoderm Cultured Cells

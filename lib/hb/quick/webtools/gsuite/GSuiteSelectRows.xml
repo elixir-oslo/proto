@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_select_rows" name="Select a subset of tracks from a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteSelectRows" proto_tool_class="GSuiteSelectRows">
+  <description></description>
+</tool>

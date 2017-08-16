@@ -1,0 +1,4 @@
+<tool id="hb_halfdans_tool" name="Halfdans tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.HalfdansTool" proto_tool_class="HalfdansTool">
+  <description></description>
+</tool>

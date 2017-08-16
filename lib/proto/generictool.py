@@ -1,41 +1,27 @@
-# Copyright (C) 2009, Geir Kjetil Sandve, Sveinung Gundersen and Morten Johansen
-# This file is part of The Genomic HyperBrowser.
-#
-#    The Genomic HyperBrowser is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    The Genomic HyperBrowser is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with The Genomic HyperBrowser.  If not, see <http://www.gnu.org/licenses/>.
 #
 # instance is dynamically imported into namespace of <modulename>.mako template (see web/controllers/hyper.py)
 
 import sys, os, json, shelve
 import cPickle as pickle
 from zlib import compress, decompress
-from base64 import urlsafe_b64decode, urlsafe_b64encode
-from collections import namedtuple, OrderedDict
+from base64 import urlsafe_b64decode, urlsafe_b64encode, b64encode, b64decode
+from collections import namedtuple, OrderedDict, defaultdict
 from urllib import quote, unquote
-#from gold.application.GalaxyInterface import GalaxyInterface
-#from quick.webtools.GeneralGuiToolsFactory import GeneralGuiToolsFactory
-#from quick.util.StaticFile import StaticImage
 from proto.tools.GeneralGuiTool import HistElement
 from proto.HtmlCore import HtmlCore
 from proto.config.Config import URL_PREFIX, GALAXY_BASE_DIR
-#from gold.application.LogSetup import usageAndErrorLogging
-#from gold.util.CommonFunctions import getClassName
+from proto.config.Security import galaxySecureEncodeId, galaxySecureDecodeId, GALAXY_SECURITY_HELPER_OBJ
 from BaseToolController import BaseToolController
+from proto.ProtoToolRegister import getToolPrototype
+from proto.StaticFile import StaticImage
+
 
 def getClassName(obj):
     return obj.__class__.__name__
 
+
 class GenericToolController(BaseToolController):
+    STATIC_IMAGE_CLS = StaticImage
     initChoicesDict = None
 
     def __init__(self, trans, job):
@@ -53,21 +39,8 @@ class GenericToolController(BaseToolController):
 
 
         self.subClassId = unquote(self.params.get('sub_class_id', ''))
-        self.prototype = None
 
-        tool_shelve = None
-        try:
-            tool_shelve = shelve.open(GALAXY_BASE_DIR + '/database/proto-tool-cache.shelve', 'r')
-            module_name, class_name = tool_shelve[str(self.toolId)]
-            module = __import__(module_name, fromlist=[class_name])
-            self.prototype = getattr(module, class_name)(self.toolId)
-            #print "Loaded proto tool:", class_name
-        except KeyError as exc:
-            #print exc, 'trying GeneralGuiToolsFactory'
-            self.prototype = GeneralGuiToolsFactory.getWebTool(self.toolId)
-        finally:
-            if tool_shelve:
-                tool_shelve.close()
+        self.prototype = getToolPrototype(self.toolId)
 
         self._monkeyPatchAttr('userName', self.params.get('userEmail'))
 
@@ -106,13 +79,16 @@ class GenericToolController(BaseToolController):
         self.inputOrder = self._getIdxList(self.prototype.getInputBoxOrder())
         self.resetBoxes = self._getIdxList(self.prototype.getResetBoxes())
 
-        self.trackElements = {}
         self.extra_output = []
 
+        self._init()
 
         self._initCache()
         if trans:
             self.action()
+
+            self.inputGroup = self._getInputGroup(self.prototype.getInputBoxGroups(self.choices))
+
             if hasattr(self.prototype, 'getExtraHistElements'):
                 extra_output = self.prototype.getExtraHistElements(self.choices)
                 if extra_output:
@@ -122,7 +98,20 @@ class GenericToolController(BaseToolController):
                         else:
                             self.extra_output.append(e)
 
+    def _init(self):
+        if hasattr(super(GenericToolController, self), '_init'):
+            super(GenericToolController, self)._init()
 
+    def _getInputGroup(self, inputBoxGroups):
+        startGroupInfo = defaultdict(list)
+        endIdxs = list()
+        if inputBoxGroups:
+            for group in inputBoxGroups:
+                idxBegin = self._getIdxForBoxId(group[1])
+                idxEnd = self._getIdxForBoxId(group[2])
+                startGroupInfo[idxBegin].append(group[0])
+                endIdxs.append(idxEnd)
+        return startGroupInfo, endIdxs
 
     def _getInputBoxNames(self):
         names = self.prototype.getInputBoxNames()
@@ -142,7 +131,7 @@ class GenericToolController(BaseToolController):
             idxList = range(len(self.inputIds))
         else:
             for i in inputList:
-                if isinstance(i, str):
+                if isinstance(i, basestring):
                     try:
                         idx = self.inputIds.index(i)
                     except ValueError:
@@ -156,24 +145,35 @@ class GenericToolController(BaseToolController):
                     raise IndexError('List index out of range: %d >= %d' % (idx, len(self.inputIds)))
         return idxList
 
+    def _getIdxForBoxId(self, i):
+        if isinstance(i, basestring):
+            try:
+                idx = self.inputIds.index(i)
+            except ValueError:
+                if i.startswith('box'):
+                    idx = int(i[3:]) - 1
+        else:
+            idx = i - 1
+        return idx
+
     def _getOptionsBox(self, i, val = None):
         id = self.inputIds[i]
         id = id[0].upper() + id[1:]
         info = None
         if i > 0:
             ChoiceTuple = namedtuple('ChoiceTuple', self.inputIds[:(i+1)])
-            prevchoices = ChoiceTuple._make(self.inputValues + [val])
-            #self.choices = prevchoices
+            prevChoices = ChoiceTuple._make(self.inputValues + [val])
+            #self.choices = prevChoices
             if id.startswith('Box'):
-                opts = getattr(self.prototype, 'getOptions' + id)(prevchoices)
+                opts = getattr(self.prototype, 'getOptions' + id)(prevChoices)
                 try:
-                    info = getattr(self.prototype, 'getInfoForOptions' + id)(prevchoices)
+                    info = getattr(self.prototype, 'getInfoForOptions' + id)(prevChoices)
                 except:
                     pass
             else:
-                opts = getattr(self.prototype, 'getOptionsBox' + id)(prevchoices)
+                opts = getattr(self.prototype, 'getOptionsBox' + id)(prevChoices)
                 try:
-                    info = getattr(self.prototype, 'getInfoForOptionsBox' + id)(prevchoices)
+                    info = getattr(self.prototype, 'getInfoForOptionsBox' + id)(prevChoices)
                 except:
                     pass
         else:
@@ -195,25 +195,46 @@ class GenericToolController(BaseToolController):
     def _initCache(self):
         self.input_changed = False
         try:
-            self.cachedParams = json.loads(decompress(urlsafe_b64decode(str(self.params.get('cached_params')))))
-        except:
+            self.cachedParams = self.decodeCache(self.params.get('cached_params'))
+        except Exception as e:
+            #print 'cached_params', e
             self.cachedParams = {}
             
         try:
-            self.cachedOptions = json.loads(decompress(urlsafe_b64decode(str(self.params.get('cached_options')))))
-        except:
+            self.cachedOptions = self.decodeCache(self.params.get('cached_options'))
+        except Exception as e:
+            #print 'cached_options', e
             self.cachedOptions = {}
 
         try:
-            self.cachedExtra = json.loads(decompress(urlsafe_b64decode(str(self.params.get('cached_extra')))))
-        except:
+            self.cachedExtra = self.decodeCache(self.params.get('cached_extra'))
+        except Exception as e:
+            #print 'cached_extra', e
             self.cachedExtra = {}
+
+    def encodeCache(self, data):
+        if not data:
+            return ''
+        return GALAXY_SECURITY_HELPER_OBJ.encode_guid(json.dumps(data))
+        #return urlsafe_b64encode(compress(json.dumps(data)))
+
+    def decodeCache(self, data):
+        if not data:
+            raise Exception('Nothing to decode')
+        return json.loads(GALAXY_SECURITY_HELPER_OBJ.decode_guid(str(data)))
+        #return json.loads(decompress(urlsafe_b64decode(str(data))))
 
     def putCacheData(self, id, data):
         self.cachedExtra[id] = pickle.dumps(data)
 
     def getCacheData(self, id):
-        return pickle.loads(str(self.cachedExtra[id]))
+        return pickle.loads(b64decode(str(self.cachedExtra[id])))
+
+    def putCachedOption(self, id, data):
+        self.cachedOptions[id] = b64encode(pickle.dumps(data))
+
+    def getCachedOption(self, id):
+        return pickle.loads(str(self.cachedOptions[id]))
 
     def getOptionsBox(self, id, i, val):
         #print id, '=', val, 'cache=', self.cachedParams[id] if id in self.cachedParams else 'NOT'
@@ -223,17 +244,17 @@ class GenericToolController(BaseToolController):
             self.input_changed = True
         else:
             try:
-                opts, info = pickle.loads(str(self.cachedOptions[id]))
+                opts, info = self.getCachedOption(id)
                 #print 'from cache:',id
                 self.input_changed = (val != self.cachedParams[id])
             except Exception as e:
-                print 'cache load fail', e
+                # print 'cache load failed for id "%s": %s' % (id, e)
                 opts, info = self._getOptionsBox(i, val)
                 self.input_changed = True
         
         #print repr(opts)
         self.cachedParams[id] = val
-        self.cachedOptions[id] = pickle.dumps((opts, info))        
+        self.putCachedOption(id, (opts, info))
         self.inputInfo.append(info)
         return opts
 
@@ -275,14 +296,16 @@ class GenericToolController(BaseToolController):
                         values[k] = bool(self.params.get(id + '|' + k , False) if val else v)
                     val = values
 
-            elif isinstance(opts, str) or isinstance(opts, unicode):
+            elif isinstance(opts, basestring):
                 if opts == '__genome__':
                     self.inputTypes += ['__genome__']
                     try:
                         genomeCache = self.getCacheData(id)
                     except Exception as e:
-                        print 'genome cache error', e
+                        #raise e
+                        print 'genome cache empty', e
                         genomeCache = self._getAllGenomes()
+                        #print genomeCache
                         self.putCacheData(id, genomeCache)
                         
                     opts = self.getGenomeElement(id, genomeCache)
@@ -290,19 +313,7 @@ class GenericToolController(BaseToolController):
 
                 elif opts == '__track__':
                     self.inputTypes += ['__track__']
-                    try:
-                        #assert False
-                        cachedTracks = self.getCacheData(id)
-                        track = self.getTrackElement(id, name, tracks=cachedTracks)
-                    except:
-                        print 'track cache fail'
-                        track = self.getTrackElement(id, name)
-                        self.putCacheData(id, track.tracks)
-                    self.trackElements[id] = track
-                    tn = track.definition(False)
-                    GalaxyInterface.cleanUpTrackName(tn)
-                    val = ':'.join(tn)
-                    #val = track.asString()
+                    val = self.getInputValueForTrack(id, name)
 
                 elif opts == '__password__':
                     self.inputTypes += ['__password__']
@@ -335,18 +346,13 @@ class GenericToolController(BaseToolController):
                         for k,v in opts.items():
                             itemval = self.params.get(id + '|' + k, None)
                             #if itemval:
-                            values[str(k)] = itemval
+                            values[unicode(k)] = itemval
 
                         val = values
 
                 elif opts[0] == '__track__':
                     self.inputTypes += ['__track__']
-                    track = self.getTrackElement(id, name, True if 'history' in opts else False, True if 'ucsc' in opts else False)
-                    self.trackElements[id] = track
-                    tn = track.definition(False)
-                    GalaxyInterface.cleanUpTrackName(tn)
-                    val = ':'.join(tn)
-                    #val = track.asString()
+                    val = self.getInputValueForTrack(id, name)
 
                 elif opts[0] == '__hidden__':
                     self.inputTypes += opts[:1]
@@ -354,7 +360,7 @@ class GenericToolController(BaseToolController):
                         val = opts[1]
                     #elif val:
                     #    val = unquote(val)
-                elif len(opts) in [2, 3] and (isinstance(opts[0], str) or isinstance(opts[0], unicode)):
+                elif len(opts) in [2, 3] and (isinstance(opts[0], basestring)):
                     if len(opts) == 2:
                         opts = opts + (False,)
                     if isinstance(opts[1], int):
@@ -384,7 +390,7 @@ class GenericToolController(BaseToolController):
                         for r in range(1, len(opts)):
                             core.tableLine(opts[r])
                     core.tableFooter()
-                    val = str(core)
+                    val = unicode(core)
                     display_only = True
 
                 else:
@@ -418,60 +424,99 @@ class GenericToolController(BaseToolController):
     def _action(self):
         pass
 
+
+    def decodeChoice(self, opts, id, choice):
+        if opts == '__genome__':
+            id = 'dbkey'
+            choice = str(self.params[id]) if self.params.has_key(id) else ''
+
+            #            if isinstance(opts, tuple):
+            #                if opts[0] == '__hidden__':
+            #                    choice = unquote(choice)
+
+        if opts == '__genomes__' or (isinstance(opts, tuple) and opts[0] == '__multihistory__'):
+            values = {}
+            for key in self.params.keys():
+                if key.startswith(id + '|'):
+                    values[key.split('|')[1]] = self.params[key]
+            choice = OrderedDict(sorted(values.items(), \
+                                        key=lambda t: int(t[0]) if opts[0] == '__multihistory__' else t[0]))
+
+        if isinstance(opts, dict):
+            values = type(opts)()
+            for k, v in opts.items():
+                if self.params.has_key(id + '|' + k):
+                    values[k] = self.params[id + '|' + k]
+                else:
+                    values[k] = False
+            choice = values
+
+        if isinstance(opts, bool):
+            choice = True if choice == "True" else False
+
+        return choice
+
+    @staticmethod
+    def _getStdOutToHistoryDatatypes():
+        return ['html', 'customhtml']
+
     def execute(self):
         outputFormat = self.params['datatype'] if self.params.has_key('datatype') else 'html'
-        if outputFormat in ['html','customhtml','hbfunction']:
+        if outputFormat in self._getStdOutToHistoryDatatypes():
             self.stdoutToHistory()
-        #print self.params
 
         for i in range(len(self.inputIds)):
             id = self.inputIds[i]
             choice = self.params[id] if self.params.has_key(id) else ''
 
             opts = self.getOptionsBox(id, i, choice)
-            if opts == '__genome__':
-                id = 'dbkey'
-                choice = self.params[id] if self.params.has_key(id) else ''
 
-#            if isinstance(opts, tuple):
-#                if opts[0] == '__hidden__':
-#                    choice = unquote(choice)
+            choice = self.decodeChoice(opts, id, choice)
 
-            if opts == '__track__' or (isinstance(opts, tuple) and opts[0] == '__track__'):
-                tn = choice.split(':')
-                GalaxyInterface.cleanUpTrackName(tn)
-                choice = ':'.join(tn)
-
-            if opts == '__genomes__' or (isinstance(opts, tuple) and opts[0] == '__multihistory__'):
-                values = {}
-                for key in self.params.keys():
-                    if key.startswith(id + '|'):
-                        values[key.split('|')[1]] = self.params[key]
-                choice = OrderedDict(sorted(values.items(), \
-                                     key=lambda t: int(t[0]) if opts[0] == '__multihistory__' else t[0]))
-
-            if isinstance(opts, dict):
-                values = type(opts)()
-                for k,v in opts.items():
-                    if self.params.has_key(id + '|' + k):
-                        values[k] = self.params[id + '|' + k]
-                    else:
-                        values[k] = False
-                choice = values
-
-            if isinstance(opts, bool):
-                choice = True if choice == "True" else False
+#             if opts == '__genome__':
+#                 id = 'dbkey'
+#                 choice = str(self.params[id]) if self.params.has_key(id) else ''
+#
+# #            if isinstance(opts, tuple):
+# #                if opts[0] == '__hidden__':
+# #                    choice = unquote(choice)
+#
+#             if opts == '__track__' or (isinstance(opts, tuple) and opts[0] == '__track__'):
+#                 #tn = choice.split(':')
+#                 #GalaxyInterface.cleanUpTrackName(tn)
+#                 #choice = ':'.join(tn)
+#                 choice = self.decodeChoiceForTrack(choice)
+#
+#             if opts == '__genomes__' or (isinstance(opts, tuple) and opts[0] == '__multihistory__'):
+#                 values = {}
+#                 for key in self.params.keys():
+#                     if key.startswith(id + '|'):
+#                         values[key.split('|')[1]] = self.params[key]
+#                 choice = OrderedDict(sorted(values.items(), \
+#                                      key=lambda t: int(t[0]) if opts[0] == '__multihistory__' else t[0]))
+#
+#             if isinstance(opts, dict):
+#                 values = type(opts)()
+#                 for k,v in opts.items():
+#                     if self.params.has_key(id + '|' + k):
+#                         values[k] = self.params[id + '|' + k]
+#                     else:
+#                         values[k] = False
+#                 choice = values
+#
+#             if isinstance(opts, bool):
+#                 choice = True if choice == "True" else False
 
             self.inputValues.append(choice)
 
-        if self.params.has_key('Track_state'):
-            self.inputValues.append(unquote(self.params['Track_state']))
+        # if self.params.has_key('Track_state'):
+        #     self.inputValues.append(unquote(self.params['Track_state']))
 
         ChoiceTuple = namedtuple('ChoiceTuple', self.inputIds)
         choices = ChoiceTuple._make(self.inputValues)
 
-        #batchargs = '|'.join([';'.join(c.itervalues()) if not isinstance(c, str) else c for c in choices])
-        #batchargs = '|'.join([repr(c.items()) if not isinstance(c, str) else c for c in choices])
+        #batchargs = '|'.join([';'.join(c.itervalues()) if not isinstance(c, basestring) else c for c in choices])
+        #batchargs = '|'.join([repr(c.items()) if not isinstance(c, basestring) else c for c in choices])
 
         #print choices
         if outputFormat == 'html':
@@ -482,7 +527,7 @@ class GenericToolController(BaseToolController):
                     <link href="%(prefix)s/static/style/base.css" rel="stylesheet" type="text/css" />
                 </head>
                 <body>
-                    <!-- <p style="text-align:right"><a href="#debug" onclick="$('.debug').toggle()">Toggle debug</a></p> -->
+                    <p style="text-align:right"><a href="#debug" onclick="$('.debug').toggle()">Toggle debug</a></p>
                     <pre>
             ''' % {'prefix': URL_PREFIX}
         #    print '<div class="debug">Corresponding batch run line:\n', '$Tool[%s](%s)</div>' % (self.toolId, batchargs)
@@ -502,9 +547,9 @@ class GenericToolController(BaseToolController):
             if isinstance(extra_output, list):
                 for output in extra_output:
                     if isinstance(output, HistElement):
-                        self.extraGalaxyFn[str(output.name)] = self.params[output.name]
+                        self.extraGalaxyFn[unicode(output.name)] = self.params[output.name]
                     else:
-                        self.extraGalaxyFn[str(output[0])] = self.params[output[0]]
+                        self.extraGalaxyFn[unicode(output[0])] = self.params[output[0]]
 
 
         username = self.params['userEmail'] if 'userEmail' in self.params else ''
@@ -514,13 +559,17 @@ class GenericToolController(BaseToolController):
             print '''
                 </pre>
                 </body>
-                <!-- <script type="text/javascript">
+                <script type="text/javascript">
                     $('.debug').hide()
-                </script> -->
+                </script>
             </html>
             '''
 
     def _executeTool(self, toolClassName, choices, galaxyFn, username):
+        if hasattr(super(GenericToolController, self), '_executeTool'):
+            super(GenericToolController, self)._executeTool(
+                toolClassName, choices, galaxyFn, username)
+
         self._monkeyPatchAttr('extraGalaxyFn', self.extraGalaxyFn)
         self._monkeyPatchAttr('runParams', self.json_params)
         self.prototype.execute(choices, galaxyFn=galaxyFn, username=username)
@@ -553,7 +602,7 @@ class GenericToolController(BaseToolController):
         image = None
         id = self.prototype.getToolIllustration()
         if id:
-            image = StaticImage(id)
+            image = self.STATIC_IMAGE_CLS(id)
         return image
 
     def getDemoURL(self):
@@ -625,18 +674,16 @@ class GenericToolController(BaseToolController):
     def isValid(self):
         return True if self.errorMessage is None else False
 
-    def getBatchLine(self):
-        if len(self.subClasses) == 0 and self.prototype.isBatchTool():
-            self.batchline = '$Tool[%s](%s)' % (self.toolId, '|'.join([repr(c) for c in self.choices]))
-            return self.batchline
-        return None
-
     def hasErrorMessage(self):
         return False if self.errorMessage in [None, ''] else True
 
     #jsonMethods = ('ajaxValidate')
     #def ajaxValidate(self):
     #    return self.prototype.validateAndReturnErrors(self.inputValues)
+
+
+    def getInputValueForTrack(self, id, name):
+        return None
 
 
 def getController(transaction = None, job = None):
@@ -646,6 +693,4 @@ def getController(transaction = None, job = None):
     control = GenericToolController(transaction, job)
     #prof.stop()
     #prof.printStats()
-    
     return control
-    #return GenericToolController(transaction, job)

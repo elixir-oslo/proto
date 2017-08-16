@@ -1,0 +1,4 @@
+<tool id="hb_install_ucsc" name="Install UCSC track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.imports.InstallUcscTool" proto_tool_class="InstallUcscTool">
+  <description></description>
+</tool>

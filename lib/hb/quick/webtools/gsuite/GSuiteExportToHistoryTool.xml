@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_export_to_history_tool" name="Export primary tracks from a GSuite to your history" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteExportToHistoryTool" proto_tool_class="GSuiteExportToHistoryTool">
+  <description></description>
+</tool>

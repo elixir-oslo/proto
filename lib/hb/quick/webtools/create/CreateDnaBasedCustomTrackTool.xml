@@ -1,0 +1,4 @@
+<tool id="hb_create_dna_based" name="Generate bp-level track from DNA sequence" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.create.CreateDnaBasedCustomTrackTool" proto_tool_class="CreateDnaBasedCustomTrackTool">
+  <description></description>
+</tool>

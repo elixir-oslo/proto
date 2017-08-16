@@ -1,0 +1,4 @@
+<tool id="mc_fdr_simulation_tool" name="Simulate p-values using the MCFDR scheme" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.McFdrSimulationTool" proto_tool_class="McFdrSimulationTool">
+  <description></description>
+</tool>

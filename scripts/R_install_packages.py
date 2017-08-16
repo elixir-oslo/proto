@@ -23,9 +23,11 @@ def _install_and_check_r_library(library):
         r("library('%s')" % library)
     except:
         install_cmds = \
-            ["install.packages('%s', repos='http://cran.r-project.org')",
-             "source('http://www.bioconductor.org/biocLite.R'); biocLite('%s', suppressUpdates=TRUE)",
-             "install.packages('%s', repos='http://hyperbrowser.uio.no/eggs_repo/R')"]
+            ["install.packages('%s', repos='http://cran.r-project.org', dependencies=TRUE)",
+             "source('http://www.bioconductor.org/biocLite.R'); "
+                "biocLite('%s', suppressUpdates=TRUE, dependencies=TRUE)",
+             "install.packages('%s', repos='http://hyperbrowser.uio.no/eggs_repo/R', "
+                "dependencies=TRUE)"]
         exceptions = []
 
         for cmd in install_cmds:

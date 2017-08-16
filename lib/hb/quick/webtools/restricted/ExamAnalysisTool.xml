@@ -1,0 +1,4 @@
+<tool id="hb_exam_analysis_tool" name="Exam analysis tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ExamAnalysisTool" proto_tool_class="ExamAnalysisTool">
+  <description></description>
+</tool>

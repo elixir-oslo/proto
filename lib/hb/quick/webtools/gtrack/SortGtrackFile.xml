@@ -1,0 +1,4 @@
+<tool id="hb_sort_gtrack_file" name="Sort GTrack file" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gtrack.SortGtrackFile" proto_tool_class="SortGtrackFile">
+  <description></description>
+</tool>

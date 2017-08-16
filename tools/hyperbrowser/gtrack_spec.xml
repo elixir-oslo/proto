@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<tool tool_type="hyperbrowser" name="Show GTrack specification" id="gtrack_spec">
+	
+	<description></description>
+	
+	<command></command>
+	
+	<display></display>
+	
+	<inputs action="/static/hyperbrowser/gtrack/GTrack_specification.html" check_values="false" method="get">
+		<param name="x" type="hidden" value="x" />
+	</inputs>
+    <uihints minwidth="800"/>  
+			
+</tool>
+

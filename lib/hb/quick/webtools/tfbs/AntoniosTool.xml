@@ -1,0 +1,4 @@
+<tool id="hb_antonios_tool" name="Antonios tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.AntoniosTool" proto_tool_class="AntoniosTool">
+  <description></description>
+</tool>

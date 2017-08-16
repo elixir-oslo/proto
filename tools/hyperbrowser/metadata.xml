@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<tool tool_type="hyperbrowser" name="Edit track info" id="hb_meta_1">
+	
+	<description></description>
+	
+	<command></command>
+	
+	<display>$GALAXY_URL $tool_id</display>
+	
+	<inputs action="/hyper" check_values="false" method="get">
+		<param name="GALAXY_URL" type="baseurl" value="/tool_runner" />
+		<param name="tool_id" type="hidden" value="hb_meta_1" />
+		<param name="mako" type="hidden" value="metadata" />
+	</inputs>
+			
+</tool>
+

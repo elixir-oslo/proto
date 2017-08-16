@@ -12,6 +12,9 @@ pycrypto==2.6.1
 # locally cached maf files via bx-python
 #python_lzo==1.8
 
+# HyperBrowser addition, to fix version-conflict
+six==1.10.0
+
 # pure Python packages
 Paste==2.0.2
 PasteDeploy==1.5.2
@@ -48,7 +51,7 @@ Tempita==0.5.3dev
 sqlparse==0.1.16
 pbr==1.8.0
 # six is also a Pulsar client dep
-six==1.9.0
+# six==1.9.0 # HyperBrowser uncomment
 Parsley==1.3
 nose==1.3.7
 SVGFig==1.1.6

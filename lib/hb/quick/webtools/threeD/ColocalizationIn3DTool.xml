@@ -1,0 +1,4 @@
+<tool id="hb_colocalization_in_3d_tool" name="Analyze spatial colocalization of track elements (in 3D)" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.threeD.ColocalizationIn3DTool" proto_tool_class="ColocalizationIn3DTool">
+  <description></description>
+</tool>

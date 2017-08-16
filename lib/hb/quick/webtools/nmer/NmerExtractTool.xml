@@ -1,0 +1,4 @@
+<tool id="hb_nmer_extract" name="Generate k-mer occurrence track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.nmer.NmerExtractTool" proto_tool_class="NmerExtractTool">
+  <description></description>
+</tool>

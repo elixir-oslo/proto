@@ -1,0 +1,12 @@
+from gold.statistic.MagicStatFactory import MagicStatFactory
+from gold.statistic.Statistic import StatisticDynamicDoubleDictSumResSplittable
+from quick.statistic.GeneralTwoCatTracksStat import GeneralTwoCatTracksStatUnsplittable
+
+class GeneralTwoCatTracksJoinWithDoubleDictSumStat(MagicStatFactory):
+    pass
+
+class GeneralTwoCatTracksJoinWithDoubleDictSumStatSplittable(StatisticDynamicDoubleDictSumResSplittable):
+    pass
+
+class GeneralTwoCatTracksJoinWithDoubleDictSumStatUnsplittable(GeneralTwoCatTracksStatUnsplittable):
+    STORE_CHILDREN = False

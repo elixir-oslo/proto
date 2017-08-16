@@ -1,0 +1,4 @@
+<tool id="hb_batch_run_tool" name="Execute batch commands" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.BatchRunTool" proto_tool_class="BatchRunTool">
+  <description></description>
+</tool>

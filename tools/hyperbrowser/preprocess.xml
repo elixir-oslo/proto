@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<tool tool_type="hyperbrowser" name="Preprocess tracks" id="hb_preprocess">
+	
+	<description></description>
+
+	<command interpreter="python">preprocessTracks.py $output</command>
+	
+	<display>$GALAXY_URL $tool_id</display>
+	
+	<inputs action="/hyper" check_values="false" method="get">
+		<param name="GALAXY_URL" type="baseurl" value="/tool_runner" />
+		<param name="tool_id" type="hidden" value="hb_preprocess" />
+		<param name="mako" type="hidden" value="preprocesstracks" />
+	</inputs>
+
+	
+        
+	<outputs>
+		<data format="html" name="output" />
+	</outputs>        
+			
+</tool>
+

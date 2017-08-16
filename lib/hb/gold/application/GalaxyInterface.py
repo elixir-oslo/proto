@@ -1,0 +1,1 @@
+from quick.application.GalaxyInterface import GalaxyInterface

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<tool tool_type="hyperbrowser" name="Generate intensity track for confounder handling" id="hb_intensity">
+	
+	<description></description>
+
+<!--	<command interpreter="python">analyze_tracks.py $output intensity</command> -->
+	<command interpreter="python">intensity.py $output</command>
+	
+	<display>$GALAXY_URL $tool_id</display>
+	
+	<inputs action="/hyper" check_values="false" method="get">
+		<param name="GALAXY_URL" type="baseurl" value="/tool_runner" />
+		<param name="tool_id" type="hidden" value="hb_intensity" />
+		<param name="mako" type="hidden" value="intensity" />
+	</inputs>
+
+	
+        
+	<outputs>
+		<data format="hbfunction" name="output" />
+	</outputs>        
+			
+</tool>
+

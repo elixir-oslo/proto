@@ -1,0 +1,4 @@
+<tool id="hb_show_tail_of_log_file" name="Show tail of log file" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.ShowTailOfLogFile" proto_tool_class="ShowTailOfLogFile">
+  <description></description>
+</tool>

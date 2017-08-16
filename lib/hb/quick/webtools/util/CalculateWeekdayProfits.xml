@@ -1,0 +1,4 @@
+<tool id="hb_calculate_weekday_profits" name="Calculate weekday profits" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.CalculateWeekdayProfits" proto_tool_class="CalculateWeekdayProfits">
+  <description></description>
+</tool>

@@ -5,7 +5,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="${h.url_for('/static/style/base.css')}" rel="stylesheet" type="text/css" />
         <script type="text/javascript">
-            setTimeout( function() { top.location.href = '${h.url_for( "/" )}'; }, 1000 );
+            setTimeout( function() { top.location.href = '${h.url_for( "/" )}'; }, 3000 );
+
+            function basicRedirect(basicQuestionId) {
+                if (basicQuestionId != 'None') {
+                    top.document.getElementById('history-refresh-button').click();
+                    window.location.href = '${h.url_for( "/static/welcome.html?basicQuestionId=")}' + basicQuestionId;
+                }
+            }
         </script>
     </head>
     <body>
@@ -25,6 +32,9 @@
             </p>
             %for _, data in out_data:
                 <div style="padding: 10px"><b> ${data.hid}: ${data.name | h}</b></div>
+               %if 'basicQuestionId' in [p.name for p in data.creating_job_associations[0].job.parameters]:
+                <script> setTimeout('basicRedirect(${ [p.value for p in data.creating_job_associations[0].job.parameters if p.name == "basicQuestionId" ][0] });', 2000); </script>
+               %endif
             %endfor
             <p> You can check the status of queued jobs and view the resulting data by refreshing the <b>History</b> pane. When the job has been run the status will change from 'running' to 'finished' if completed successfully or 'error' if problems were encountered. You are now being redirected back to <a href="${h.url_for( '/' )}">Galaxy</a>.</p>
         </div>

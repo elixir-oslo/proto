@@ -1,0 +1,4 @@
+<tool id="hb_upload_data_to_storebio" name="Create dataset at StoreBioInfo" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.UploadDataToStorebio" proto_tool_class="UploadDataToStorebio">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_list_storebio_projects" name="StoreBioInfo integration tools" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ListStorebioProjects" proto_tool_class="ListStorebioProjects">
+  <description></description>
+</tool>

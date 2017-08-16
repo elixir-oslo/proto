@@ -1,0 +1,4 @@
+<tool id="hb_test_overrepresentation_of_pwm_in_dna" name="Test overrepresentation of PWM in DNA" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.TestOverrepresentationOfPwmInDna" proto_tool_class="TestOverrepresentationOfPwmInDna">
+  <description></description>
+</tool>

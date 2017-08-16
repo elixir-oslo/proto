@@ -1,0 +1,4 @@
+<tool id="hb_sigves_tool" name="Sigves tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.SigvesTool" proto_tool_class="SigvesTool">
+  <description></description>
+</tool>

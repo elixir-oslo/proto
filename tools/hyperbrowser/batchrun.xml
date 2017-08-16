@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<tool tool_type="hyperbrowser" id="hb_batchrun" name="Batch run">
+	<description></description>
+	<command interpreter="python">
+        batchrun.py $output
+	</command>
+	
+	<display>$GALAXY_URL $tool_id</display>
+	
+	<inputs action="/hyper" check_values="false" method="get">
+		<param name="GALAXY_URL" type="baseurl" value="/tool_runner" />
+		<param name="tool_id" type="hidden" value="hb_batchrun" />
+		<param name="mako" type="hidden" value="batchrun" />
+	</inputs>
+	<options sanitize="False"/>
+	
+
+	<outputs>
+		<data format="html" name="output" />
+	</outputs>
+
+</tool>

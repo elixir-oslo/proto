@@ -1,0 +1,4 @@
+<tool id="hb_generate_random_fasta_file" name="Generate Markov background sequence" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.GenerateRandomFastaFile" proto_tool_class="GenerateRandomFastaFile">
+  <description></description>
+</tool>

@@ -1,0 +1,9 @@
+##location: local
+##file format: preprocessed
+##track type: unknown
+###uri	title
+####genome=hg18
+hb:/Sample data/Track types/Valued segments (case-control)	Valued segments (case-control)
+hb:/Sample data/Track types/Valued segments (number)	Valued segments (number)
+hb:/Sample data/Track types/Valued segments (case-control) copy	Valued segments (case-control) copy
+hb:/Sample data/Track types/Valued segments (number) copy	Valued segments (number) copy

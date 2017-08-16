@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<tool id="hb_regulome_map" name="Create regulome map">
+	<description></description>
+	<command interpreter="python">
+        createRegulomeMap.py $result $output
+	</command>	
+	<inputs>
+        <param format="html" name="result" type="data" label="Regulome" help="Choose regulome analysis from history" />
+
+        <param name="dbkey" type="select" help="Choose genome build" label="Genome">
+          <option value="hg18">Human Mar. 2006 (hg18/NCBI36)</option>
+          <!-- <option value="hg17">Human May 2004 (hg17/NCBI35)</option> -->
+        </param>
+		
+
+      </inputs>
+
+	<outputs>
+		<data format="html" name="output" />
+	</outputs>
+
+
+</tool>

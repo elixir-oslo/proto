@@ -1,0 +1,4 @@
+<tool id="hb_plot_progpattern" name="Aggregation plot of track elements relative to anchor regions" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.plot.BinScaledPlotTool" proto_tool_class="BinScaledPlotTool">
+  <description></description>
+</tool>

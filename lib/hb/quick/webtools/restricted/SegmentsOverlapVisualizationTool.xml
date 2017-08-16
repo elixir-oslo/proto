@@ -1,0 +1,4 @@
+<tool id="hb_segments_overlap_visualization_tool" name="Color-code segments from a query track based on overlap with reference tracks in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.SegmentsOverlapVisualizationTool" proto_tool_class="SegmentsOverlapVisualizationTool">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_create_regulome" name="Create regulome from history" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.regulome.CreateRegulomeTool" proto_tool_class="CreateRegulomeTool">
+  <description></description>
+</tool>

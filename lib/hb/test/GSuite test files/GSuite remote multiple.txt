@@ -1,0 +1,15 @@
+##location: local
+##file format: unknown
+##track type: unknown
+###uri	title	file_format	track_type
+####genome=hg19
+hb:/external/dev2/039/39099/3 - GSuite download files (wgEncodeOpenChromSynthGlioblaPk)	3 - GSuite download files (wgEncodeOpenChromSynthGlioblaPk)	preprocessed	valued segments
+hb:/external/dev2/039/39100/4 - GSuite download files (wgEncodeOpenChromSynthGm12878Pk)	4 - GSuite download files (wgEncodeOpenChromSynthGm12878Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39101/5 - GSuite download files (wgEncodeOpenChromSynthGm12891Pk)	5 - GSuite download files (wgEncodeOpenChromSynthGm12891Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39102/6 - GSuite download files (wgEncodeOpenChromSynthGm12892Pk)	6 - GSuite download files (wgEncodeOpenChromSynthGm12892Pk)	preprocessed	valued segments
+rsync://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeOpenChromSynth/wgEncodeOpenChromSynthGm12892Pk.bed.gz	3_wgEncodeOpenChromSynthGm12892Pk.bed.gz	primary	unknown
+rsync://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeOpenChromSynth/wgEncodeOpenChromSynthGm18507Pk.bed.gz	4_wgEncodeOpenChromSynthGm18507Pk.bed.gz	primary	unknown
+rsync://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeOpenChromSynth/wgEncodeOpenChromSynthGm19239Pk.bed.gz	5_wgEncodeOpenChromSynthGm19239Pk.bed.gz	primary	unknown
+galaxy:/73feaca2752cb360;bed	16 - GSuite download files (wgEncodeOpenChromSynthMedulloPk)	primary	unknown
+galaxy:/f19e0d38be4d6ff0;bed	17 - GSuite download files (wgEncodeOpenChromSynthNhekPk)	primary	unknown
+galaxy:/d4d3417fba328e19;bed	18 - GSuite download files (wgEncodeOpenChromSynthPanisletsPk)	primary	unknown

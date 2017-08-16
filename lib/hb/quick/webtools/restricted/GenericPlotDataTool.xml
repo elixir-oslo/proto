@@ -1,0 +1,4 @@
+<tool id="hb_generic_plot_data_tool" name="Plot metadata values of a GSuite file" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.GenericPlotDataTool" proto_tool_class="GenericPlotDataTool">
+  <description></description>
+</tool>

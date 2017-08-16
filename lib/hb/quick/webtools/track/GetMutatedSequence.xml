@@ -1,0 +1,4 @@
+<tool id="hb_get_mutated_sequence" name="Get mutated sequence" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.GetMutatedSequence" proto_tool_class="GetMutatedSequence">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_assorted_small_tools" name="Assorted small tools" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.AssortedSmallTools" proto_tool_class="AssortedSmallTools">
+  <description></description>
+</tool>

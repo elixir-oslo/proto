@@ -1,0 +1,4 @@
+<tool id="hb_extract_history_track_names" name="Retrieve batch command IDs of history tracks" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.ExtractHistoryTrackNames" proto_tool_class="ExtractHistoryTrackNames">
+  <description></description>
+</tool>

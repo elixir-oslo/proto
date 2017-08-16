@@ -1,0 +1,4 @@
+<tool id="hb_extract_genomic_elements_of_selected_categories" name="Extract genomic elements of selected categories" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.ExtractGenomicElementsOfSelectedCategories" proto_tool_class="ExtractGenomicElementsOfSelectedCategories">
+  <description></description>
+</tool>

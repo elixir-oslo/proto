@@ -1,0 +1,4 @@
+<tool id="hb_add_metadata_to_dataset" name="Add metadata to StoreBioInfo dataset" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.export.AddMetadataToDataset" proto_tool_class="AddMetadataToDataset">
+  <description></description>
+</tool>

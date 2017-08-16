@@ -1,0 +1,21 @@
+
+/*
+#masthead tbody tr td:hover > .submenu{
+	display: block;
+}
+*/
+
+#masthead .navbar-nav .dropdown .disabledMode a {
+	color: #999;
+	text-decoration: none;
+    cursor: default;
+	background-image: url(../images/div/checkmark.png);
+	background-repeat: no-repeat;
+	background-position: 2%;
+	background-size: 10%;
+}
+
+#masthead .navbar-nav .dropdown .noLink {
+	text-decoration: none;
+    cursor: default;
+}

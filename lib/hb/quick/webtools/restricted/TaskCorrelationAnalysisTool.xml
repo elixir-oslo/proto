@@ -1,0 +1,4 @@
+<tool id="hb_task_correlation_analysis_tool" name="Task correlation analysis tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.TaskCorrelationAnalysisTool" proto_tool_class="TaskCorrelationAnalysisTool">
+  <description></description>
+</tool>

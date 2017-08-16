@@ -1,0 +1,4 @@
+<tool id="hb_track_source_test_tool" name="Create a remote GSuite from a public repository" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.imports.TrackSourceTestTool" proto_tool_class="TrackSourceTestTool">
+  <description></description>
+</tool>

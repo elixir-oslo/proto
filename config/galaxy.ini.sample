@@ -370,6 +370,14 @@ paste.app_factory = galaxy.web.buildapp:app_factory
 # want to remove this option from the user registration form.
 #mailing_join_addr = galaxy-announce-join@bx.psu.edu
 
+# Subject line for the mail that is sent to the mailing list subscription
+# email address.
+#mailing_join_subject = Join Mailing List
+
+# Name of the mailing list, used to present the mailing list in the user
+# registration form.
+#mailing_list_name = galaxy-announce@bx.psu.edu
+
 # Datasets in an error state include a link to report the error.  Those reports
 # will be sent to this address.  Error reports are disabled if no address is
 # set.  Also this email is shown as a contact to user in case of Galaxy
@@ -478,6 +486,10 @@ nglims_config_file = tool-data/nglims.yaml
 # Append "/{brand}" to the "Galaxy" text in the masthead.
 #brand = None
 
+# Title of the site HTML page, displayed in the browser as title of the window
+# or tab.
+#html_title = Galaxy
+
 # Format string used when showing date and time information.
 # The string may contain:
 # - the directives used by Python time.strftime() function (see
@@ -546,6 +558,7 @@ nglims_config_file = tool-data/nglims.yaml
 #static_favicon_dir = static/favicon.ico
 #static_scripts_dir = static/scripts/
 #static_style_dir = static/june_2007_style/blue
+static_style_dir = static/style/HB
 #static_robots_txt = static/robots.txt
 
 # Incremental Display Options
@@ -1176,3 +1189,119 @@ use_interactive = True
 # privileges. All Galaxy Admins will have full ProTo privileges without having to
 # be in the restricted users list.
 #restricted_users =
+
+# The number of significant digits in printed numbers for tools that make use
+# of the standard number formatting functionality of Galaxy ProTo
+# (strWithStdFormatting).
+#output_precision = 4
+
+
+
+# ---- The Genomic HyperBrowser ------------------------------------------------
+
+# Settings for use in the Genomics HyperBrowser functionality
+
+[hyperbrowser]
+
+#
+# Setup
+#
+
+#is_experimental_installation = False
+#use_memory_memoization = True
+#load_disk_memoization = False
+#store_disk_memoization = False
+#print_progress = True
+#allow_comp_bin_splitting = False
+#allow_gsuite_file_protocol = False
+#use_parallel = False
+
+#
+# Debugging
+#
+
+# Debug mode. Must be one of (case insensitive):
+#    NO_DEBUG
+#    # No debugging
+#
+#    PROFILING
+#    # Profiling with call graphs
+#
+#    UNCHANGED_LOGIC_VERBOSE
+#    # Debug without changing logic (verbose)
+#
+#    UNCHANGED_LOGIC_TRACE_CREATE_VERBOSE
+#    # Debug without changing logic (tracing statistic creation, verbose)
+#
+#    UNCHANGED_LOGIC_TRACE_COMPUTE_VERBOSE
+#    # Debug without changing logic (tracing statistic compute, verbose)
+#
+#    UNCHANGED_LOGIC_FULL_TRACE_VERBOSE
+#    # Debug without changing logic (tracing statistic creation and compute,
+#    #                               verbose)
+#
+#    RAISE_HIDDEN_EXCEPTIONS_NO_VERBOSE
+#    # Debug by raising hidden exceptions
+#
+#    RAISE_HIDDEN_EXCEPTIONS_WITH_VERBOSE
+#    # Debug by raising hidden exceptions (verbose)
+#
+#    RAISE_HIDDEN_EXCEPTIONS_FULL_TRACE_VERBOSE
+#    # Debug by raising hidden exceptions (tracing statistic creation and
+#    #                                     compute, verbose)
+#
+#    RAISE_HIDDEN_EXCEPTIONS_INCLUDING_NONE_WITH_VERBOSE
+#    # Debug by raising hidden exceptions incl. stats returning None
+#    #   (only in special cases, verbose)
+#
+#    RAISE_HIDDEN_EXCEPTIONS_INCLUDING_NONE_FULL_TRACE_WITH_VERBOSE
+#    # Debug by raising hidden exceptions incl. stats returning None
+#    #   (special cases, full trace, verbose)
+#debug_mode = NO_DEBUG
+
+#
+# Optimization and limits
+#
+
+#comp_bin_size = 100000
+#memmap_bin_size = 1048576
+#max_num_user_bins = 330000
+#max_local_results_in_table = 100000
+#max_concat_len_for_overlapping_els = 20
+
+#
+# External absolute paths (not used in the default setup)
+#
+
+#ext_nonstandard_data_path =
+#ext_orig_data_path =
+#ext_parsing_error_data_path =
+#ext_processed_data_path =
+#ext_memoized_data_path =
+#ext_data_files_path =
+#ext_upload_files_path =
+#ext_static_files_path =
+#ext_tool_data_path =
+#ext_nmer_chain_data_path =
+#ext_maps_path =
+#ext_log_path =
+#ext_results_path =
+#ext_tmp_path =
+
+#
+# Parallelization and cluster offload setup
+#
+
+#cluster_accountname = user
+#cluster_temp_path = /tmp
+#cluster_source_code_directory = /src
+#only_use_entire_cluster_nodes = False
+#cluster_cores_per_node = 1
+#sbatch_path = /bin/sbatch
+#cluster_memory_per_core_in_mb = 2048
+#default_wallclock_limit_in_seconds = 3600
+#default_number_of_remote_workers = 8
+#pp_number_of_local_workers = 2
+#pp_passphrase = USING THE DEFAULT IS NOT SECURE!
+#pp_port = 8180
+#pp_manager_port = 8190

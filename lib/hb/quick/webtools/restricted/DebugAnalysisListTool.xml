@@ -1,0 +1,4 @@
+<tool id="hb_debug_analysis_list_tool" name="Debug analysis list" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.DebugAnalysisListTool" proto_tool_class="DebugAnalysisListTool">
+  <description></description>
+</tool>

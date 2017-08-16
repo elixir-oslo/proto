@@ -1,0 +1,4 @@
+<tool id="hb_tf_gene_targets" name="Find TF gene targets" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.TfTargetsTool" proto_tool_class="TfTargetsTool">
+  <description></description>
+</tool>

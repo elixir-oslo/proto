@@ -1,0 +1,4 @@
+<tool id="hb_debug_batch_line" name="Debug batch line" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.DebugBatchLine" proto_tool_class="DebugBatchLine">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_select_disease" name="Select diseases for regulome" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.regulome.SelectDiseaseTool" proto_tool_class="SelectDiseaseTool">
+  <description></description>
+</tool>

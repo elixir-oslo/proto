@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<meta http-equiv="expires" content="Wed, 19 Feb 2003 08:00:00 GMT">
+<title></title>
+<link rel="stylesheet" href="style/welcome.css" type="text/css" />
+
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+
+		<script type="text/javascript">
+		function getUrlParameter(sParam)
+		{
+		    var sPageURL = window.location.search.substring(1);
+		    var sURLVariables = sPageURL.split('&');
+		    for (var i = 0; i < sURLVariables.length; i++)
+		    {
+		        var sParameterName = sURLVariables[i].split('=');
+		        if (sParameterName[0] == sParam)
+		        {
+		            return sParameterName[1];
+		        }
+		    }
+		}
+		</script>
+		
+		<script>
+		function addLinkToElement(elId, href, title, hover, addBasicQId) {
+			var a = document.createElement('a');
+			var linkText = document.createTextNode(title);
+			a.appendChild(linkText);
+			a.title = hover;
+			a.href = href;
+			
+			if (addBasicQId) {
+				var basicQuestionId = getUrlParameter('basicQuestionId');
+				if (basicQuestionId) {
+					sprtr = "&"
+				 	a.href += sprtr + "basicQuestionId=" + basicQuestionId
+				}
+			}
+			
+			document.getElementById(elId).appendChild(a);
+		}
+		
+		</script>
+
+        <script type="text/javascript">
+            var q = jQuery.noConflict();
+            q(document).ready(function() { 
+                q( "a[minsizehint]" ).click( function() {
+                    if ( parent.handle_minwidth_hint ) {
+                        parent.handle_minwidth_hint( q(this).attr( "minsizehint" ) );
+                    }
+                });
+            });
+        </script>
+		<script src="scripts/jquery_wz_jsgraphics.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div class="document">
+    <div class="main">
+	<div class="gsuiteinfobox">
+	<p id='backToMainPar' style="font-size: 11px; align:left; margin:1px; padding-bottom: 5px;">
+	<script type="text/javascript">
+	addLinkToElement("backToMainPar", "welcome.html?tabOn=tab2", "<<Back to main", "", true)
+	</script>
+	</p>
+	<h3> Tools for GSuite construction</h3>
+	
+	<p>Use one of these tools to construct your GSuite</p>
+	
+	<ul>
+	<li id='t1'>
+	<script type="text/javascript">
+	addLinkToElement("t1",
+		"../hyper?mako=generictool&tool_id=hb_track_global_search_tool", 
+		"Import collection of tracks from public repositories",
+		"Simple search tool", true)
+		
+	</script>
+	
+	 - This tool provides a categorized search functionality for histone modifications, transcriptional factors and methods to identify open chromatin in different external repositories using the "Compile GSuite from external database" tool.
+	
+	</li>	
+	<li id='t2'>
+	<script type="text/javascript">
+	addLinkToElement("t2",
+		"../tool_runner?tool_id=upload1", 
+		"Upload a manually constructed GSuite",
+		"Manual upload", false)
+	</script>
+	 - Upload manually created GSuite from your local disk
+	</li>	
+	<li id='t3'>
+	<script type="text/javascript">
+	addLinkToElement("t3",
+		"../hyper?mako=generictool&tool_id=hb_create_g_suite_file_from_history_elements_tool", 
+		"Construct a GSuite from datasets in history",
+		"Select datasets from history", true)
+	</script>
+	 - This tool can be used to compile a GSuite file referring to a selection of files from the current Galaxy history.
+	</li>	
+	<li id='t4'>
+	<script type="text/javascript">
+	addLinkToElement("t4",
+		"../hyper?mako=generictool&tool_id=hb_compile_g_suite_from_archive_tool", 
+		"Construct a GSuite from datasets in an archive (zip/tar)",
+		"Extract from archive", true)
+	</script>
+	 - This tool compiles a GSuite from an archive (zip/tar) of datasets which has been previously uploaded into history 
+	 (Tip: You can use the previously listed Upload file tool).
+	</li>	
+	<li id='t5'>
+	<script type="text/javascript">
+	addLinkToElement("t5",
+		"../hyper?mako=generictool&tool_id=hb_extract_subtracks_tool", 
+		"Compile GSuite from HyperBrowser repository",
+		"Extract from repository", true)
+	</script>
+	 - This tool can be used to compile a GSuite file referring to a subset of the tracks in the HyperBrowser repository.
+	</li>	
+	</ul>
+	
+	</div>
+    </div>
+</div>
+
+
+<div class="contact">
+
+    <b>Note:</b>
+    <p>
+    This is a specialized version of The Genomic Hyperbrowser,
+    focusing on new functionality for analyzing collections of genomic track.
+    More information on the general HyperBrowser functionality and project can be
+    found on the <a href="https://hyperbrowser.uio.no/hb/" target="_blank">main version</a> of the HyperBrowser.
+    </p>
+    <b>Contact information</b>
+    <p>
+    If you have any questions, requests or comments of any kind, please use our discussion forum, available from the <a minsizehint="-1" href="https://sites.google.com/site/hyperbrowserhelp/?tool_id=hb_help">Help</a> menu, or send an email to <a href="#" onclick="this.href='mailto:'+ this.innerHTML.split('').reverse().join('')" class="codedirection">on.oiu.tisu@stseuqer-resworbrepyh</a>&#x200E;. We are happy to respond. We especially encourage collaborative projects for further development. If you find any bugs, please send an email to
+  <a href="#" onclick="this.href='mailto:'+ this.innerHTML.split('').reverse().join('')" class="codedirection">on.oiu.tisu@sgub-resworbrepyh</a>.</p>
+    <p>If you register as a user, you will get the option to subscribe to the <a href="#" onclick="this.href='mailto:'+ this.innerHTML.split('').reverse().join('')" class="codedirection">on.oiu.tisu@ofni-resworbrepyh</a> mailing list. Here, we will send announcements and administrative messages for users of the system. A backlog of announcements is available from the Help menu. Citation info is also available from the Help menu.</p>
+
+</div>
+
+
+<p class="blocktext">
+This project is being developed by the Norwegian bioinformatics community as an open-source project under the GPL  license v3,
+supported by various national and local bodies.
+</p>
+<p class="blocktext">
+  For further info on Norwegian bioinformatics, see <a href="http://www.bioinfo.no">www.bioinfo.no</a>.
+</p>
+
+<div class="section">
+  <img src="hyperbrowser/images/logo/HB_support.png" class="center">
+</div>
+
+</body>

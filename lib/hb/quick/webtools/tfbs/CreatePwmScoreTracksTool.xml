@@ -1,0 +1,4 @@
+<tool id="hb_create_pwm_score_tracks_tool" name="Create PWM score function tracks" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.CreatePwmScoreTracksTool" proto_tool_class="CreatePwmScoreTracksTool">
+  <description></description>
+</tool>

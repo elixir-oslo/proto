@@ -1,0 +1,4 @@
+<tool id="hb_add_files_to_storebioinfo_dataset" name="Add files to StoreBioInfo dataset" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.AddFilesToStorebioinfoDataset" proto_tool_class="AddFilesToStorebioinfoDataset">
+  <description></description>
+</tool>

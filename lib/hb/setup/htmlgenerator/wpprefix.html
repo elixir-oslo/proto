@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<meta http-equiv="expires" content="Wed, 19 Feb 2003 08:00:00 GMT"/>
+<title></title>
+<link rel="stylesheet" href="style/welcome.css" type="text/css" />
+        <script type="text/javascript" src="scripts/libs/jquery/jquery.js"></script>
+        <script src="scripts/jquery_wz_jsgraphics.js" type="text/javascript"></script>
+        <script type="text/javascript" src="scripts/hyperbrowser/flowchart.js"></script>
+        <script>
+        function getUrlParameter(sParam)
+        {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++)
+            {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam)
+                {
+                    return sParameterName[1];
+                }
+            }
+        }
+        </script>
+
+        <script type="text/javascript">
+        var jqnc = jQuery.noConflict();
+        jqnc(document).ready(function() {
+
+        jqnc(".tab4collectionDesc").hide();
+        jqnc('.tab4collectionTitle').on('click',function(e) {
+
+        var divid = this.id;
+        divid = divid.replace('T','D');
+        jqnc('#'+divid).slideToggle("fast");
+
+        var divid = this.id;
+        divid = divid.replace('T','B');
+
+        //console.log(divid, ' ==== ', jqnc('#'+divid).attr("class"));
+
+        if(jqnc('#'+divid).attr("class") == '-on')
+        {
+            jqnc('#'+divid).attr('src',"hyperbrowser/images/div/DNAlying.png");
+            jqnc('#'+divid).attr('class', '-off');
+
+            //console.log(divid, ' 111 ', jqnc('#'+divid).attr("class"));
+        }
+        else
+        {
+            jqnc('#'+divid).attr('src',"hyperbrowser/images/div/DNAstanding.png");
+            jqnc('#'+divid).attr('class', '-on');
+
+            //console.log(divid, ' 222 ', jqnc('#'+divid).attr("class"));
+        }
+
+
+
+        });
+        });
+
+        jqnc(document).ready(function() {
+
+        jqnc(".sliding").hide();
+        jqnc('.show_hide').on('click',function(e) {
+
+        var divid = this.id;
+        divid = divid.replace('T','D');
+
+          jqnc('#'+divid).slideToggle();
+
+            var divid = this.id;
+        divid = divid.replace('T','B');
+
+        //console.log(divid, ' ==== ', jqnc('#'+divid).attr("class"));
+
+        if(jqnc('#'+divid).attr("class") == '-on')
+        {
+            jqnc('#'+divid).attr('src',"hyperbrowser/images/div/DNAlying.png");
+            jqnc('#'+divid).attr('class', '-off');
+
+            //console.log(divid, ' 111 ', jqnc('#'+divid).attr("class"));
+        }
+        else
+        {
+            jqnc('#'+divid).attr('src',"hyperbrowser/images/div/DNAstanding.png");
+            jqnc('#'+divid).attr('class', '-on');
+
+            //console.log(divid, ' 222 ', jqnc('#'+divid).attr("class"));
+        }
+
+
+        });
+        });
+
+
+
+        </script>
+
+        <script type="text/javascript">
+            var q = jQuery.noConflict();
+            q(document).ready(function() {
+              q( "a[minsizehint]" ).click( function() {
+                  if ( parent.handle_minwidth_hint ) {
+                      parent.handle_minwidth_hint( q(this).attr( "minsizehint" ) );
+                  }
+              });
+                q('.tabs .tab-links a').on('click', function(e)  {
+                    var currentAttrValue = q(this).attr('href');
+
+                    // Show/Hide Tabs
+                    q('.tabs ' + currentAttrValue).show().siblings().hide();
+
+                    // Change/remove current tab to active
+                    q(this).parent('li').addClass('active').siblings().removeClass('active');
+
+                    e.preventDefault();
+                });
+
+                /*
+                Open the tab defined by name in the url with parameter tabOn.
+                */
+                var tabOn = getUrlParameter('tabOn');
+                if (tabOn) {
+                    if (tabOn !== 'tab1') {
+                        showDiv('tab1', tabOn)
+                    }
+                }
+
+                /*
+                Open the basic mode tab (tab2) and the question div defined in the basicQuestionId parameter
+                */
+                var basicQuestionId = getUrlParameter('basicQuestionId');
+                if (basicQuestionId) {
+                    showDiv('tab1', 'tab2')
+                    var qDivId = basicQuestionId.split('_')[0]
+                    toggleDiv('#q' + qDivId, '#i' + qDivId)
+                    var aDivId = basicQuestionId.split('_')[1]
+                    toggleDiv('#a' + qDivId + aDivId, '#i' + qDivId + aDivId)
+
+                }
+            });
+        </script>
+        <script>
+        function showDiv(tabNoVisible, tabVisible) {
+            div1 = document.getElementById(tabVisible);
+            div1.style.display = "block";
+            div2 = document.getElementById(tabNoVisible);
+            div2.style.display = "none";
+
+            jQuery('#tab-links li[value='+ tabVisible + ']').addClass('active');
+            jQuery('#tab-links li[value='+tabNoVisible+']').removeClass('active');
+        }
+        </script>
+        <script type="text/javascript">
+           if (typeof String.prototype.endsWith !== 'function') {
+                String.prototype.endsWith = function(suffix) {
+                    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+                };
+            }
+        </script>
+
+           <script type="text/javascript">
+           var q = jQuery.noConflict();
+           function toggleDiv(divId, imgId) {
+         var imgIdFirst = imgId.substr(2,1);
+         var imgIdSecond = imgId.substr(3,imgId.length);
+
+               q(divId).toggle();
+               if (q(imgId).attr("data-open") == 'false') {
+                   q(imgId).attr("src", "hyperbrowser/images/div/DNAstanding.png")
+                   q(imgId).attr("data-open", "true")
+
+           if(imgId.length === 3)
+           {
+             window.history.pushState('GSuite', '', 'welcome.html?basicQuestionId=' + imgIdFirst);
+           }
+           else
+           {
+             window.history.pushState('GSuite', '', 'welcome.html?basicQuestionId=' + imgIdFirst + '_' + imgIdSecond);
+           }
+               }
+               else {
+                   q(imgId).attr("src", "hyperbrowser/images/div/DNAlying.png")
+                   q(imgId).attr("data-open", "false")
+
+           if(imgId.length === 3)
+           {
+             window.history.pushState('GSuite', '', 'welcome.html?basicQuestionId=0');
+           }
+           else
+           {
+             window.history.pushState('GSuite', '', 'welcome.html?basicQuestionId=' + imgIdFirst);
+           }
+               }
+           }
+
+       </script>
+
+     <script>
+      function toggleInfoBox(divId)
+      {
+        q(divId).toggle();
+      }
+     </script>
+
+       <script>
+       function generateAnswerADivContent(divId, toolUrl, toolTitle, trackCollectionExampleText, trackCollectionDataTitle, basicQuestionId ) {
+           var q = jQuery.noConflict();
+           var content = '            <p>\n' +
+               '                This particular question can be seen as a concrete instance of the more general question \n' +
+               '                "How does a single genomic track overlap with various other tracks from a collection", where:    \n' +
+               '            </p>\n' +
+               '                        <ul>\n' +
+               '                <li>\n' +
+               '                    the <span title="a set of genomic regions, e.g. a single bed file"><b>single genomic track</b></span> is the dataset you want to study, which should be uploaded to Galaxy history using e.g. the tool <a href="../tool_runner?tool_id=upload1">Upload File</a> <br><i>(If you want to test with a sample track file, <a href=$LOAD_GSUITE_SINGLE_TRACK_SAMPLE_FILE_URL&basicQuestionId=' + basicQuestionId + '>click here</a> to load a sample track with Multiple Sclerosis-associated regions, expanded 10kb in both directions)</i>\n' +
+               '                </li><br>\n' +
+               '                <li>\n' +
+               '                    a <span title="each track is a set of genomic regions, so that a collection of genomic tracks means multiple datasets, e.g. multiple bed files"><b>track collection</b></span> to be compared against, ' + trackCollectionExampleText + ', which should be constructed using \n' +
+               '                    the tool <a href="../hyper?mako=generictool&tool_id=hb_track_global_search_tool&basicQuestionId=' + basicQuestionId + '">Construct track collection (GSuite)</a>\n' +
+               '                </li>\n' +
+               '            </ul>\n' +
+               '            <p>\n' +
+               '                After the necessary data has been collected to Galaxy history, the genomic track of interest can be analyzed against ' + trackCollectionDataTitle + '\n' +
+               '                using the tool <a href="' + toolUrl + '&isBasic=1&isBasic=True"\n' +
+               '                >' + toolTitle +'</a>\n' +
+               '            </p>'
+
+           q(divId).html(content)
+
+       }
+       function generateToolHyperlink(anchorId, toolId, title, params, isBasic) {
+            var q = jQuery.noConflict();
+            hrefVal = '../hyper?mako=generictool&tool_id=' + toolId
+            if (isBasic) {
+                hrefVal += '&isBasic=1&isBasic=True'
+            }
+            for (var paramName in params) {
+                hrefVal += '&' + paramName + '=' + params[paramName]
+            }
+//               q(anchorId).attr('href', '../hyper?mako=generictool&tool_id=' + toolId + '&basicQuestionId=' + basicQuestionId)
+               q(anchorId).attr('href', hrefVal)
+               q(anchorId).html(title)
+       }
+       </script>
+       <script>
+
+        function draw()
+        {
+            var canvas = document.getElementById('myCanvas');
+            if (canvas.getContext)
+            {
+                ctx = canvas.getContext('2d');
+        
+                ctx.strokeStyle = "#696969";
+                ctx.strokeRect(480,10,280,730);
+        
+                ctx.font="italic 10pt Arial";
+                ctx.strokeRect(160,50,140,290);
+                ctx.fillText("Operates on all", 183, 300);
+                ctx.fillText("types of GSuites", 180, 322);
+        
+                text1 = ["Create a GSuite of genomic tracks", "From an External Source",
+                         "Create a remote GSuite from a public repository"];
+                links1 = ["","","../tool_runner?tool_id=generictool&tool_id=hb_track_source_test_tool"];
+                subs1 = [1];
+                llength1 = [15,19,21];
+        
+                createBox(ctx,10,20,60,text1,links1,subs1,llength1,"#EAECEE");
+        
+                text2 = ["Create a GSuite of genomic tracks", "From History",
+                         "Create a GSuite from datasets in your history",
+                         "Create a GSuite from a single track based on a single column/attribute",
+                         "Create a GSuite from an archive in history"];
+                links2 = ["","",
+                          "../tool_runner?tool_id=hb_create_g_suite_file_from_history_elements_tool",
+                          "../tool_runner?tool_id=hb_compile_gsuite_from_single_track_attribute_tool",
+                          "../tool_runner?tool_id=hb_compile_g_suite_from_archive_tool"];
+                subs2 = [1];
+                llength2 = [15,19,21];
+        
+                createBox(ctx,10,225,130,text2,links2,subs2,llength2,"#EAECEE");
+        
+                text3 = ["Create a GSuite of genomic tracks", "From an External Source",
+                         "Create a GSuite from an integrated catalog of genomic datasets", "From Hyperbrowser Repository",
+                         "Create a GSuite from the HyperBrowser repository"];
+                links3 = ["","","../tool_runner?tool_id=hb_track_global_search_tool","",
+                          "../tool_runner?tool_id=hb_extract_subtracks_tool"];
+                subs3 = [1,3];
+                llength3 = [15,19,22];
+        
+                createBox(ctx,10,525,95,text3,links3,subs3,llength3,"#EAECEE");
+        
+                text4 = ["Customize a GSuite",
+                         "Modify GSuites", "Select a subset of tracks from a GSuite",
+                         "Select a subset of meta- data columns in a GSuite",
+                         "Concatenate two GSuites", "Edit a metadata column in a GSuite"];
+                links4 = ["","","../tool_runner?tool_id=generictool&tool_id=hb_g_suite_select_rows",
+                          "../tool_runner?tool_id=hb_g_suite_select_columns",
+                          "../tool_runner?tool_id=hb_concatenate_gsuites_tool",
+                          "../tool_runner?tool_id=hb_edit_gsuite_metadata_tool"];
+                subs4 = [1,6,8];
+                llength4 = [15,19,21];
+        
+                createBox(ctx,170,60,105,text4,links4,subs4,llength4,"#FDF2E9");
+        
+                text5 = ["Customize a GSuite",
+                         "Modify Datasets Referred to in a GSuite",
+                         "Modify primary tracks referred to in a GSuite",
+                         "Export GSuite Datasets",
+                         "Export primary tracks from a GSuite to your history"];
+                links5 = ["","","../tool_runner?tool_id=hb_g_suite_manipulate_text_files",
+                          "","../tool_runner?tool_id=hb_g_suite_export_to_history_tool"];
+                subs5 = [1,3];
+                llength5 = [15,19,21];
+        
+                createBox(ctx,170,470,95,text5,links5,subs5,llength5,"#FDF2E9");
+        
+                text6 = ["Customize a GSuite",
+                         "Convert GSuite Tracks", "Convert GSuite tracks from remote to primary"];
+                links6 = ["","","../tool_runner?tool_id=hb_g_suite_download_files"];
+                subs6 = [1];
+                llength6 = [15,19,21];
+        
+                createBox(ctx,330,20,45,text6,links6,subs6,llength6,"#FDF2E9");
+        
+                text7 = ["Customize a GSuite",
+                         "Convert GSuite Tracks", "Preprocess a GSuite for analysis"];
+                links7 = ["","","../tool_runner?tool_id=hb_preprocess_g_suite_tracks_tool"];
+                subs7 = [1];
+                llength7 = [15,19,21];
+        
+                createBox(ctx,330,310,45,text7,links7,subs7,llength7,"#FDF2E9");
+        
+        
+        
+                text8 = ["Customize a GSuite",
+                         "Convert GSuite Tracks",
+                         "Convert GSuite a tracks from preprocessed to primary"];
+                links8 = ["","",
+                          "../tool_runner?tool_id=hb_g_suite_convert_from_preprocessed_to_primary_tool"];
+                subs8 = [1];
+                llength8 = [15,19,21];
+        
+                createBox(ctx,330,470,60,text8,links8,subs8,llength8,"#FDF2E9");
+        
+                text9 = ["Quantitative overview of GSuites",
+                         "Metadata Overview", "Summary of metadata attributes for GSuite",
+                         "Track Overview", "Summary statistics per track in a GSuite",
+                         "Similarity and uniqueness of tracks in GSuite",
+                         "Tendency of track elements to clump together along the genome (Ripleys K)",
+                         "Calculate all summary statistics for tracks in GSuite (all of the above)",
+                         "Compute a basic measure for each track in a GSuite",
+                         "Determine suite tracks coinciding with another suite"];
+                links9 = ["","","../tool_runner?tool_id=hb_g_suite_metadata_overview_tool",
+                          "","../tool_runner?tool_id=hb_pilot_page_basic_overview_of_tracks_in_g_suite_tool",
+                          "../tool_runner?tool_id=hb_pilot_page_similarity_and_uniqueness_of_tracks_tool",
+                          "../tool_runner?tool_id=hb_pilot_page_clustering_in_tracks_tool",
+                          "../tool_runner?tool_id=hb_pilot_page_combined_overview_of_tracks_tool",
+                          "../tool_runner?tool_id=hb_g_suite_single_value_analysis_per_track_tool",
+                          "../tool_runner?tool_id=hb_determine_suite_tracks_coinciding_with_another_suite"];
+                subs9 = [1,3];
+                llength9 = [15,19,21];
+        
+                createBox(ctx,490,20,240,text9,links9,subs9,llength9,"#FFFFE0");
+        
+                text10 = ["Statistical analysis of a GSuite",
+                         "Similarity-based Analysis of Tracks in GSuite",
+                         "Determine repre- sentative and atypical tracks in a GSuite",
+                         "Determine GSuite tracks coinciding with a target track",
+                         "Determine coinciding track combinations from two suites",
+                         "Distribution of Suite Data Along the Genome",
+                         "Determine regions where GSuite tracks are enriched",
+                         "Determine regions where GSuite tracks co-occur more strongly"];
+                links10 = ["","","../tool_runner?tool_id=hb_g_suite_representative_and_untypical_track_tool",
+                          "../tool_runner?tool_id=hb_g_suite_tracks_coinciding_with_query_track_tool",
+                          "../tool_runner?tool_id=hb_coinciding_tracks_from_two_g_suites_tool",
+                          "","../tool_runner?tool_id=hb_multi_track_count_overrepresentation_bins",
+                          "../tool_runner?tool_id=hb_multi_track_cooccurrence_bins"];
+                subs10 = [1,5];
+                llength10 = [15,19,21];
+        
+                createBox(ctx,630,20,220,text10,links10,subs10,llength10,"#FFFFE0");
+        
+                text11 = ["Visual analysis of GSuites",
+                         "Color-coded segments from a query track based on overlap with reference tracks in a GSuite",
+                         "Generate a heatmap based on overlap of segments from a query track with reference tracks in a GSuite",
+                         "Generate a Venn diagram of overlap between tracks in a GSuite"];
+                links11 = ["","../tool_runner?tool_id=hb_segments_overlap_visualization_tool",
+                          "../tool_runner?tool_id=hb_segments_overlap_visualization_heatmap_tool",
+                          "../tool_runner?tool_id=hb_create_bps_venn_d_iagram"];
+                subs11 = [];
+                llength11 = [15,19,20];
+        
+                createBox(ctx,490,470,175,text11,links11,subs11,llength11,"#FFFFE0");
+        
+                text12 = ["Domain- specific analysis ",
+                         "Scan targets of a transcription factor",
+                         "Scan transcription factors of a genomic region"];
+                links12 = ["","../tool_runner?tool_id=hb_all_targets_of_tfs",
+                          "hyper?mako=generictool&tool_id=hb_all_tfs_of_regions"];
+                subs12 = [];
+                llength12 = [15,19,21];
+        
+                createBox(ctx,630,455,85,text12,links12,subs12,llength12,"#FFFFE0");
+        
+                text13 = ["Auxiliary tools",
+                         "Generate the union track of all tracks in a GSuite"];
+                links13 = ["","","../tool_runner?tool_id=hb_g_suite_download_files"];
+                subs13 = [];
+                llength13 = [15,19,21];
+        
+                createBox(ctx,630,645,65,text13,links13,subs13,llength13,"#FFFFE0");
+        
+                //1-7
+                arrow(ctx,130,40,325,40);
+        
+                //1-4
+                //arrow(ctx,130,125,160,125);
+        
+                //2-4
+                //arrow(ctx,130,250,160,250);
+        
+                //2-7
+                arrow(ctx,130,370,325,370);
+        
+                //2-5
+                arrow(ctx,130,440,170,470);
+        
+                //4-8
+                //arrow(ctx,250,280,340,465);
+                //arrow(ctx,340,465,250,280);
+        
+                //3-4
+                //arrow(ctx,125,530,200,280);
+        
+                //3-END STAGE
+                arrow(ctx,130,715,475,715);
+                //3-8
+                arrow(ctx,390,715,390,600);
+        
+                //8-5
+                arrow(ctx,330,540,295,540);
+        
+                //6-8
+                arrow(ctx,390,465,390,425);
+                arrow(ctx,390,425,390,465);
+        
+                //7-END STAGE
+                arrow(ctx,450,370,475,370);
+        
+                //4-6
+                //arrow(ctx,325,100,295,100);
+                //arrow(ctx,295,100,325,100);
+        
+                //4-7
+                //arrow(ctx,295,210,370,305);
+                //arrow(ctx,370,305,295,210);
+        
+                //4-END STAGE
+                //arrow(ctx,290,170,475,170);
+        
+                //7-5
+                arrow(ctx,370,132,270,465);
+        
+                //6-7
+                arrow(ctx,410,132,410,305);
+        
+                //5-7
+                arrow(ctx,290,480,335,420);
+        
+        
+                canvasListening(canvas);
+        
+            }
+        }
+
+        var JQNoCon = jQuery.noConflict();
+
+        JQNoCon(document).ready(function() {
+            draw();
+        });
+       </script>
+</head>
+
+
+<body>
+
+
+<div class="tabs">
+    <ul class="tab-links" id="tab-links">
+        <li class="active" value="tab1"><a href="#tab1">Main page</a></li>
+        <li value="tab2"><a href="#tab2">Basic mode</a></li>
+        <li value="tab3"><a href="#tab3">Advanced mode</a></li>
+        <li value="tab4"><a href="#tab4">Examples</a></li>
+        <li value="tab5"><a href="#tab5">About</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab active">
+        <div class="document">
+            <div class="main">
+            <img src="hyperbrowser/images/logo/GSuite_logo.png" width="400px" style="margin:20px 10px 10px">
+            <h2>Manage and Analyze collections of genome-wide datasets</h2>
+            <a href="http://www.elixir-europe.org/" target="_blank">
+                <img src="hyperbrowser/images/logo/ELIXIR_logo_transparent_small.png" style="float:right; margin:0px 20px" title="The Genomic HyperBrowser is a service from ELIXIR - provided by ELIXIR Norway">
+            </a>
+            <p>
+               <!--older version <b>The GSuite HyperBrowser</b> provides functionality for managing and analyzing collections of
+                genome-wide datasets (genomic tracks). At the core of the system is GSuite, a simple tabular format for
+                representing genomic track collections (one genomic track per line) along with related metadata.-->
+                <b>The GSuite HyperBrowser</b> system includes a range of tools to handle acquisition, processing and analysis
+                of collections of genomic tracks, represented in a simple tabular format, GSuite. Please proceed in either basic or advanced mode.
+            </p>
+            <p>
+                <i>The Genomic HyperBrowser (which includes the GSuite HyperBrowser) is a service from ELIXIR - provided by ELIXIR Norway. By using this
+                    site with or without authentication you agree to the <a href="hyperbrowser_uio_terms.html" target="blank">Web Portal Service Agreement</a>.</i>
+            </p>
+
+            <p style="clear:right" class="noticebox">
+            <b>IMPORTANT:</b> Please note that this is a beta version of the GSuite HyperBrowser.
+                This version has been released as a companion to the GSuite HyperBrowser manuscript.
+                As this software is still in beta, keep in mind that you might encounter bugs and
+                other issues. Please let us know if you experience any issues with the software.
+            </p>
+
+            <!--<p>
+            Two different operation modes are available to guide you through your analysis.
+                Depending on your experience with the Genomic HyperBrowser (and Galaxy-based web tools in general),
+                please select either Basic or Advanced user mode.
+            </p>-->
+            </div>
+            <div class="basic" id="basic" onclick="javascript:showDiv('tab1', 'tab2');" onmouseover="this.style.background='#F8F0B1';" onmouseout="this.style.background='#FBDF6E';" style="float:left;width:48%;overflow:hidden;margin-top:15px;margin-right:5px;">
+            <h2>Basic user mode ></h2>
+            <p style="height:100px;">
+            The Basic mode will let you select from pre-defined genome analysis questions and lead you
+                through the corresponding simplified workflow.
+                <br><br>
+                <span style="padding-left:10px;"><i>You will be provided with relevant example datasets
+                necessary for running an analysis with the default parameter setup.</i></span>
+                <!--Choose this mode if you are new to the GSuite HyperBrowser as well as the Genomic HyperBrowser.-->
+            </p>
+            </div>
+            <div class="advanced" id="advanced" onclick="javascript:showDiv('tab1', 'tab3');" onmouseover="this.style.background='#F8F0B1';" onmouseout="this.style.background='#FBDF6E';" style="overflow:hidden;margin-top:15px;">
+            <h2>Advanced user mode ></h2>
+            <p style="height:100px;">
+            The Advanced mode gives you full control of all analysis workflows and their intermediate steps.
+                <br><br>
+                <span style="padding-left:10px;"><i>You will be able to edit the content of GSuite
+                files and modify the full range of analysis parameters.</i></span>
+                <!--Choose this mode if you have previous experience with the GSuite HyperBrowser
+                or the Genomic HyperBrowser.-->
+            <br><br>
+            </p>
+            </div>
+            <div id="screencast" class="advanced" style="overflow:auto;padding-bottom:10px;margin-top:15px;">
+            <h2>Brief demos of the system (Screencasts)</h2>
+            <p>
+                Get familiar with the system through the short video guides:
+
+                <!-- <ul>
+                <li><a href="https://screencast.uninett.no/relay/ansatt/geirksauio.no/2016/16.08/104267/System_Overview_-_20160816_152607_39.html">
+                GSuite HB overview</a></li>
+                <li><a href="https://screencast.uninett.no/relay/ansatt/geirksauio.no/2016/17.08/194005/example_analysis_final_imovie_-_20160817_180630_39.html">
+                An example analysis (Celiac disease SNPs vs. DNase HSS)</a></li>
+                 </ul>-->
+            </p>
+            <div class="video-container" style="width:49%;float:left;border:1px dotted black;box-sizing:border-box;padding-top:15px">
+                <a href="https://vimeo.com/198728219" target="_blank">
+                    <img src="hyperbrowser/images/videos/gsuite_overview.jpg" class="center" style="width:90%;height:auto;border:1px solid black;padding:0px"/>
+                </a>
+                <p class="center" style="height:32px">
+                    <!--<a href="https://screencast.uninett.no/relay/ansatt/geirksauio.no/2016/16.08/104267/System_Overview_-_20160816_152607_39.html" target="_blank">
+                                    GSuite HyperBrowser overview</a>-->
+                    <a href="https://vimeo.com/198728219" target="_blank">
+                                    GSuite HyperBrowser overview [1:44]</a>
+                </p>
+            </div>
+            <div class="video-container" style="width:49%;float:right;border:1px dotted black;box-sizing:border-box;padding-top:15px;">
+                <a href="https://vimeo.com/198728467" target="_blank">
+                    <img src="hyperbrowser/images/videos/gsuite_example1.jpg" class="center" style="width:90%;height:auto;border:1px solid black;padding:0px;"/>
+                </a>
+                <p class="center" style="height:32px">
+<!--                    <a href="https://screencast.uninett.no/relay/ansatt/geirksauio.no/2016/17.08/194005/example_analysis_final_imovie_-_20160817_180630_39.html" target="_blank">
+                    An example analysis (Celiac disease SNPs vs. DNase HSS)</a>-->
+                    <a href="https://vimeo.com/198728467" target="_blank">
+                    An example analysis (Celiac disease SNPs vs. DNase HSS) [3:14]</a>
+                </p>
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="tab2" class="tab">
+
+
+
+        <div class="document">
+        <div class="main">
+            <h2>The GSuite HyperBrowser - Basic User Mode</h2>
+            <h3>
+            <span title="Hover mouse over words in bold if you are uncertain about their meaning">
+            <b>What is the biological question you would like to ask?</b>
+            </span>
+            </h3>
+            <p>(Tip: Click to expand the available biological questions in the scenario of interest.)</p>
+
+<!--             <p>
+            <b>**IMPORTANT:</b> Currently only sections (biological questions) marked with ** are functioning.
+            This is because we are still in a testing phase. For now use only the marked questions to test the functionality.
+            The rest of the sections will be filled out later. Suggestions for new sections are also welcomed.
+            </p> -->
+        </div>

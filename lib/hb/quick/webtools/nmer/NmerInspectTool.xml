@@ -1,0 +1,4 @@
+<tool id="hb_nmer_inspect" name="Inspect k-mer frequency variation" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.nmer.NmerInspectTool" proto_tool_class="NmerInspectTool">
+  <description></description>
+</tool>

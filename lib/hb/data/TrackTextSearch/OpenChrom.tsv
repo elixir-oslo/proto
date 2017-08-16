@@ -1,0 +1,8 @@
+Category	Sub-category	Source	Subtool
+Open Chromatin	Chromatin_Accesibility	Roadmap Epigenomics	Epigenomics:Experiment=Chromatin_Accesibility
+Open Chromatin	Dnase HSS	ENCODE	Encode:Table name=wgEncodeAwgDnase*
+Open Chromatin	Dnase HSS	ENCODE	Encode:Table name=wgEncodeOpenChromDnase*
+Open Chromatin	Dnase HSS	ENCODE	Encode:Table name=wgEncodeUwDnase*
+Open Chromatin	OpenChromChip	ENCODE	Encode:Table name=wgEncodeOpenChromChip*
+Open Chromatin	Faire	ENCODE	Encode:Table name=wgEncodeOpenChromFaire*
+Open Chromatin	Synthesis	ENCODE	Encode:Table name=wgEncodeOpenChromSynth*

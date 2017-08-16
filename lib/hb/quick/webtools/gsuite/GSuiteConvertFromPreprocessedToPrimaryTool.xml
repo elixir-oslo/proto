@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_convert_from_preprocessed_to_primary_tool" name="Convert GSuite tracks from preprocessed to primary " version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteConvertFromPreprocessedToPrimaryTool" proto_tool_class="GSuiteConvertFromPreprocessedToPrimaryTool">
+  <description></description>
+</tool>

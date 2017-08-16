@@ -1,0 +1,4 @@
+<tool id="hb_multi_track_analysis_tool" name="Analyse relations of tracks in GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.MultiTrackAnalysisTool" proto_tool_class="MultiTrackAnalysisTool">
+  <description></description>
+</tool>

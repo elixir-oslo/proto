@@ -1,0 +1,4 @@
+<tool id="hb_standardize_track_files_tool" name="Standardize track files" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.StandardizeTrackFilesTool" proto_tool_class="StandardizeTrackFilesTool">
+  <description></description>
+</tool>

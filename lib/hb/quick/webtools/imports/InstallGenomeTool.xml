@@ -1,0 +1,4 @@
+<tool id="hb_install_genome" name="Install uploaded genome" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.imports.InstallGenomeTool" proto_tool_class="InstallGenomeTool">
+  <description></description>
+</tool>

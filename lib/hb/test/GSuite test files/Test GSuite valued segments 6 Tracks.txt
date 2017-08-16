@@ -1,0 +1,11 @@
+##location: local
+##file format: preprocessed
+##track type: unknown
+###uri	title
+####genome=hg18
+hb:/Gene regulation/Transcription factor regulation/Experimentally determined/ChIP-seq/Peaks/peaks_cfos_Gm12878	peaks_cfos_Gm12878
+hb:/Gene regulation/Transcription factor regulation/Experimentally determined/ChIP-seq/Peaks/peaks_cfos_k562	peaks_cfos_k562
+hb:/Gene regulation/Transcription factor regulation/Experimentally determined/ChIP-seq/Peaks/peaks_cjun_k562	peaks_cjun_k562
+hb:/Gene regulation/Transcription factor regulation/Experimentally determined/ChIP-seq/Peaks/peaks_cmyc_k562	peaks_cmyc_k562
+hb:/Gene regulation/Transcription factor regulation/Experimentally determined/ChIP-seq/Peaks/peaks_e2f4_k562	peaks_e2f4_k562
+hb:/Gene regulation/Transcription factor regulation/Experimentally determined/ChIP-seq/Peaks/peaks_gata2_k562	peaks_gata2_k562

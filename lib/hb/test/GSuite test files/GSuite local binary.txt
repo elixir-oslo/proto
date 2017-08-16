@@ -1,0 +1,21 @@
+##location: local
+##file format: binary
+##track type: valued segments
+###uri	title	file_format	track_type
+####genome=hg19
+hb:/external/dev2/039/39099/3 - GSuite download files (wgEncodeOpenChromSynthGlioblaPk)	3 - GSuite download files (wgEncodeOpenChromSynthGlioblaPk)	preprocessed	valued segments
+hb:/external/dev2/039/39100/4 - GSuite download files (wgEncodeOpenChromSynthGm12878Pk)	4 - GSuite download files (wgEncodeOpenChromSynthGm12878Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39101/5 - GSuite download files (wgEncodeOpenChromSynthGm12891Pk)	5 - GSuite download files (wgEncodeOpenChromSynthGm12891Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39102/6 - GSuite download files (wgEncodeOpenChromSynthGm12892Pk)	6 - GSuite download files (wgEncodeOpenChromSynthGm12892Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39103/7 - GSuite download files (wgEncodeOpenChromSynthGm18507Pk)	7 - GSuite download files (wgEncodeOpenChromSynthGm18507Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39104/8 - GSuite download files (wgEncodeOpenChromSynthGm19239Pk)	8 - GSuite download files (wgEncodeOpenChromSynthGm19239Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39105/9 - GSuite download files (wgEncodeOpenChromSynthH1hescPk)	9 - GSuite download files (wgEncodeOpenChromSynthH1hescPk)	preprocessed	valued segments
+hb:/external/dev2/039/39106/10 - GSuite download files (wgEncodeOpenChromSynthHelas3Ifna4hPk)	10 - GSuite download files (wgEncodeOpenChromSynthHelas3Ifna4hPk)	preprocessed	valued segments
+hb:/external/dev2/039/39107/11 - GSuite download files (wgEncodeOpenChromSynthHelas3Pk)	11 - GSuite download files (wgEncodeOpenChromSynthHelas3Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39108/12 - GSuite download files (wgEncodeOpenChromSynthHepg2Pk)	12 - GSuite download files (wgEncodeOpenChromSynthHepg2Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39109/13 - GSuite download files (wgEncodeOpenChromSynthHtr8Pk)	13 - GSuite download files (wgEncodeOpenChromSynthHtr8Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39110/14 - GSuite download files (wgEncodeOpenChromSynthHuvecPk)	14 - GSuite download files (wgEncodeOpenChromSynthHuvecPk)	preprocessed	valued segments
+hb:/external/dev2/039/39111/15 - GSuite download files (wgEncodeOpenChromSynthK562Pk)	15 - GSuite download files (wgEncodeOpenChromSynthK562Pk)	preprocessed	valued segments
+hb:/external/dev2/039/39112/16 - GSuite download files (wgEncodeOpenChromSynthMedulloPk)	16 - GSuite download files (wgEncodeOpenChromSynthMedulloPk)	preprocessed	valued segments
+hb:/external/dev2/039/39113/17 - GSuite download files (wgEncodeOpenChromSynthNhekPk)	17 - GSuite download files (wgEncodeOpenChromSynthNhekPk)	preprocessed	valued segments
+hb:/external/dev2/039/39114/18 - GSuite download files (wgEncodeOpenChromSynthPanisletsPk)	18 - GSuite download files (wgEncodeOpenChromSynthPanisletsPk)	preprocessed	valued segments

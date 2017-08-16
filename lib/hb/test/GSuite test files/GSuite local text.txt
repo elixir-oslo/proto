@@ -1,0 +1,21 @@
+##location: local
+##file format: primary
+##track type: unknown
+###uri	title	file_format
+####genome=hg19
+galaxy:/8f5366bef2d211c3;bed	3 - GSuite download files (wgEncodeOpenChromSynthGlioblaPk)	primary
+galaxy:/fea592f0d99ff103;bed	4 - GSuite download files (wgEncodeOpenChromSynthGm12878Pk)	primary
+galaxy:/1ad56dd959f2c1ed;bed	5 - GSuite download files (wgEncodeOpenChromSynthGm12891Pk)	primary
+galaxy:/cfe20ec55623397d;bed	6 - GSuite download files (wgEncodeOpenChromSynthGm12892Pk)	primary
+galaxy:/8e15ba891b6cf70d;bed	7 - GSuite download files (wgEncodeOpenChromSynthGm18507Pk)	primary
+galaxy:/56ac03d94cc0afb3;bed	8 - GSuite download files (wgEncodeOpenChromSynthGm19239Pk)	primary
+galaxy:/20bc56e3c2a71d47;bed	9 - GSuite download files (wgEncodeOpenChromSynthH1hescPk)	primary
+galaxy:/fc14d61a25b3d68d;bed	10 - GSuite download files (wgEncodeOpenChromSynthHelas3Ifna4hPk)	primary
+galaxy:/7be90145931224b4;bed	11 - GSuite download files (wgEncodeOpenChromSynthHelas3Pk)	primary
+galaxy:/d09a8ac237e2626c;bed	12 - GSuite download files (wgEncodeOpenChromSynthHepg2Pk)	primary
+galaxy:/54cf339a5c153324;bed	13 - GSuite download files (wgEncodeOpenChromSynthHtr8Pk)	primary
+galaxy:/da91c890c9c2624b;bed	14 - GSuite download files (wgEncodeOpenChromSynthHuvecPk)	primary
+galaxy:/f2137c4272a5e400;bed	15 - GSuite download files (wgEncodeOpenChromSynthK562Pk)	primary
+galaxy:/73feaca2752cb360;bed	16 - GSuite download files (wgEncodeOpenChromSynthMedulloPk)	primary
+galaxy:/f19e0d38be4d6ff0;bed	17 - GSuite download files (wgEncodeOpenChromSynthNhekPk)	primary
+galaxy:/d4d3417fba328e19;bed	18 - GSuite download files (wgEncodeOpenChromSynthPanisletsPk)	primary

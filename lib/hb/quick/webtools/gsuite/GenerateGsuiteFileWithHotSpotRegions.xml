@@ -1,0 +1,4 @@
+<tool id="hb_generate_gsuite_file_with_hot_spot_regions" name="Generate gsuite file with hot spot regions" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GenerateGsuiteFileWithHotSpotRegions" proto_tool_class="GenerateGsuiteFileWithHotSpotRegions">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_tabular_to_gtrack_tool" name="Create GTrack file from unstructured tabular data" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gtrack.TabularToGtrackTool" proto_tool_class="TabularToGtrackTool">
+  <description></description>
+</tool>

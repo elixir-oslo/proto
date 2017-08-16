@@ -1,0 +1,4 @@
+<tool id="hb_create_case_control_track" name="Combine two BED files into single case-control track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.manipulate.CreateCaseControlTrack" proto_tool_class="CreateCaseControlTrack">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_split_segments_tool" name="Split BED segments into subsegments of equal size" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.create.SplitSegmentsTool" proto_tool_class="SplitSegmentsTool">
+  <description></description>
+</tool>

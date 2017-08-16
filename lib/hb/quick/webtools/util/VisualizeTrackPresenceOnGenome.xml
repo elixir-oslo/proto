@@ -1,0 +1,4 @@
+<tool id="hb_visualize_track_presence_on_genome" name="Visualize track elements relative to anchor regions" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.VisualizeTrackPresenceOnGenome" proto_tool_class="VisualizeTrackPresenceOnGenome">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_all_tfs_of_regions" name="Scan transcription factors of a genomic region" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.AllTfsOfRegions" proto_tool_class="AllTfsOfRegions">
+  <description></description>
+</tool>

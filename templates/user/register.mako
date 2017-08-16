@@ -158,7 +158,7 @@ def inherit(context):
                     %if subscribe_checked:
                         <% subscribe_check_box.checked = True %>
                     %endif
-                    ${subscribe_check_box.get_html()}
+                    ${subscribe_check_box.get_html()} ${trans.app.config.mailing_list_name |h}
                     <p>See <a href="http://galaxyproject.org/wiki/Mailing%20Lists" target="_blank">
                     all Galaxy project mailing lists</a>.</p>
                 </div>

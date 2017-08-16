@@ -1,0 +1,4 @@
+<tool id="hb_download_history_items" name="Download history items locally" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.DownloadHistoryItems" proto_tool_class="DownloadHistoryItems">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_metadata_overview_tool" name="Summary of metadata attributes for GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteMetadataOverviewTool" proto_tool_class="GSuiteMetadataOverviewTool">
+  <description></description>
+</tool>

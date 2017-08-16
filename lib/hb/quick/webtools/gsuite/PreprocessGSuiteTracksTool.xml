@@ -1,0 +1,4 @@
+<tool id="hb_preprocess_g_suite_tracks_tool" name="Preprocess a GSuite for analysis" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.PreprocessGSuiteTracksTool" proto_tool_class="PreprocessGSuiteTracksTool">
+  <description></description>
+</tool>

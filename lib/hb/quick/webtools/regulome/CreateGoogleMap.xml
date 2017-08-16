@@ -1,0 +1,4 @@
+<tool id="hb_create_google_map" name="Create google map" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.regulome.CreateGoogleMap" proto_tool_class="CreateGoogleMap">
+  <description></description>
+</tool>

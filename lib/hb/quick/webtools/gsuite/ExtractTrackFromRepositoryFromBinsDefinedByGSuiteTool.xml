@@ -1,0 +1,4 @@
+<tool id="hb_extract_track_from_repository_from_bins_defined_by_g_suite_tool" name="Extract tracks from repository in regions defined by GSute tracks" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="proto.tools.hyperbrowser.gsuite.ExtractTrackFromRepositoryFromBinsDefinedByGSuiteTool" proto_tool_class="ExtractTrackFromRepositoryFromBinsDefinedByGSuiteTool">
+  <description></description>
+</tool>

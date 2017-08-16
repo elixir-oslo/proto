@@ -1,0 +1,4 @@
+<tool id="hb_determine_suite_tracks_coinciding_with_another_suite" name="Determine GSuite tracks coinciding with another GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="proto.tools.hyperbrowser.gsuite.DetermineSuiteTracksCoincidingWithAnotherSuite" proto_tool_class="DetermineSuiteTracksCoincidingWithAnotherSuite">
+  <description></description>
+</tool>

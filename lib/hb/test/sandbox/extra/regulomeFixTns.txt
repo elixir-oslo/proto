@@ -1,0 +1,11 @@
+Genes and gene subsets:Gene subsets:Regulome diseases	Genes and gene subsets:Gene subsets:Regulome diseases:PubGene:All (for use with UCSC TFBS predictions)
+Genes and gene subsets:Gene subsets:Regulome neoplasms	Genes and gene subsets:Gene subsets:Regulome diseases:PubGene:Neoplasms (for use with UCSC TFBS predictions)
+Private:disease:all diseases (min 300 articles), hyperg. (p<0.05), 1bp flanked upstream., min 20 genes	Genes and gene subsets:Gene subsets:Regulome diseases:PubGene:All (for use with Bar-Joseph TF binding predictions)
+Genes and gene subsets:Gene subsets:Regulome GO-terms:All (used with TF regulation)	Private:gene ontology:gene ontology (min 300 articles), hyperg. (p<0.05), 5kb flanked both dir., min 3 genes 
+Genes and gene subsets:Gene subsets:Regulome GO-terms:All (used with histone modifications)	Genes and gene subsets:Gene subsets:Regulome GO-terms:PubGene:All (for use with histone modifications)
+Genes and gene subsets:Gene subsets:Regulome GO-terms:Common (used with histone modifications)	Genes and gene subsets:Gene subsets:Regulome GO-terms:PubGene:Common (for use with histone modifications)
+Private:gene ontology:gene ontology (min 300 articles), hyperg. (p<0.05), 1bp flanked upstream., min 20 genes	Genes and gene subsets:Gene subsets:Regulome GO-terms:PubGene:All (for use with Bar-Joseph TF binding predictions)
+Private:disease:IntOGen (v2):Flanked:Copy number alterations, all tumor types, 1bp flanked both dir.	Genes and gene subsets:Gene subsets:Regulome diseases:IntOGen:Copy Number alterations (for use with Bar-Joseph TF binding predictions)
+Private:disease:IntOGen (v2):Flanked:Transcriptomic alterations, all tumor types, 1bp flanked both dir.	Genes and gene subsets:Gene subsets:Regulome diseases:IntOGen:Transcriptomic alterations (for use with Bar-Joseph TF binding predictions)
+Private:disease:Phenopedia:Flanked:150bp flanked upstream., min 20 genes	Genes and gene subsets:Gene subsets:Regulome diseases:Phenopedia:All (for use with Bar-Joseph TF binding predictions)
+Private:disease:Phenopedia:Flanked:5kb flanked both dir.	Genes and gene subsets:Gene subsets:Regulome diseases:Phenopedia:All (for use with UCSC TFBS predictions)

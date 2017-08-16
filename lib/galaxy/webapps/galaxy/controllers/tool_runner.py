@@ -11,6 +11,9 @@ from galaxy.tools import DataSourceTool
 from galaxy.web import error, url_for
 from galaxy.web.base.controller import BaseUIController
 
+# import ProTo tool types
+from galaxy.tools import proto_tool_types
+
 log = logging.getLogger( __name__ )
 
 
@@ -75,8 +78,9 @@ class ToolRunner( BaseUIController ):
         if len( params ) > 0:
             trans.log_event( 'Tool params: %s' % ( str( params ) ), tool_id=tool_id )
 
-        # ProTo: if no params then this is a direct request/link to open the tool interface, redirect hyperbrowser-tools to the hyper-controller
-        if tool.tool_type.startswith('hyperbrowser') and len(params) == 0:
+        # ProTo: if no params then this is a direct request/link to open the tool interface, redirect hyperbrowser-tools
+        #  to the hyper-controller
+        if len(params) == 0 and proto_tool_types.has_key(tool.tool_type):
             if tool.inputs.has_key('mako'):
                 return trans.response.send_redirect(url_for(controller=tool.action, tool_id=tool_id,
                                                     mako=tool.inputs['mako'].get_initial_value(None, None)))
@@ -118,15 +122,16 @@ class ToolRunner( BaseUIController ):
         tool_id = job.tool_id
         tool = self.__get_tool(tool_id)
 
-        if tool.tool_type.startswith('hyperbrowser'):
+        if proto_tool_types.has_key(tool.tool_type):
             # Get the job's parameters
-            try:
-                params_objects = job.get_param_values(trans.app, ignore_errors=True)
-            except:
-                raise Exception('Failed to get job params')
+            #try:
+            #    params_objects = job.get_param_values(trans.app, ignore_errors=True)
+            #except:
+            #    raise Exception('Failed to get job params')
 
             return trans.response.send_redirect(
-                    url_for(controller='proto', action='index', mako=params_objects.get('mako', 'generictool'),
+                    url_for(controller=tool.action, action='index',
+                            mako=tool.inputs['mako'].get_initial_value(None, None),
                             rerun_hda_id=id))
 
         return trans.response.send_redirect( url_for( controller="root", job_id=job_id ) )

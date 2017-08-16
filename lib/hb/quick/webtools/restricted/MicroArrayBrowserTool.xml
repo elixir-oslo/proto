@@ -1,0 +1,4 @@
+<tool id="hb_micro_array_browser_tool" name="Browse microarray datasets" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.MicroArrayBrowserTool" proto_tool_class="MicroArrayBrowserTool">
+  <description></description>
+</tool>

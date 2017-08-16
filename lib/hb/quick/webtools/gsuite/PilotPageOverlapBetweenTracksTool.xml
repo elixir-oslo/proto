@@ -1,0 +1,4 @@
+<tool id="hb_pilot_page_overlap_between_tracks_tool" name="Shared and unique base pair coverage of tracks in GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.PilotPageOverlapBetweenTracksTool" proto_tool_class="PilotPageOverlapBetweenTracksTool">
+  <description></description>
+</tool>

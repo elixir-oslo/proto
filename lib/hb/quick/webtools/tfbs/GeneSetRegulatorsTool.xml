@@ -1,0 +1,4 @@
+<tool id="hb_tf_reg_gene_set" name="Find TFs regulating gene set" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.GeneSetRegulatorsTool" proto_tool_class="GeneSetRegulatorsTool">
+  <description></description>
+</tool>

@@ -119,6 +119,10 @@ var Collection = Backbone.Collection.extend({
             title           : 'Help',
             tooltip         : 'Support, contact, and community hubs',
             menu            : [{
+                    title   : 'HyperBrowser help',
+                    url     : 'http://sites.google.com/site/hyperbrowserhelp/',
+                    target  : '_blank'
+                },{
                     title   : 'Support',
                     url     : options.support_url,
                     target  : '_blank'
@@ -376,7 +380,7 @@ var Tab = Backbone.View.extend({
 
     /** Url formatting */
     _formatUrl: function( url ) {
-        return typeof url == 'string' && url.indexOf( '//' ) === -1 && url.charAt( 0 ) != '/' ? Galaxy.root + url : url;
+        return typeof url == 'string' && url.indexOf( '//' ) === -1 && url.charAt( 0 ) != '/' && url.lastIndexOf('mailto:', 0) !== 0 ? Galaxy.root + url : url;
     },
 
     /** body tempate */

@@ -1,0 +1,4 @@
+<tool id="hb_explore_tools_tool" name="Explore HB ProTo tools" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="proto.tools.hyperbrowser.HbExploreToolsTool" proto_tool_class="HbExploreToolsTool">
+  <description></description>
+</tool>

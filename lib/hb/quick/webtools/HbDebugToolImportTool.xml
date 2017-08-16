@@ -1,0 +1,4 @@
+<tool id="hb_debug_tool_import_tool" name="Debug import of HB ProTo tools" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="proto.tools.hyperbrowser.HbDebugToolImportTool" proto_tool_class="HbDebugToolImportTool">
+  <description></description>
+</tool>

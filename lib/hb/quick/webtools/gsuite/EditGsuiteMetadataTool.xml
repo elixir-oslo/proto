@@ -1,0 +1,4 @@
+<tool id="hb_edit_gsuite_metadata_tool" name="Edit a metadata column in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.EditGsuiteMetadataTool" proto_tool_class="EditGsuiteMetadataTool">
+  <description></description>
+</tool>

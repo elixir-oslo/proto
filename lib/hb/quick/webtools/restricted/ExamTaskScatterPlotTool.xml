@@ -1,0 +1,4 @@
+<tool id="hb_exam_task_scatter_plot_tool" name="Exam task scatter plot tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ExamTaskScatterPlotTool" proto_tool_class="ExamTaskScatterPlotTool">
+  <description></description>
+</tool>

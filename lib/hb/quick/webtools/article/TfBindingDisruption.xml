@@ -1,0 +1,4 @@
+<tool id="hb_tf_binding_disruption" name="Scan for TF binding disruptions due to point mutations" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.article.TfBindingDisruption" proto_tool_class="TfBindingDisruption">
+  <description></description>
+</tool>

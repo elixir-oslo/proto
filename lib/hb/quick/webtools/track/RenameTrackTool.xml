@@ -1,0 +1,4 @@
+<tool id="hb_rename_track" name="Rename track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.RenameTrackTool" proto_tool_class="RenameTrackTool">
+  <description></description>
+</tool>

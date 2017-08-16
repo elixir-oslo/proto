@@ -1,0 +1,4 @@
+<tool id="hb_multi_track_intersect_tool" name="Intersect preprocessed tracks in GSuite with a single track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.MultiTrackIntersectTool" proto_tool_class="MultiTrackIntersectTool">
+  <description></description>
+</tool>

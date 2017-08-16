@@ -1,0 +1,4 @@
+<tool id="hb_null_model_randomizer" name="Null model randomizer" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.NullModelRandomizer" proto_tool_class="NullModelRandomizer">
+  <description></description>
+</tool>

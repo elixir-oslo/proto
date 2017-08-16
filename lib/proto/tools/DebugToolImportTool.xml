@@ -1,0 +1,4 @@
+<tool id="proto_debug_tool_import_tool" name="Debug import of ProTo tools" version="1.0.0"
+  tool_type="proto_generic" proto_tool_module="proto.tools.DebugToolImportTool" proto_tool_class="DebugToolImportTool">
+  <description></description>
+</tool>

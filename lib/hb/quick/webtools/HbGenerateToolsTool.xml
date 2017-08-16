@@ -1,0 +1,4 @@
+<tool id="hb_proto_generate_tools_tool" name="Generate HB ProTo tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.HbGenerateToolsTool" proto_tool_class="HbGenerateToolsTool">
+  <description></description>
+</tool>

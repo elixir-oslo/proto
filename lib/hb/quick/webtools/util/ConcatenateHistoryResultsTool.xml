@@ -1,0 +1,4 @@
+<tool id="hb_concatenate_history_results_tool" name="Concatenate results of multiple history items" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.ConcatenateHistoryResultsTool" proto_tool_class="ConcatenateHistoryResultsTool">
+  <description></description>
+</tool>

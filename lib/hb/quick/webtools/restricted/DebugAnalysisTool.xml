@@ -1,0 +1,4 @@
+<tool id="hb_debug_analysis_tool" name="Debug statistic" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.DebugAnalysisTool" proto_tool_class="DebugAnalysisTool">
+  <description></description>
+</tool>

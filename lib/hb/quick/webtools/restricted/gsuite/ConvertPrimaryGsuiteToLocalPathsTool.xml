@@ -1,0 +1,4 @@
+<tool id="hb_convert_primary_gsuite_to_local_paths_tool" name="Convert primary GSuite with Galaxy URI" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="proto.tools.hyperbrowser.restricted.gsuite.ConvertPrimaryGsuiteToLocalPathsTool" proto_tool_class="ConvertPrimaryGsuiteToLocalPathsTool">
+  <description>to GSuite with local paths</description>
+</tool>

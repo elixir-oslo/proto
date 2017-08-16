@@ -1,0 +1,4 @@
+<tool id="hb_segments_overlap_visualization_heatmap_tool" name="Generate a heatmap based on overlap of segments from a query track with reference tracks in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.SegmentsOverlapVisualizationHeatmapTool" proto_tool_class="SegmentsOverlapVisualizationHeatmapTool">
+  <description></description>
+</tool>

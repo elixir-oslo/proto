@@ -1,0 +1,4 @@
+<tool id="hb_screen_two_track_collections_against_each_other2_level_depth" name="Screen two track collections against each other2 level depth" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ScreenTwoTrackCollectionsAgainstEachOther2LevelDepth" proto_tool_class="ScreenTwoTrackCollectionsAgainstEachOther2LevelDepth">
+  <description></description>
+</tool>

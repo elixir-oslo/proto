@@ -45,7 +45,9 @@ class ConditionalDependencies( object ):
             return False
 
     def check_psycopg2( self ):
-        return self.config["database_connection"].startswith( "postgres" )
+        # HyperBrowser hack to always install psycopg2
+        return True
+        # return self.config["database_connection"].startswith( "postgres" )
 
     def check_mysql_python( self ):
         return self.config["database_connection"].startswith( "mysql" )

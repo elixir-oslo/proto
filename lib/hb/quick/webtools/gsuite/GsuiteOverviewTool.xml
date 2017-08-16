@@ -1,0 +1,4 @@
+<tool id="hb_gsuite_overview_tool" name="GSuite overview" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GsuiteOverviewTool" proto_tool_class="GsuiteOverviewTool">
+  <description></description>
+</tool>

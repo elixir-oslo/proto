@@ -1,0 +1,4 @@
+<tool id="hb_remove_genome" name="Remove genome" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.cleanup.RemoveGenomeTool" proto_tool_class="RemoveGenomeTool">
+  <description></description>
+</tool>

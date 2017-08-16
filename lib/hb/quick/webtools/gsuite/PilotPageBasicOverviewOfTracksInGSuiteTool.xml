@@ -1,0 +1,4 @@
+<tool id="hb_pilot_page_basic_overview_of_tracks_in_g_suite_tool" name="Summary statistics per track in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.PilotPageBasicOverviewOfTracksInGSuiteTool" proto_tool_class="PilotPageBasicOverviewOfTracksInGSuiteTool">
+  <description></description>
+</tool>

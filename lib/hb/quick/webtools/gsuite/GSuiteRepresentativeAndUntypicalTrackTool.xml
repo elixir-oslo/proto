@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_representative_and_untypical_track_tool" name="Determine representative and atypical tracks in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteRepresentativeAndUntypicalTrackTool" proto_tool_class="GSuiteRepresentativeAndUntypicalTrackTool">
+  <description></description>
+</tool>

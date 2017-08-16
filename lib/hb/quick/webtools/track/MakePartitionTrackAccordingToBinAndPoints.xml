@@ -1,0 +1,4 @@
+<tool id="hb_make_partition_track_according_to_bin_and_points" name="Make partition track according to bin and points" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.MakePartitionTrackAccordingToBinAndPoints" proto_tool_class="MakePartitionTrackAccordingToBinAndPoints">
+  <description></description>
+</tool>

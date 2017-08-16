@@ -1,0 +1,4 @@
+<tool id="hb_generic_2" name="Sveinungs Tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.Tool2" proto_tool_class="Tool2">
+  <description></description>
+</tool>

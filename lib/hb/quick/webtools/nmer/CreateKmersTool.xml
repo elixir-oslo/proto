@@ -1,0 +1,4 @@
+<tool id="hb_create_kmers_tool" name="Create kmers tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.nmer.CreateKmersTool" proto_tool_class="CreateKmersTool">
+  <description></description>
+</tool>

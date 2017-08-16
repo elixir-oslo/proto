@@ -1,0 +1,4 @@
+<tool id="hb_validate_history_items" name="Validate history items" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.export.ValidateHistoryItems" proto_tool_class="ValidateHistoryItems">
+  <description></description>
+</tool>

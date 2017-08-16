@@ -1,0 +1,4 @@
+<tool id="hb_add_test_tool" name="Add test tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.AddTestTool" proto_tool_class="AddTestTool">
+  <description></description>
+</tool>

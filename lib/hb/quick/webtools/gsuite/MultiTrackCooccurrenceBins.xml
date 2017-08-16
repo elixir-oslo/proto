@@ -1,0 +1,4 @@
+<tool id="hb_multi_track_cooccurrence_bins" name="Determine regions where GSuite tracks co-occur more strongly" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.MultiTrackCooccurrenceBins" proto_tool_class="MultiTrackCooccurrenceBins">
+  <description></description>
+</tool>

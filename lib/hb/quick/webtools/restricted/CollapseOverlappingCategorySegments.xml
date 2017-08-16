@@ -1,0 +1,4 @@
+<tool id="hb_collapse_overlapping_category_segments" name="Collapse overlapping category segments" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.CollapseOverlappingCategorySegments" proto_tool_class="CollapseOverlappingCategorySegments">
+  <description></description>
+</tool>

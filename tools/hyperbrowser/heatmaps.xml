@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<tool tool_type="hyperbrowser" name="View heatmaps" id="hb_heatmaps">
+	
+	<description></description>
+	
+	<command></command>
+	
+	<display>$GALAXY_URL $tool_id</display>
+	
+	<inputs action="/hyper" check_values="false" method="get">
+		<param name="GALAXY_URL" type="baseurl" value="/tool_runner" />
+		<param name="tool_id" type="hidden" value="hb_heatmaps" />
+		<param name="mako" type="hidden" value="heatmaps" />
+	</inputs>
+    <uihints minwidth="800"/>  
+			
+</tool>
+

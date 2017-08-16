@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<tool id="hb_targetcontrol" name="Create target-control track">
+	<description></description>
+	<command interpreter="python">
+        targetcontrol.py $target $control $output
+	</command>	
+	<inputs>
+        <param format="bed" name="target" type="data" label="Target" help="Target track from history (bed-format)" />
+        <param format="bed" name="control" type="data" label="Control" help="Control track from history (bed-format)" />
+
+        <param name="dbkey" type="select" help="Choose genome build" label="Genome">
+            <option value="hg18">Human Mar. 2006 (hg18/NCBI36)</option>
+            <option value="ce6" >C. elegans (ce6)</option>
+            <option value="dm3" >Drosophila melanogaster Apr. 2006 (BDGP R5/dm3)</option>
+            <option value="hg17" >Human May 2004 (hg17/NCBI35)</option>
+            <option value="hg19" >Human Feb. 2009 (hg19/GRCh37)</option>
+            <option value="mm8" >Mouse Feb. 2006 (mm8)</option>
+            <option value="mm9" >Mouse July 2007 (mm9)</option>
+            <option value="Pbar_UMD_V03" >Pogonomyrmex barbatus (UMD_v03)</option>
+            <option value="phagelambda" >Enterobacteria phage lambda (NC_001416)</option>
+            <option value="rn4" >Rat Nov. 2004 (Baylor 3.4/rn4) </option>
+            <option value="sacCer1" >Saccharomyces cerevisiae June 2009 (SGD1.01)</option>
+            <option value="TestGenome" >TestGenome</option>
+        </param>
+	
+      </inputs>
+	<help>
+Target/control (or case/control) tracks are valued segments (or points) with a binary value (0 or 1).
+A mark of 1 means that the segments belong to the case group, and 0 means control. You can create such tracks with this tool.
+
+-----
+
+Just select a track from the history containing the case segments, and another track containing the case segments, select the genome, and click 
+Execute. A new history element with the track in target/control format appears. This track can then be imported to
+The Genomic Hyperbrowser. New analyses that are particular to such tracks may then appear. 
+
+-----
+
+N.B. All tracks must be in BED format.
+	</help>
+        
+	<outputs>
+		<data format="targetcontrol.bedgraph" name="output" />
+	</outputs>
+
+
+</tool>

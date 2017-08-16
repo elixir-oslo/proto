@@ -1,0 +1,4 @@
+<tool id="hb_exam_data_edit_tool" name="Exam data edit tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ExamDataEditTool" proto_tool_class="ExamDataEditTool">
+  <description></description>
+</tool>

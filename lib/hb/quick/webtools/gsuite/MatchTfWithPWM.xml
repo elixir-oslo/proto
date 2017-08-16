@@ -1,0 +1,4 @@
+<tool id="hb_match_tf_with_pwm_tool" name="Match a suite of TFs with PWMs" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.MatchTfWithPWM" proto_tool_class="MatchTfWithPWM">
+  <description></description>
+</tool>

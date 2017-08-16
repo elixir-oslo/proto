@@ -1,0 +1,4 @@
+<tool id="hb_tonys_tool" name="Tonys tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.TonysTool" proto_tool_class="TonysTool">
+  <description></description>
+</tool>

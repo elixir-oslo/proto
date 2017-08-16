@@ -1,27 +1,10 @@
-# Copyright (C) 2009, Geir Kjetil Sandve, Sveinung Gundersen and Morten Johansen
-# This file is part of The Genomic HyperBrowser.
-#
-#    The Genomic HyperBrowser is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    The Genomic HyperBrowser is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with The Genomic HyperBrowser.  If not, see <http://www.gnu.org/licenses/>.
-#
-
 import sys
-#from gold.application.GalaxyInterface import GalaxyInterface
 from collections import OrderedDict
-from hyper_gui import load_input_parameters, SelectElement, \
-                      GalaxyWrapper, getDataFilePath
-from config import Config
 from urllib import unquote
+from proto.hyper_gui import load_input_parameters, SelectElement, \
+                      GalaxyWrapper, getDataFilePath
+from proto.config import Config
+
 
 class BaseToolController(object):
     def __init__(self, trans = None, job = None):
@@ -71,7 +54,6 @@ class BaseToolController(object):
         return [(gb[1], gb[0], False) for gb in self.transaction.app.genome_builds.get_genome_build_names()]
     
     def _getAllGenomes(self):
-        #return [('----- Select -----', '', False)] + GalaxyInterface.getAllGenomes(self.galaxy.getUserName())
         return [('----- Select -----', '', False)] + self._getGalaxyGenomes()
         
     def getGenomeElement(self, id='dbkey', genomeList = None):    
@@ -87,26 +69,11 @@ class BaseToolController(object):
             return self.params.get('dbkey')
         elif self.params.has_key(id):
             self.params['dbkey'] = self.params.get(id)
-#        return self.params.get('dbkey', self._getAllGenomes()[0][1])
-        return self.params.get('dbkey')
+        return self.params.get('dbkey', self._getAllGenomes()[0][1])
+#        return self.params.get('dbkey')
 
     def getDictOfAllGenomes(self):
         return OrderedDict([(x[0],False) for x in self._getAllGenomes()[1:]])
-        
-    def getTrackElement(self, id, label, history=False, ucsc=False, tracks=None):
-        datasets = []
-        if history:
-            try:
-                datasets = self.galaxy.getHistory(GalaxyInterface.getSupportedGalaxyFileFormats())
-            except Exception, e:
-                print e
-        element = TrackWrapper(id, GalaxyInterface, [], self.galaxy, datasets, self.getGenome(), ucscTracks=ucsc)
-        if tracks is not None:
-            element.tracks = tracks
-        else:
-            element.fetchTracks()
-        element.legend = label
-        return element
 
     def getDataFilePath(self, id):
         if hasattr(self, 'galaxy'):

@@ -1,0 +1,4 @@
+<tool id="hb_replace_segments_with_border_points" name="Replace segments with border points" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.ReplaceSegmentsWithBorderPoints" proto_tool_class="ReplaceSegmentsWithBorderPoints">
+  <description></description>
+</tool>

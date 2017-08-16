@@ -1,0 +1,4 @@
+<tool id="hb_filter_track_based_on_overlap" name="Filter track based on overlap with other track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.FilterTrackBasedOnOverlap" proto_tool_class="FilterTrackBasedOnOverlap">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_complement_track_element_information" name="Complement GTrack columns" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gtrack.ComplementTrackElementInformation" proto_tool_class="ComplementTrackElementInformation">
+  <description></description>
+</tool>

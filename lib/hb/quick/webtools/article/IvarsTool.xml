@@ -1,0 +1,4 @@
+<tool id="hb_ivars_tool" name="Ivars tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.article.IvarsTool" proto_tool_class="IvarsTool">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_pilot_page_similarity_and_uniqueness_of_tracks_tool" name="Similarity and uniqueness of tracks in GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.PilotPageSimilarityAndUniquenessOfTracksTool" proto_tool_class="PilotPageSimilarityAndUniquenessOfTracksTool">
+  <description></description>
+</tool>

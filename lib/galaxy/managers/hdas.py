@@ -398,7 +398,24 @@ class HDASerializer(  # datasets._UnflattenedMetadataDatasetAssociationSerialize
                 if app_links:
                     display_apps.append( dict( label=display_label, links=app_links ) )
 
+        self._append_hyperbrowser_link(display_apps, trans, hda)
+
         return display_apps
+
+    def _append_hyperbrowser_link(self, display_apps, trans, hda):
+        """
+        Adds a link that opens a Hyperbrowser analysis on the dataset
+        """
+        from gold.application.DataTypes import getSupportedFileSuffixes
+        if hda.extension in getSupportedFileSuffixes():
+            from galaxy.web import url_for
+            from proto.config.Security import galaxySecureEncodeId
+            encoded_id = galaxySecureEncodeId(hda.dataset_id)
+            hb_url = dict( label="analyze in", links=[dict(text='HyperBrowser', target='galaxy_main',
+                                                             href=url_for(controller='hyper', mako='analyze', track1='galaxy', track1file=','.join(('galaxy',encoded_id,hda.extension)),
+                                                                          dbkey=hda.dbkey, analysis='Overview of segment properties', track2='')
+                                                             )] )
+            display_apps.append(hb_url)
 
     def serialize_visualization_links( self, hda, key, trans=None, **context ):
         """

@@ -1,0 +1,4 @@
+<tool id="hb_collapse_into_union_regions_for_each_category" name="Collapse into union regions for each category" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.CollapseIntoUnionRegionsForEachCategory" proto_tool_class="CollapseIntoUnionRegionsForEachCategory">
+  <description></description>
+</tool>

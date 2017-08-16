@@ -1,0 +1,4 @@
+<tool id="hb_exam_data_concatenate_tool" name="Exam data concatenate tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ExamDataConcatenateTool" proto_tool_class="ExamDataConcatenateTool">
+  <description></description>
+</tool>

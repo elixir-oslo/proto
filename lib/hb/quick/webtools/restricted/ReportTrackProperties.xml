@@ -1,0 +1,4 @@
+<tool id="hb_report_track_properties" name="Generate track summary" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ReportTrackProperties" proto_tool_class="ReportTrackProperties">
+  <description></description>
+</tool>

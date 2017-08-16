@@ -1,0 +1,4 @@
+<tool id="hb_convert_to_linked_valued_segments" name="Standardize GTrack file" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gtrack.ConvertToLinkedValuedSegments" proto_tool_class="ConvertToLinkedValuedSegments">
+  <description></description>
+</tool>

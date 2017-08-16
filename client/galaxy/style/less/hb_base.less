@@ -1,0 +1,313 @@
+@import "hb_variables.less";
+
+.explanation {
+    padding: 5px;
+    margin: 10px;
+    background-image: none;
+}
+
+div.answerbox {
+    margin-bottom: 10px;
+    background-image: none;
+}
+
+div.question {
+    background-color: @question;
+}
+
+div.simplisticanswer {
+	padding: 5px;
+    background-color: @simplisticanswer;
+}
+
+div.preciseanswer {
+	padding: 5px;
+    background-color: @preciseanswer;
+}
+
+div.resultsbox {
+    background-color: @resultsbox;
+}
+
+.break-word {
+    word-wrap: break-word;
+}
+
+table {
+    font-size: inherit;
+}
+
+td {
+    white-space: normal;
+}
+
+.question {
+    padding: 5px;
+    min-height: 15px;
+    border-color: @info_message_border;
+    background-color: @info_message_bg;
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+}
+
+.run_description_link {
+    padding-left: 20px;
+    min-height: 16px;
+    background: url(info_small.png) no-repeat;
+    font-weight: bold;
+}
+
+.largefont {
+    font-size: 14px;
+}
+
+
+// GSuiteTools additions
+
+#toolGuideInfo .toolGuideInfoText {
+font-size:11pt;
+color:#282828;
+}
+
+#toolGuideInfo .toolGuideInfoText .toolGuideInfoText{
+padding:10px 0px;
+}
+
+#toolGuideInfo .toolGuideInfoText .toolGuideInfoTextHeader{
+text-transform: uppercase;
+font-weight:bold;
+font-size:12pt;
+}
+
+#toolGuide {
+display:block;
+width:98.5%;
+padding:0px 5px 5px 5px;
+margin-bottom:10px;
+border:1px dotted #B39162;
+color:#4D4D4D;
+background-color:#FFCF8C;
+}
+#toolGuide .toolGuideData{
+margin-bottom:10px;
+padding:5px 5px 10px 5px;
+}
+#toolGuide h3{
+margin-top:10px;
+}
+#toolGuide .toolGuideImgTitle {
+display: block;
+width:100%;
+clear:both;
+}
+#toolGuide .toolGuideImgTitle img{
+margin-right:10px;
+float:left;
+width:25px;
+}
+#toolGuide .toolGuideImgTitle a	{
+font-weight:bold;
+color:#006400;
+text-decoration:None;
+float:left;
+padding-top:5px;
+text-decoration:None;
+}
+#toolGuide .toolGuideData:hover{
+    background-color: #E8E8E8;
+}
+#toolGuide .toolGuideData:active {
+    background-color: #ffffff;
+}
+
+#toolGuide .toolGuideImgTitle a:hover{
+color:#262626;
+text-decoration: underline;
+}
+#toolGuide .toolGuideDesc {
+display:block;
+padding-top:30px;
+}
+#toolGuide .toolGuideDesc a{
+font-weight:bold;
+text-decoration:None;
+color: 	#787D80;
+}
+#toolGuide .toolGuideDesc a:hover{
+color: 	#262626;
+text-decoration: underline;
+}
+
+#isBasic {
+  display: none;
+}
+
+table.progress{
+	border-style: none;
+}
+
+table tr.progressRow{
+	border-style: solid;
+}
+
+table tr td.progressCellDone{
+	width: 20px;
+	background: @progress_bar_dark_green;
+}
+
+table tr td.progressCell{
+	width: 20px;
+}
+
+.analysis-info{
+	border-radius: 15px;
+    border: 1px dashed;
+    padding: 5px;
+    background-color: lightgoldenrodyellow;
+    font-size: 14px;
+}
+
+div.svs-res-section{
+    padding: 10px;
+    margin: 5px 5px 30px 5px;
+    background-color:@results_page_level1;
+    border: 1px dotted @results_page_level1d;
+}
+
+div.svs-res-section a{
+    font-weight: bold;
+}
+
+div.svs-res-main{
+    padding: 10px;
+}
+
+div.svs-table-div{
+	margin-left:20px;
+}
+
+div.svs-table-div h3{
+	margin-left: -20px;
+	border-bottom: 2px solid @welcome_dark_blue;
+	padding-bottom: 5px;
+	text-transform: uppercase;
+	color: @welcome_dark_blue;
+}
+
+div.svs-heatmap-div{
+	margin-left:20px;
+}
+
+div.result-div{
+    border: 1px dotted @welcome_dark_blue;
+	padding: 10px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+
+div.result-div-heatmap{
+    border: 1px dotted @welcome_dark_green_link;
+	padding: 10px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+div.result-div-left{
+	float:left;
+	width:50%;
+}
+
+div.result-div-right{
+	float:left;
+	width:45%;
+}
+
+#results-page{
+	background-color: @welcome_desc;
+	color:@results_page_color;
+	padding: 10px 0px;
+	min-width:99%;
+	min-height:100%;
+	position:absolute;
+}
+#results-page h3{
+	text-transform: uppercase;
+	color: @welcome_dark_blue;
+	border-bottom: 2px solid @welcome_dark_blue;
+	padding-bottom: 5px;
+	padding-top: 10px;
+}
+
+#results-page a:hover{
+	color: @welcome_dark_blue;
+}
+
+div.results-section{
+    padding: 10px;
+    margin: 5px 5px 30px 5px;
+    background-color: @welcome_history;
+    border: 1px dotted @results_page_level1d;
+
+}
+
+table.colored tr.header, table.colored th.header {
+    background: @welcome_historyBG;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: top;
+    border-bottom: solid @table_border 1px;
+    font-weight: bold;
+    color: @welcome_history;
+	a {
+		color: @welcome_history;
+	}
+}
+
+#decription-page{
+	background-color: @description;
+}
+.decription-section{
+	border: dotted @results_page_level1d 1px;
+	padding:10px;
+}
+
+.decription-section h3{
+	border-bottom: 1px dotted @results_page_level1d;
+	color: @welcome_dark_blue;
+	padding-bottom: 5px;
+}
+
+.decription-section-main{
+	background-color: @results_page_level1;
+	padding:2px 5px;
+}
+
+
+.toolFormTitle{
+	border-bottom: dotted @results_page_level1d 1px;
+}
+
+div.toolForm{
+	border: dotted @results_page_level1d 1px;
+}
+
+h3 {
+	font-size: 14px;
+}
+
+h3:first-child {
+	margin-top: 0px;
+}
+
+p, .errormessage>p, .warningmessage>p, .donemessage>p, .infomessage>p,
+.errormessagesmall>p, .warningmessagesmall>p, .donemessagesmall>p,
+.infomessagesmall>p, .error>p, .warning>p, .note>p
+{
+	margin: 12px 0 12px;
+}
+
+hr {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}

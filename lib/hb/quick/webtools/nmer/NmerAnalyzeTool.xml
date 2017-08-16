@@ -1,0 +1,4 @@
+<tool id="hb_nmer_analyze" name="Analyze k-mer occurrences" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.nmer.NmerAnalyzeTool" proto_tool_class="NmerAnalyzeTool">
+  <description></description>
+</tool>

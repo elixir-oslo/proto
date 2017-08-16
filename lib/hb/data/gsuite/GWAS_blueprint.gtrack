@@ -1,0 +1,7 @@
+##track type: valued points
+##value column: pvalue_mlog
+##1-indexed: true
+##end inclusive: true
+###date_added_to_catalog	pubmedid	first_author	date	journal	link	study	initial_sample_size	replication_sample_size	region	seqid	start	reported_gene(s)	mapped_gene	upstream_gene_id	downstream_gene_id	snp_gene_ids	upstream_gene_distance	downstream_gene_distance	strongest_snp_risk_allele	snps	merged	snp_id_current	context	intergenic	risk_allele_frequency	p_value	pvalue_mlog	p_value_(text)	or_or_beta	95%_ci_(text)	platform_[snps_passing_qc]	cnv
+2009-09-28	18403759	Ober C	2008-04-09	N Engl J Med	www.ncbi.nlm.nih.gov/pubmed/18403759	Effect of variation in CHI3L1 on serum YKL-40 level, risk of asthma, and lung function.	632 Hutterite individuals	443 European ancestry cases, 491 European ancestry controls, 206 European ancestry individuals	1q32.1	1	203186754	CHI3L1	CHI3L1	.	.	1116	.	.	rs4950928-G	rs4950928	.	4950928	upstream_gene_variant	0	0.29	1.0E-13	13.0	.	0.3	[NR] ng/ml decrease	Affymetrix [290325]	N
+

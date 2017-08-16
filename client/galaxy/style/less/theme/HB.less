@@ -1,0 +1,105 @@
+@import "../hb_variables.less";
+
+// mojo: for gradient macro
+//@import "../bootstrap.less";
+
+// Override Galaxy styles
+// !important directive needed to override
+
+a {
+	text-decoration: underline;
+}
+
+a:not([href]) {
+	text-decoration: none;
+}
+
+.state-icon-error {
+    &:before {
+        color: #C05323 !important; //CC750D
+    }
+}
+
+.current-history-panel {
+    .list-item.history-content.current-content.state-ok {
+        border-left: 5px solid #4A9900 !important;
+    }
+    .list-item.history-content.current-content.state-error {
+        border-left: 5px solid #995800 !important;
+    }
+    .list-item.history-content.current-content.state-running {
+        border-left: 5px solid #999500 !important;
+    }
+}
+
+// override size of logo image for HB
+#masthead .navbar-brand-image {
+    width: auto !important;
+    margin-right: 10px;
+}
+
+#masthead .navbar-brand {
+    font-size: 11px !important;
+    line-height: 30px !important;
+    color: #FFF;
+}
+
+#masthead .navbar-brand-title a {
+    //font-size: 11px;
+    color: #CCC !important;
+}
+
+#masthead .navbar-header {
+    right: 0 !important;
+    float: right !important;
+    .navbar-tabs {
+        right: 15% !important;
+    }
+}
+
+
+#right > div.unified-panel-body {
+	background-color: @side-panel-bg !important;
+}
+
+div.toolFormTitle {
+	font-weight: bold !important;
+}
+
+.toolForm > .toolFormBody {
+	padding: 10px;
+}
+
+table.colored th.header {
+	//background: url('form_title_bg.png') repeat-x scroll center top / auto 100% #FFE899;
+	border-bottom: 1px solid #CC9E00;
+}
+
+table.bordered td, table.bordered th {
+    font-size: inherit;
+    border: 1px solid #CC9E00;
+}
+
+legend {
+    font-size: @font-size-base;
+    margin-bottom: 4px;
+    width: auto;
+    padding: 2px;
+    border-bottom: 0;
+}
+
+fieldset {
+    border: 1px solid #C0C0C0;
+    padding: 4px;
+    margin-bottom: 4px;
+}
+
+div.debug {
+    font-size: 90%;
+    font-family: monospace;
+    white-space: pre;
+}
+
+
+// HyperBrowser styles that depends on galaxy_variables.less
+

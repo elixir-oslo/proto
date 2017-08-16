@@ -1,0 +1,4 @@
+<tool id="hb_mcfdr_exploration_tool" name="MCFDR exploration tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.McfdrExplorationTool" proto_tool_class="McfdrExplorationTool">
+  <description></description>
+</tool>

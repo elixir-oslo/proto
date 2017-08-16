@@ -1,0 +1,497 @@
+@import "bootstrap.less";
+@import "galaxy_variables.less";
+@import "hb_variables.less";
+
+h3 {
+	font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+p {
+	margin: 12px 0 12px;
+}
+
+body  {
+    font: 130% verdana, "Bitstream Vera Sans", geneva, arial, helvetica, helve, sans-serif;
+    background: @welcome_bg_bottom;
+    color: @welcome_text;
+    background-image: url(welcome_bg.png);
+    background-repeat: repeat-x;
+    background-position: top;
+    padding: 10px;
+    margin: 8px;
+}
+
+div.section {
+    vertical-align: middle;
+    padding: 20px;
+}
+
+p.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    padding: 5px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.gsuiteinfobox, .gsuitebox, .maininfobox, .detailsbox, .noticebox {
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    padding: 20px;
+    min-height: 32px;
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    border: 1px solid @info_message_border;
+    border-color: @info_message_border;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.gsuitebox {
+    background-color: @light_logo_color
+}
+
+.gsuiteinfobox{
+    background-color: @light_logo_color
+}
+
+.maininfobox {
+    background-color: @light_logo_color;
+}
+
+.noticebox {
+    background-color: @info_message_bg;
+}
+
+.detailsbox {
+    background-color: @lighter_logo_color;
+}
+
+.topheader {
+    font-size: 140%;
+    font-weight: bold;
+    border-bottom:1px dotted @welcome_div_border;
+}
+
+.overview {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.overview_subtitle{
+    font-size:75%;
+    font-weight:italic;
+}
+
+.figuretext {
+    font-size: 90%;
+    font-weight: bold;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.centertext {
+    text-align: center;
+}
+
+td {
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.compile_node_remote {
+    height:128px !important;
+    width:86px;
+}
+
+.compile_node_fetch {
+    height:128px !important;
+    width:86px;
+}
+
+.compile_node_history {
+    height:64px !important;
+    width:176px;
+}
+
+.compile_node_hb {
+    height:64px !important;
+    width:176px;
+}
+
+.customize_node {
+    height:216px !important;
+    width:118px;
+}
+
+.prepare_node {
+    height:90px !important;
+    width:118px;
+}
+
+.analyse_node {
+    height:440px !important;
+    width:118px;
+}
+
+p.inner_title   {
+    margin: 6px 0 0 0;
+}
+
+
+// Welcome page
+
+
+div.main {
+	background-color:@light_logo_color;
+	padding:10px;
+}
+
+div.main h2{
+	border-bottom:1px dotted @welcome_div_border;
+}
+
+div.basic {
+	background-color:@light_logo_color;
+	padding: 0px 10px;
+}
+div.basic:hover {
+	color:@welcome_div_color_mouseover;
+        cursor:pointer;
+}
+div.basic h2{
+	padding-top: 10px;
+	border-bottom:1px dotted @welcome_div_border;
+}
+div.basic p{
+	padding-bottom: 10px;
+}
+div.advanced {
+	background-color:@light_logo_color;
+	padding: 0px 10px;
+}
+div.advanced:hover {
+	color:@welcome_div_color_mouseover;
+        cursor:pointer;
+}
+div.advanced h2{
+	padding-top: 10px;
+	border-bottom:1px dotted @welcome_div_border;
+}
+div.advanced p{
+	padding-bottom: 10px;
+}
+
+div.question {
+  background-color:#FBDF6E;
+  border:1px dotted #333333;
+  margin:4px 0px 4px 16px;
+  padding:5px;
+}
+div.question:hover {
+    cursor:pointer;
+    color:@welcome_div_color_mouseover;
+}
+
+div.question img{
+  vertical-align:middle;
+}
+
+div.question-wrapper{
+    cursor:pointer;
+    background-color:@light_logo_color;
+    border:1px dotted @welcome_div_border;
+    padding:5px;
+    margin-top:10px;
+}
+
+div.answer{
+  background-color:#EAE6D8;
+  display:none;
+  margin:4px 16px 4px 32px;
+  padding:5px;
+}
+
+div.answer-wrapper{
+/*	background-color:$light_logo_color;*/
+	display:none;
+/*	margin-left: 16px;
+        padding:5px;*/
+}
+
+div.question-wrapper img{
+  vertical-align:middle;
+}
+
+div.question-wrapper span{
+  vertical-align:middle;
+}
+
+div.infoBox{
+  display:block;
+  background-color:#dad4c0;
+  border:1px dotted #000000;
+  padding: 10px 10px 10px;
+  margin-left: 20px;
+  margin-top: -15px;
+}
+
+div.contact {
+	background-color:@light_logo_color;
+	padding:10px;
+        margin-top:10px;
+}
+div.contact p{
+	border:1px dotted @welcome_div_border;
+	padding:5px;
+}
+
+
+div.track-gsuite{
+    background-color:@light_logo_color;
+    border:1px dotted @welcome_div_border;
+    padding:5px;
+    margin-top:10px;
+}
+
+div.gsuite-db{
+    background-color:@light_logo_color;
+    margin-top:10px;
+    border:1px dotted @welcome_div_border;
+    padding:5px;
+}
+
+div.gsuite{
+    background-color:@light_logo_color;
+    margin-top:10px;
+    border:1px dotted @welcome_div_border;
+    padding:5px;
+}
+
+div.gsuite-gsuite{
+    background-color:@light_logo_color;
+    margin-top:10px;
+    border:1px dotted @welcome_div_border;
+    padding:5px;
+}
+
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+.tab-links{
+    margin:0px;
+    padding:0px;
+}
+.tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+.tab-links li {
+    margin:0px 5px 0px 0px;
+    float:left;
+    list-style:none;
+}
+
+.tab-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:3px 3px 0px 0px;
+    border-top:1px solid @light_logo_color;
+    border-left:1px solid @light_logo_color;
+    border-right:1px solid @light_logo_color;
+    font-size:12px;
+    font-weight:600;
+    color:@welcome_tab_li;
+    transition:all linear 0.15s;
+    text-decoration:none;
+}
+
+.tab-links a:hover {
+    background-color:@lighter_logo_color;
+    text-decoration:none;
+    color:@welcome_div_border;
+}
+
+li.active a, li.active a:hover {
+    background-color:@light_logo_color;
+    color:@welcome_div_border;
+}
+
+.tab-content {
+}
+
+.tab {
+    display:none;
+}
+
+.tab.active {
+    display:block;
+}
+
+.tab4collectionTitle{
+	cursor:pointer;
+    background-color:@light_logo_color;
+    border:1px dotted @welcome_div_border;
+    padding:25px 10px;
+    margin-top:10px;
+}
+
+.tab4collectionDesc{
+	background-color: @welcome_desc;
+	display: none;
+	margin: 4px 0px 4px 0px;
+	padding: 20px 10px;
+}
+
+.tab4collectionDescDetails{
+	padding-bottom:10px;
+}
+
+.welcomeAnalysisSteps{
+	border-bottom: 1px dotted @welcome_black;
+	color: @welcome_dark_blue;
+	padding-bottom: 5px;
+}
+
+.welcomeAnalysisDetails{
+	border-bottom: 1px dotted @welcome_black;
+	color: @welcome_dark_blue;
+	padding-bottom: 5px;
+
+}
+
+.tab4collectionTitle:hover {
+	background-color: @lighter_logo_color;
+}
+
+.analysisSteps a {
+	color: @welcome_dark_green_link;
+}
+.analysisSteps a:hover {
+	color: @welcome_light_blue_link;
+}
+
+
+.sliding{
+	background-color: @welcome_historyBG;
+	padding:20px;
+	margin-top:10px;
+	border:1px dotted @lighter_logo_color;
+	color:@welcome_history;
+}
+.show_hide
+{
+	padding: 10px 20px;
+	cursor:pointer;
+	background-color:@light_logo_color;
+    border:1px dotted @welcome_div_border;
+}
+.show_hide:hover
+{
+	background-color:@lighter_logo_color;
+}
+
+.welcomeAnalysisDetailsV2{
+    border-bottom: 1px dotted @welcome_black;
+	color: @welcome_dark_blue;
+	padding-bottom: 5px;
+	font-size:14px;
+	font-weight:bold;
+	padding-top:15px;
+	margin: 10px 0;
+}
+
+.welcomeAnalysisDetailsV2V2{
+    color: @welcome_dark_blue;
+	padding-bottom: 5px;
+	font-size:14px;
+	font-weight:bold;
+	padding-top:15px;
+	margin: 10px 0px 5px 10px;
+
+}
+
+.imgBackground{
+    float:left;
+}
+
+.tableEx {
+width: 100%;
+}
+
+table.tableEx  {
+    width: 100%;
+    margin-bottom:20px;
+}
+.tableEx th {
+    background-color:@welcome_historyBG;
+    color:@welcome_history;
+}
+
+.tableEx th, .tableEx td {
+    border-bottom: 1px dotted @light_logo_color;
+    padding:10px;
+    text-align:center;
+}
+
+
+.tab4collectionDescDetailsV2{
+	margin-left:20px;
+}
+
+.tab4collectionDescDetailsV3{
+	margin-left:10px;
+	padding:10px;
+	background-color:@lighter_logo_color;
+}
+
+.tab4collectionDescDetailsDesc{
+    color:@welcome_dark_blue;
+    padding-bottom:10px;
+    padding-top:10px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.tab4collectionDescDetailsV4{
+	margin-left:10px;
+}
+
+.tab4collectionDescDetails_history{
+    background-color:@welcome_history;
+    margin-left:20px;
+    padding:10px;
+}
+.tab4collectionDescDetails_historyV2{
+    background-color:@welcome_history;
+    padding:10px;
+}
+.tab4collectionDescDetails_historyV3{
+    padding-top:10px;
+    border-top: 2px solid @welcome_dark_blue;
+}
+
+// Hacks
+
+a.codedirection {
+    white-space: nowrap;
+    unicode-bidi:bidi-override;
+    direction: rtl;
+}

@@ -98,3 +98,7 @@ class ToolTemplate(GeneralGuiTool):
     # @classmethod
     # def getOutputFormat(cls, choices):
     #     return 'html'
+    #
+    # @classmethod
+    # def getOutputName(cls, choices=None):
+    #     return cls.getToolSelectionName()

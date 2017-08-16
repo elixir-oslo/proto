@@ -1,0 +1,4 @@
+<tool id="hb_find_monomer_repeats_for_fasta_g_suite_tool" name="Find repeat regions for each FASTA track in a GSuite with the Tandem Repeat Finder tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="proto.tools.hyperbrowser.gsuite.FindMonomerRepeatsForFastaGSuiteTool" proto_tool_class="FindMonomerRepeatsForFastaGSuiteTool">
+  <description></description>
+</tool>

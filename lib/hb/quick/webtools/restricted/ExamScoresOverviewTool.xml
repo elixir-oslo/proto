@@ -1,0 +1,4 @@
+<tool id="hb_exam_scores_overview_tool" name="Exam scores overview tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ExamScoresOverviewTool" proto_tool_class="ExamScoresOverviewTool">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_filter_history_element_on_cohosen_values" name="Filter history element on chosen values" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.FilterHistoryElementOnCohosenValues" proto_tool_class="FilterHistoryElementOnCohosenValues">
+  <description></description>
+</tool>

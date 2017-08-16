@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<tool id="hb_custom" name="Create custom track">
+	<description></description>
+	<command interpreter="python">
+custom_track.py $dbkey '$out_track' '$window' '$function' $output
+	</command>	
+	<inputs>
+
+	<param name="out_track" size="50" type="text" value="" label="Track name"/>
+        
+				<param name="window" size="20" type="text" value="*" help="">
+					<label>Window size</label>
+				</param>
+
+				<param name="function" type="text" area="true" size="10x100" value="" help="">
+					<label>Function</label>
+				</param>
+        
+        
+        <param name="dbkey" type="select" help="Choose genome build" label="Genome">
+          <option value="hg18">Human Mar. 2006 (hg18/NCBI36)</option>
+          <option value="sacCer1" >S. cerevisiae Oct. 2003 (sacCer1)</option>
+        </param>
+	
+      </inputs>
+	<outputs>
+		<data format="customtrack" name="output" />
+	</outputs>
+
+</tool>

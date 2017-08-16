@@ -1,0 +1,4 @@
+<tool id="hb_compile_gsuite_from_single_track_attribute_tool" name="Create a GSuite from a single track based on a single column/attribute" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.CompileGSuiteFromSingleTrackAttributeTool" proto_tool_class="CompileGSuiteFromSingleTrackAttributeTool">
+  <description></description>
+</tool>

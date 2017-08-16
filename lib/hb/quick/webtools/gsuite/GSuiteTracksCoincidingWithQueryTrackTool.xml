@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_tracks_coinciding_with_query_track_tool" name="Determine GSuite tracks coinciding with a target track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteTracksCoincidingWithQueryTrackTool" proto_tool_class="GSuiteTracksCoincidingWithQueryTrackTool">
+  <description></description>
+</tool>

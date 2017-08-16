@@ -1,0 +1,4 @@
+<tool id="hb_variant_melting_profiles" name="Variant melting profiles" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.VariantMeltingProfile" proto_tool_class="VariantMeltingProfile">
+  <description></description>
+</tool>

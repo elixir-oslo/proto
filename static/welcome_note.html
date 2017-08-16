@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<meta http-equiv="expires" content="Wed, 19 Feb 2003 08:00:00 GMT">
+<title></title>
+<link rel="stylesheet" href="style/welcome.css" type="text/css" />
+
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+
+        <script type="text/javascript">
+            var q = jQuery.noConflict();
+            q(document).ready(function() { 
+                q( "a[minsizehint]" ).click( function() {
+                    if ( parent.handle_minwidth_hint ) {
+                        parent.handle_minwidth_hint( q(this).attr( "minsizehint" ) );
+                    }
+                });
+            });
+        </script>
+		<script src="scripts/jquery_wz_jsgraphics.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div class="document">
+    <div class="main">
+	<div class="gsuiteinfobox">
+		<p style="font-size: 9px; align:left; margin:1px"><a href="welcome.html?tabOn=tab3">&lt;&lt;Back to main</a></p>
+		<b>
+			Note on GSuite variants
+		</b>
+		<p>
+			Gsuite files come in three variants:
+			<ul>
+			<li>
+			- <b>Remote GSuite:</b> when compiling from external databases, the resulting GSuite will essentially be a list of URLs to files on external servers. One can also manually construct a remote GSuite as a simple text file of URLs to remote files. Before working on this data, the files need to be downloaded to the local server (to achieve a local textual GSuite).
+			</li>
+			<li>
+			- <b>Local textual GSuite:</b> When compilling from history elements, the resulting GSuite will essentially be a list of references to textual files in the Galaxy history. Using the tool "Fetch remote GSuite datasets" also results in a GSuite of this variant (the tool will implicitly download the remote files to hidden local history elements to form the basis for this variant of GSuite). Such a GSuite can be used in tools that manipulate textual track files. Before analyzing the tracks, they need to be preprocessed (to achieve a local binary GSuite).
+			</li>
+			<li>
+			- <b>Local binary GSuite:</b>  When compiling from HyperBrowser repository, the resulting GSuite will essentially be a list of references to tracks in binary, indexed format at the server. Using the tool "Preprocess tracks in GSuite for analysis" also results in a GSuite of this variant (the tool will implicitly preprocess the tracks to binary format to form the basis for this variant of GSuite). Such a GSuite can be used in all the analysis tools, as well as some other tools that operate on preprocessed data.
+			</li>
+			</ul>
+		</p>
+	</div>
+    </div>
+</div>
+
+
+<div class="contact">
+
+    <b>Note:</b>
+    <p>
+    This is a specialized version of The Genomic Hyperbrowser,
+    focusing on new functionality for analyzing collections of genomic track.
+    More information on the general HyperBrowser functionality and project can be
+    found on the <a href="https://hyperbrowser.uio.no/hb/" target="_blank">main version</a> of the HyperBrowser.
+    </p>
+    <b>Contact information</b>
+    <p>
+    If you have any questions, requests or comments of any kind, please use our discussion forum, available from the <a minsizehint="-1" href="https://sites.google.com/site/hyperbrowserhelp/?tool_id=hb_help">Help</a> menu, or send an email to <a href="#" onclick="this.href='mailto:'+ this.innerHTML.split('').reverse().join('')" class="codedirection">on.oiu.tisu@stseuqer-resworbrepyh</a>&#x200E;. We are happy to respond. We especially encourage collaborative projects for further development. If you find any bugs, please send an email to
+  <a href="#" onclick="this.href='mailto:'+ this.innerHTML.split('').reverse().join('')" class="codedirection">on.oiu.tisu@sgub-resworbrepyh</a>.</p>
+    <p>If you register as a user, you will get the option to subscribe to the <a href="#" onclick="this.href='mailto:'+ this.innerHTML.split('').reverse().join('')" class="codedirection">on.oiu.tisu@ofni-resworbrepyh</a> mailing list. Here, we will send announcements and administrative messages for users of the system. A backlog of announcements is available from the Help menu. Citation info is also available from the Help menu.</p>
+
+</div>
+
+
+<p class="blocktext">
+This project is being developed by the Norwegian bioinformatics community as an open-source project under the GPL  license v3,
+supported by various national and local bodies.
+</p>
+<p class="blocktext">
+  For further info on Norwegian bioinformatics, see <a href="http://www.bioinfo.no">www.bioinfo.no</a>.
+</p>
+
+<div class="section">
+  <img src="hyperbrowser/images/logo/HB_support.png" class="center">
+</div>
+
+</body>

@@ -1,0 +1,4 @@
+<tool id="hb_query_track_coinciding_with_two_g_suites_tool" name="Single track coinciding more with one suite vs another suite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.QueryTrackCoincidingWithTwoGSuitesTool" proto_tool_class="QueryTrackCoincidingWithTwoGSuitesTool">
+  <description></description>
+</tool>

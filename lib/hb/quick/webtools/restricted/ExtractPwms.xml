@@ -1,0 +1,4 @@
+<tool id="hb_extract_pwms" name="Extract PWMs" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ExtractPwms" proto_tool_class="ExtractPwms">
+  <description></description>
+</tool>

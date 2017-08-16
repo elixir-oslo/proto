@@ -1,0 +1,4 @@
+<tool id="hb_extract_segments_by_thresholding" name="Extract segments where value is greater/less than threshold" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.manipulate.ExtractSegmentsByThresholding" proto_tool_class="ExtractSegmentsByThresholding">
+  <description></description>
+</tool>

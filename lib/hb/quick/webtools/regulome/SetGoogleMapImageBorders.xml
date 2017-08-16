@@ -1,0 +1,4 @@
+<tool id="hb_set_google_map_image_borders" name="Set google map image borders" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.regulome.SetGoogleMapImageBorders" proto_tool_class="SetGoogleMapImageBorders">
+  <description></description>
+</tool>

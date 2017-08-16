@@ -1,0 +1,4 @@
+<tool id="hb_create_category_based_on_treshold_intervals" name="Create category based on treshold intervals" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.CreateCategoryBasedOnTresholdIntervals" proto_tool_class="CreateCategoryBasedOnTresholdIntervals">
+  <description></description>
+</tool>

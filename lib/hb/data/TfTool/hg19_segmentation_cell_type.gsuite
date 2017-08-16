@@ -1,0 +1,12 @@
+##location: local
+##file format: preprocessed
+##track type: unknown
+###uri	title
+####genome=hg19
+hb:/Private/Antonio/Gm12878 cells/Segmentation/wgEncodeAwgSegmentationSegwayGm12878	wgEncodeAwgSegmentationSegwayGm12878
+hb:/Private/Antonio/H1hesc/Segmentation/wgEncodeAwgSegmentationSegwayH1hesc	wgEncodeAwgSegmentationSegwayH1hesc
+hb:/Private/Antonio/Helas3 cells/Segmentation/wgEncodeAwgSegmentationSegwayHelas3	wgEncodeAwgSegmentationSegwayHelas3
+hb:/Private/Antonio/Hepg2 cells/Segmentation/wgEncodeAwgSegmentationSegwayHepg2	wgEncodeAwgSegmentationSegwayHepg2
+hb:/Private/Antonio/Huvec cells/Segmentation/wgEncodeAwgSegmentationSegwayHuvec	wgEncodeAwgSegmentationSegwayHuvec
+hb:/Private/Antonio/K562 cells/Segmentation/ChromHMM Predictions	ChromHMM Predictions
+hb:/Private/Antonio/K562 cells/Segmentation/Segway Predictions	Segway Predictions

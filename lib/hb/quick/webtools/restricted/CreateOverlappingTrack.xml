@@ -1,0 +1,4 @@
+<tool id="hb_create_overlapping_track" name="Create overlapping track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.CreateOverlappingTrack" proto_tool_class="CreateOverlappingTrack">
+  <description></description>
+</tool>

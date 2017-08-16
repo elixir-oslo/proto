@@ -1,0 +1,4 @@
+<tool id="hb_add_tools_to_bookmark" name="Bookmark tools to your collection" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.AddToolsToBookmark" proto_tool_class="AddToolsToBookmark">
+  <description></description>
+</tool>

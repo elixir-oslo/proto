@@ -1,0 +1,4 @@
+<tool id="hb_track_vs_collection_analysis" name="Screen track against a track collection" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.TrackVsCollectionAnalysisTool" proto_tool_class="TrackVsCollectionAnalysisTool">
+  <description></description>
+</tool>

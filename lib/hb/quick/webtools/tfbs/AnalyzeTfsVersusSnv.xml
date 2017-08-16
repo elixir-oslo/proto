@@ -1,0 +1,4 @@
+<tool id="hb_analyze_tfs_versus_snv" name="Analyze tfs versus snv" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.tfbs.AnalyzeTfsVersusSnv" proto_tool_class="AnalyzeTfsVersusSnv">
+  <description></description>
+</tool>

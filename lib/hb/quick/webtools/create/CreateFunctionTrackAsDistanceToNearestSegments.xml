@@ -1,0 +1,4 @@
+<tool id="hb_create_function_track_as_distance_to_nearest_segments" name="Generate bp-level track of distance to nearest segment" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.create.CreateFunctionTrackAsDistanceToNearestSegments" proto_tool_class="CreateFunctionTrackAsDistanceToNearestSegments">
+  <description></description>
+</tool>

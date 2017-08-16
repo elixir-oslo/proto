@@ -1,0 +1,4 @@
+<tool id="hb_borises_tool" name="Borises tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.BorisesTool" proto_tool_class="BorisesTool">
+  <description></description>
+</tool>

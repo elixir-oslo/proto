@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<tool name="Genelist as track" id="import_genelist" hidden="true">
+
+	<description>
+	</description>
+	
+	<command interpreter="python">importGenelist.py $output $map $col $row $mapid</command>
+
+	<inputs>
+		<param name="map" type="text" value="" />
+		<param name="mapid" type="text" value="" />
+		<param name="col" type="text" value="" />
+		<param name="row" type="text" value="" />
+		<param name="dbkey" type="text" value="hg18" />
+		<param name="file_type" type="text" value="bed" />
+  </inputs>
+
+	<outputs>
+		<data format="bed" name="output" />
+	</outputs>
+
+</tool>

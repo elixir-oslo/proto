@@ -1,0 +1,4 @@
+<tool id="hb_generic_5" name="Generic tool 5" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.Tool5" proto_tool_class="Tool5">
+  <description></description>
+</tool>

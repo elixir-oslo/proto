@@ -1,4 +1,5 @@
 # Python package requirements of Galaxy ProTo
+inflection>=0.3.1
 
 # Optional packages
 rpy2>=2.7

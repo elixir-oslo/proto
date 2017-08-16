@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+
+<tool id="hb_define_test" name="Define statistical test">
+  <description></description>
+  <action module="galaxy.tools.actions.upload" class="UploadToolAction"/>
+
+  <inputs>
+    <display>
+      #raw
+      <script type="text/javascript">
+        // NB: uses jQuery
+        $('form').bind('submit', function (ev) {
+          var code = $(this.url_paste_box).val();
+          var f1 = '#format1: ' + $('#_format_1').val() + '\n';
+          var f2 = '#format2: ' + $('#_format_2').val() + '\n';
+          var mc = $('#_monte_carlo').attr('checked') ? '#Use in Monte Carlo\n' : '';
+          $(this.url_paste).val(f1 + f2 + mc + code);
+          //alert($(this.url_paste).val());
+          return true;
+        });
+      </script>
+      #end raw
+      <div class="form-row">
+        <label>Define R function</label>
+        <code>customFunc &lt;- function(track1, track2) {<br /> 
+          result = 0;<br /></code>
+      $url_paste_box<br />
+      <code>return (result)<br />
+      }</code>
+      </div>
+
+      <div class="form-row">
+      <b>Format of track 1:</b>
+      <select id="_format_1">
+        <option value=""> - Select format - </option>
+        <option>Points</option>
+        <option>Segments</option>
+        <option>Valued points</option>
+        <option>Valued segments</option>
+        <option>Function</option>
+      </select>
+      </div>
+      <div class="form-row">
+      <b>Format of track 2:</b>
+      <select id="_format_2">
+        <option value=""> - Select format - </option>
+        <option>Points</option>
+        <option>Segments</option>
+        <option>Valued points</option>
+        <option>Valued segments</option>
+        <option>Function</option>
+      </select>
+      </div>
+      <div class="form-row">
+      <b>Embed in Monte Carlo simulation:</b> <input type="checkbox" id="_monte_carlo" value="#Use in Monte Carlo" />
+      </div>
+      <div class="form-row">$file_data</div>
+      $url_paste
+      $file_type
+      $dbkey
+    </display>
+    
+    <param name="file_data" type="file" size="30" label="File"/> 
+
+    <param name="url_paste_box" type="text" area="true" size="25x100" label="R code" help="" value="" />
+    
+    <!-- <param name="file_type" type="select" label="File Format" help="Which format? See help below">
+      <options from_file="datatypes_registry" />
+    </param>
+    <param name="dbkey" type="genomebuild" label="Genome" /> -->
+    
+    <param type="hidden" name="url_paste" value="" />
+    <param type="hidden" name="file_type" value="R" />
+    <param type="hidden" name="dbkey" value="hg18" />
+
+  </inputs>
+  
+    <help>
+
+In this tool one can write a custom R-code that computes the result of a bin from two tracks as input. The script will be stored in Galaxy history, and will then be available to select as a "question" and use for analysis in the same way as any other statistic defined in the system. In other words, one can in the "Statistical analysis" tool select the custom script and e.g. do a binned analysis of the whole genome or a single chromosome..
+
+To have a uniform interface between the system and the custom R-scripts, all tracks are represented as valued regions (i.e. a point is a region of length 1, and unvalued points/region have NA as their value). Each track is thus a matrix with 3 rows, where row 1 gives start points, row 2 gives end points and row 3 gives values. Each column is one track element.
+
+Below is a static example that could be used to test the code one is developing:
+
+::
+
+  rCompute &lt;- function(track1, track2) {
+  result = 0
+  #write your code here, which should either return the computed value or set the variable result..
+  return(result)
+  }
+
+  track1 &lt;- matrix( c(5,10,NA, 20,30,NA), 3,2)
+  track2 &lt;- matrix( c(12,13,NA, 25,26,NA), 3,2)
+  rCompute(track1, track2) 
+
+  </help>
+  
+</tool>

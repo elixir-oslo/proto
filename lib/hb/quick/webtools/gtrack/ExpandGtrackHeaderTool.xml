@@ -1,0 +1,4 @@
+<tool id="hb_expand_gtrack_header_tool" name="Expand GTrack headers" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gtrack.ExpandGtrackHeaderTool" proto_tool_class="ExpandGtrackHeaderTool">
+  <description></description>
+</tool>

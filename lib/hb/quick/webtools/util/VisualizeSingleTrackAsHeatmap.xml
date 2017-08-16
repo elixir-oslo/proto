@@ -1,0 +1,4 @@
+<tool id="hb_visualize_single_track_as_heatmap" name="Create high-resolution map of track distribution along genome" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.util.VisualizeSingleTrackAsHeatmap" proto_tool_class="VisualizeSingleTrackAsHeatmap">
+  <description></description>
+</tool>

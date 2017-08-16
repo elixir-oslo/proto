@@ -28,10 +28,10 @@ class TextOptionsBox(BaseOptionsBox):
 
     @classmethod    
     def isTypeOf(cls, opts):
-        if isinstance(opts, str) or isinstance(opts, unicode):
+        if isinstance(opts, basestring):
             return True
         if isinstance(opts, tuple):
-            if len(opts) in [2, 3] and (isinstance(opts[0], str) or isinstance(opts[0], unicode)):
+            if len(opts) in [2, 3] and (isinstance(opts[0], basestring)):
                 return True
         return False
     

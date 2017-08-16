@@ -1,0 +1,4 @@
+<tool id="hb_abdulrahmans_tool" name="Abdulrahmans tool" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.AbdulrahmansTool" proto_tool_class="AbdulrahmansTool">
+  <description></description>
+</tool>

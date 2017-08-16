@@ -1,0 +1,4 @@
+<tool id="hb_list_subtrack_names" name="List subtrack names" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.restricted.ListSubtrackNames" proto_tool_class="ListSubtrackNames">
+  <description></description>
+</tool>

@@ -1,0 +1,4 @@
+<tool id="hb_extract_individual_tracks_from_category_track" name="Extract individual tracks from category track" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.track.ExtractIndividualTracksFromCategoryTrack" proto_tool_class="ExtractIndividualTracksFromCategoryTrack">
+  <description></description>
+</tool>

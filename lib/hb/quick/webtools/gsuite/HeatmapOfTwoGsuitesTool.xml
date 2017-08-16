@@ -1,0 +1,4 @@
+<tool id="hb_heatmap_of_two_gsuites_tool" name="Create heatmap over all combinations of tracks from two GSuites" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.HeatmapOfTwoGsuitesTool" proto_tool_class="HeatmapOfTwoGsuitesTool">
+  <description></description>
+</tool>

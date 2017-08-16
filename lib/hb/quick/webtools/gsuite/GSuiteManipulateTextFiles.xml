@@ -1,0 +1,4 @@
+<tool id="hb_g_suite_manipulate_text_files" name="Modify primary tracks referred to in a GSuite" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.gsuite.GSuiteManipulateTextFiles" proto_tool_class="GSuiteManipulateTextFiles">
+  <description></description>
+</tool>

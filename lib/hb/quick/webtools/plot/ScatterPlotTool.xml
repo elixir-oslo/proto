@@ -1,0 +1,4 @@
+<tool id="hb_plot_scatter" name="Visualize relation between two tracks across genomic regions" version="1.0.0"
+  tool_type="hb_generic" proto_tool_module="quick.webtools.plot.ScatterPlotTool" proto_tool_class="ScatterPlotTool">
+  <description></description>
+</tool>
