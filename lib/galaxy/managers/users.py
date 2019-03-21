@@ -1,19 +1,22 @@
 """
 Manager and Serializer for Users.
 """
+import logging
 
 import sqlalchemy
 
-from galaxy import model
-from galaxy import exceptions
-from galaxy import util
-
-from galaxy.managers import base
-from galaxy.managers import deletable
-from galaxy.managers import api_keys
+from galaxy import (
+    exceptions,
+    model,
+    util
+)
+from galaxy.managers import (
+    api_keys,
+    base,
+    deletable
+)
 from galaxy.security import validate_user_input
 
-import logging
 log = logging.getLogger(__name__)
 
 
@@ -53,7 +56,7 @@ class UserManager(base.ModelManager, deletable.PurgableManagerMixin):
             self.session().flush()
             # TODO:?? flush needed for permissions below? If not, make optional
         except sqlalchemy.exc.IntegrityError as db_err:
-            raise exceptions.Conflict(db_err.message)
+            raise exceptions.Conflict(str(db_err))
 
         # can throw an sqlalx.IntegrityError if username not unique
 
@@ -100,12 +103,19 @@ class UserManager(base.ModelManager, deletable.PurgableManagerMixin):
         return super(UserManager, self).list(filters=filters, order_by=order_by, **kwargs)
 
     # ---- admin
-    def is_admin(self, user):
-        """
-        Return True if this user is an admin.
+    def is_admin(self, user, trans=None):
+        """Return True if this user is an admin (or session is authenticated as admin).
+
+        Do not pass trans to simply check if an existing user object is an admin user,
+        pass trans when checking permissions.
         """
         admin_emails = self._admin_emails()
-        return user and admin_emails and user.email in admin_emails
+        if user is None:
+            # Anonymous session or master_api_key used, if master_api_key is detected
+            # return True.
+            rval = bool(trans and trans.user_is_admin)
+            return rval
+        return bool(admin_emails and user.email in admin_emails)
 
     def _admin_emails(self):
         """
@@ -127,7 +137,7 @@ class UserManager(base.ModelManager, deletable.PurgableManagerMixin):
         :raises exceptions.AdminRequiredException: if `user` is not an admin.
         """
         # useful in admin only methods
-        if not self.is_admin(user):
+        if not self.is_admin(user, trans=kwargs.get("trans", None)):
             raise exceptions.AdminRequiredException(msg, **kwargs)
         return user
 
@@ -233,14 +243,6 @@ class UserManager(base.ModelManager, deletable.PurgableManagerMixin):
         tags = [((name + ':' + val) if val else name) for name, val in tags]
         return sorted(tags)
 
-    def has_requests(self, user, trans):
-        """
-        """
-        if self.is_anonymous(user):
-            return False
-        request_types = self.app.security_agent.get_accessible_request_types(trans, user)
-        return bool(user.requests or request_types)
-
 
 class UserSerializer(base.ModelSerializer, deletable.PurgableSerializerMixin):
     model_manager_class = UserManager
@@ -292,7 +294,6 @@ class UserSerializer(base.ModelSerializer, deletable.PurgableSerializerMixin):
             'quota'         : lambda i, k, **c: self.user_manager.quota(i, total=True),
 
             'tags_used'     : lambda i, k, **c: self.user_manager.tags_used(i),
-            'has_requests'  : lambda i, k, trans=None, **c: self.user_manager.has_requests(i, trans)
         })
 
 

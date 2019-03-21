@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
-
 from requests import (
     get,
     post,
     put
 )
 
-from base import api
-
-from base.populators import DatasetPopulator, DatasetCollectionPopulator, wait_on
+from base import api  # noqa: I100,I202
+from base.populators import (  # noqa: I100
+    DatasetCollectionPopulator,
+    DatasetPopulator,
+    wait_on
+)
 
 
 class HistoriesApiTestCase(api.ApiTestCase):
@@ -26,7 +28,7 @@ class HistoriesApiTestCase(api.ApiTestCase):
         # Make sure new history appears in index of user's histories.
         index_response = self._get("histories").json()
         indexed_history = [h for h in index_response if h["id"] == created_id][0]
-        self.assertEquals(indexed_history["name"], "TestHistory1")
+        self.assertEqual(indexed_history["name"], "TestHistory1")
 
     def test_show_history(self):
         history_id = self._create_history("TestHistoryForShow")["id"]
@@ -278,7 +280,7 @@ class HistoriesApiTestCase(api.ApiTestCase):
         post_data = dict(name=name)
         create_response = self._post("histories", data=post_data).json()
         self._assert_has_keys(create_response, "name", "id")
-        self.assertEquals(create_response["name"], name)
+        self.assertEqual(create_response["name"], name)
         return create_response
 
     # TODO: (CE) test_create_from_copy

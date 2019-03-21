@@ -2,11 +2,11 @@
 
 By default, jobs in Galaxy are run locally on the server on which the Galaxy application was started.  Many options are available for running Galaxy jobs on other systems, including clusters and other remote resources.
 
-This document is a reference for the job configuration file.  [Detailed documentation](cluster) is provided for configuring Galaxy to work with a variety of Distributed Resource Managers (DRMs) such as TORQUE, Grid Engine, LSF, and HTCondor.  Additionally, a wide range of infrastructure decisions and configuration changes should be made when running Galaxy as a production service, as one is likely doing if using a cluster.  It is highly recommended that the [production server documentation](production.html) and [cluster configuration documentation](cluster.html) be read before making changes to the job configuration.
+This document is a reference for the job configuration file.  [Detailed documentation](cluster.html) is provided for configuring Galaxy to work with a variety of Distributed Resource Managers (DRMs) such as TORQUE, Grid Engine, LSF, and HTCondor.  Additionally, a wide range of infrastructure decisions and configuration changes should be made when running Galaxy as a production service, as one is likely doing if using a cluster.  It is highly recommended that the [production server documentation](production.html) and [cluster configuration documentation](cluster.html) be read before making changes to the job configuration.
 
 **The most up-to-date details of advanced job configuration features can be found in the [sample job_conf.xml](https://github.com/galaxyproject/galaxy/blob/dev/config/job_conf.xml.sample_advanced) found in the Galaxy distribution.**
 
-Configuration of where to run jobs is performed in the `job_conf.xml` file in `$GALAXY_ROOT/config/`.  The path to the config file can be overridden by setting the value of `job_config_file` in `config/galaxy.ini`.  Sample configurations are provided at `galaxy-dist/config/job_conf.xml.sample_basic` and `galaxy-dist/config/job_conf.xml.sample_advanced`.  The job configuration file is not required - if it does not exist, a default configuration that runs jobs on the local system (with a maximum of 4 concurrent jobs) will be used.  `job_conf.xml.sample_basic` provides a configuration identical to the default configuration if no `job_conf.xml` exists.
+Configuration of where to run jobs is performed in the `job_conf.xml` file in `$GALAXY_ROOT/config/`.  The path to the config file can be overridden by setting the value of `job_config_file` in `config/galaxy.yml`.  Sample configurations are provided at `galaxy-dist/config/job_conf.xml.sample_basic` and `galaxy-dist/config/job_conf.xml.sample_advanced`.  The job configuration file is not required - if it does not exist, a default configuration that runs jobs on the local system (with a maximum of 4 concurrent jobs) will be used.  `job_conf.xml.sample_basic` provides a configuration identical to the default configuration if no `job_conf.xml` exists.
 
 ## job_conf.xml Syntax
 
@@ -38,16 +38,15 @@ workers
 
 ### Job Handlers
 
-The `<handlers>` configuration elements defines which Galaxy server processes (when [running multiple server processes](https://galaxyproject.org/admin/config/performance/scaling/)) should be used for running jobs, and how to group those processes.
+The `<handlers>` configuration elements defines which Galaxy server processes (when [running multiple server processes](scaling.html)) should be used for running jobs, and how to group those processes.
 
-The handlers configuration may define a ``default`` attribute. This is the the handler(s) that should be used if no explicit handler is defined for a job and is required if >1 handlers defined.
+The handlers configuration may define a ``default`` attribute. This is the the handler(s) that should be used if no explicit handler is defined for a job. If unset, any untagged handlers will be used by default.
 
 The collection contains `<handler>` elements.
 
 ```eval_rst
 id
-    A server name (e.g. a ``[server:<name>]``</code> in <code>config/galaxy.ini</code> such as ``[server:main]``) that should be used to run jobs. </td>
-    <td> required </td>
+    A server name that should be used to run jobs. Server names are dependent on your application server deployment scenario and are explained in the :ref:`configuration section of the scaling documentation <scaling-configuration>`.
 
 tags
     A comma-separated set of strings that optional define tags to which this handler belongs. 
@@ -112,10 +111,25 @@ destination
 
 **Note:** Currently, failure conditions for memory limits and walltime are only implemented for the [Slurm](cluster.html) job runner plugin. Contributions for other implementations would be greatly appreciated! An example job configuration and an always-fail job runner plugin for development [can be found in this gist](https://gist.github.com/natefoo/361414fbca3c0ea63aa5).
 
+
+### Running jobs in containers
+
+Galaxy can be configured to run jobs in container runtimes. Currently the two supported runtimes are [Docker](https://www.docker.com) and [Singularity](https://www.sylabs.io/). Each ``<destination>`` can enable container support
+with ``<param id="docker_enabled">true</param>`` and/or ``<param id="singularity_enabled">true</param>``, as documented
+in the [advanced sample job_conf.xml](https://github.com/galaxyproject/galaxy/blob/dev/config/job_conf.xml.sample_advanced).
+In the case of Docker, containers are run using **sudo** unless ``<param id="docker_sudo">false</param>`` is specified, thus
+the user that Galaxy runs as should be able to run ``sudo docker`` without a password prompt for Docker containers to
+work.
+
+The images used for containers can either be specified explicitely in the ``<destination>`` using the *docker_default_container_id*, *docker_container_id_override*, *singularity_default_container_id* and
+*singularity_container_id_override* parameters, but (perhaps more commonly) the image to use can be derived from the
+tool requirements of the Galaxy tool being executed. In this latter case the image is specified by the
+tool using a ``<container>`` tag in the ``<requirements>`` section. 
+
 ### Macros
 
 The job configuration XML file may contain any number of macro definitions using the same
-XML macro syntax used by [Galaxy tools](http://planemo.readthedocs.io/en/latest/writing_advanced.html#macros-reusable-elements).
+XML macro syntax used by [Galaxy tools](https://planemo.readthedocs.io/en/latest/writing_advanced.html#macros-reusable-elements).
 
 See [Pull Request #362](https://github.com/galaxyproject/galaxy/pull/362) for implementation details and the [advanced sample job_conf.xml](https://github.com/galaxyproject/galaxy/blob/dev/config/job_conf.xml.sample_advanced) for examples.
 
@@ -237,7 +251,7 @@ The above examples demonstrate that the dynamic job destination framework will p
 
 ```eval_rst
 ``app``
-    Global Galaxy application object, has attributes such as config (the configuration parameters loaded from ``config/galaxy.ini``) and ``job_config`` (Galaxy representation of the data loaded in from ``job_conf.xml``).
+    Global Galaxy application object, has attributes such as config (the configuration parameters loaded from ``config/galaxy.yml``) and ``job_config`` (Galaxy representation of the data loaded in from ``job_conf.xml``).
 
 ``user_email``
     E-mail of user submitting this job.
@@ -295,7 +309,7 @@ As a natural extension to this, a dynamic job runner can be used as the default 
 The following example assumes the existence of a job destination with ids `short_pbs` and `long_pbs` and that a default dynamic job runner has been defined as follows in `job_conf.xml`:
 
 ```xml
-  <destination default="dynamic">
+  <destinations default="dynamic">
     <destination id="dynamic">
       <param id="type">python</param>
       <param id="function">default_runner</param>
@@ -318,7 +332,7 @@ def default_runner(tool_id):
 As another example, assume that a few tools should be only accessible to developers and all other users should receive a message indicating they are not authorized to use this tool. This can be accomplished with the following `job_conf.xml` fragment
 
 ```xml
-  <destination default="dynamic">
+  <destinations default="dynamic">
     <destination id="dev_dynamic">
       <param id="type">python</param>
       <param id="function">dev_only</param>

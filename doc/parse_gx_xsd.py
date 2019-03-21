@@ -83,7 +83,11 @@ def _build_tag(tag, hide_attributes):
             assertions_buffer.write("--- | ---\n")
             elements = assertion_tag.findall("{http://www.w3.org/2001/XMLSchema}choice/{http://www.w3.org/2001/XMLSchema}element")
             for element in elements:
-                doc = _doc_or_none(element).strip()
+                doc = _doc_or_none(element)
+                if doc is None:
+                    doc = _doc_or_none(_type_el(element))
+                assert doc is not None, "Documentation for %s is empty" % element.attrib["name"]
+                doc = doc.strip()
                 assertions_buffer.write("``%s`` | %s\n" % (element.attrib["name"], doc))
             text = text.replace(line, assertions_buffer.getvalue())
     tag_help.write(text)
@@ -121,6 +125,7 @@ def _build_attributes_table(tag, attributes, hide_attributes=False, attribute_na
             details = _doc_or_none(attribute)
             if details is None:
                 type_el = _type_el(attribute)
+                assert type_el is not None, "No details or type found for %s" % name
                 details = _doc_or_none(type_el)
                 annotation_el = type_el.find("{http://www.w3.org/2001/XMLSchema}annotation")
             else:
@@ -128,7 +133,8 @@ def _build_attributes_table(tag, attributes, hide_attributes=False, attribute_na
 
             use = attribute.attrib.get("use", "optional") == "required"
             if "|" in details:
-                raise Exception("Cannot build Markdown table")
+                # This seems to work fine for now, but potentially can cause problems.
+                pass
             details = details.replace("\n", " ").strip()
             best_practices = _get_bp_link(annotation_el)
             if best_practices:

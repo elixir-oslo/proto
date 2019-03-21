@@ -1,124 +1,243 @@
-var jQuery = require( 'jquery' ),
-    $ = jQuery,
-    GalaxyApp = require( 'galaxy' ).GalaxyApp,
-    AdminPanel = require( './panels/admin-panel' ),
-    FormWrapper = require( 'mvc/form/form-wrapper' ),
-    GridView = require( 'mvc/grid/grid-view' ),
-    Ui = require( 'mvc/ui/ui-misc' ),
-    QueryStringParsing = require( 'utils/query-string-parsing' ),
-    Router = require( 'layout/router' ),
-    Utils = require( 'utils/utils' ),
-    Page = require( 'layout/page' );
+import $ from "jquery";
+import _ from "underscore";
+import _l from "utils/localization";
+import { setGalaxyInstance } from "app";
+import { getAppRoot } from "onload/loadConfig";
+import AdminPanel from "./panels/admin-panel";
+import FormWrapper from "mvc/form/form-wrapper";
+import GridView from "mvc/grid/grid-view";
+import QueryStringParsing from "utils/query-string-parsing";
+import Router from "layout/router";
+import Utils from "utils/utils";
+import Page from "layout/page";
+import DataTables from "components/admin/DataTables.vue";
+import DataTypes from "components/admin/DataTypes.vue";
+import DataManagerView from "components/admin/DataManager/DataManagerView.vue";
+import DataManagerRouter from "components/admin/DataManager/DataManagerRouter.vue";
+import ErrorStack from "components/admin/ErrorStack.vue";
+import DisplayApplications from "components/admin/DisplayApplications.vue";
+import Vue from "vue";
+import { serverPath } from "utils/serverPath";
 
-window.app = function app( options, bootstrapped ){
-    window.Galaxy = new GalaxyApp( options, bootstrapped );
-    Galaxy.debug( 'admin app' );
+window.app = function app(options, bootstrapped) {
+    console.warn("Admin init", serverPath());
+
+    let Galaxy = setGalaxyInstance(GalaxyApp => {
+        let galaxy = new GalaxyApp(options, bootstrapped);
+        galaxy.debug("admin app");
+        return galaxy;
+    });
 
     /** Routes */
     var AdminRouter = Router.extend({
         routes: {
-            '(/)admin(/)users' : 'show_users',
-            '(/)admin(/)roles' : 'show_roles',
-            '(/)admin(/)groups' : 'show_groups',
-            '(/)admin(/)tool_versions' : 'show_tool_versions',
-            '(/)admin(/)quotas' : 'show_quotas',
-            '(/)admin(/)forms(/)(:form_id)' : 'show_forms'
+            "(/)admin(/)": "home",
+            "(/)admin(/)users": "show_users",
+            "(/)admin(/)roles": "show_roles",
+            "(/)admin(/)groups": "show_groups",
+            "(/)admin(/)error_stack": "show_error_stack",
+            "(/)admin(/)display_applications": "show_display_applications",
+            "(/)admin(/)tool_versions": "show_tool_versions",
+            "(/)admin(/)quotas": "show_quotas",
+            "(/)admin(/)repositories": "show_repositories",
+            "(/)admin(/)forms": "show_forms",
+            "(/)admin(/)form(/)(:form_id)": "show_form",
+            "(/)admin/data_tables": "show_data_tables",
+            "(/)admin/data_types": "show_data_types",
+            "(/)admin/data_manager*path": "show_data_manager",
+            "*notFound": "not_found"
         },
 
-        authenticate: function( args, name ) {
-            return Galaxy.user && Galaxy.user.id && Galaxy.user.get( 'is_admin' );
+        authenticate: function() {
+            return Galaxy.user && Galaxy.user.id && Galaxy.user.get("is_admin");
+        },
+
+        not_found: function() {
+            window.location.href = window.location.href;
+        },
+
+        home: function() {
+            this.page
+                .$("#galaxy_main")
+                .prop("src", `${getAppRoot()}admin/center?message=${options.message}&status=${options.status}`);
         },
 
         show_users: function() {
-            this.page.display( new GridView( { url_base: Galaxy.root + 'admin/users_list', url_data: Galaxy.params, dict_format: true } ) );
+            this.page.display(
+                new GridView({
+                    url_base: `${getAppRoot()}admin/users_list`,
+                    url_data: Galaxy.params
+                })
+            );
         },
 
         show_roles: function() {
-            this.page.display( new GridView( { url_base: Galaxy.root + 'admin/roles_list', url_data: Galaxy.params, dict_format: true } ) );
+            this.page.display(
+                new GridView({
+                    url_base: `${getAppRoot()}admin/roles_list`,
+                    url_data: Galaxy.params
+                })
+            );
         },
 
         show_groups: function() {
-            this.page.display( new GridView( { url_base: Galaxy.root + 'admin/groups_list', url_data: Galaxy.params, dict_format: true } ) );
+            this.page.display(
+                new GridView({
+                    url_base: `${getAppRoot()}admin/groups_list`,
+                    url_data: Galaxy.params
+                })
+            );
+        },
+
+        show_repositories: function() {
+            this.page.display(
+                new GridView({
+                    url_base: `${getAppRoot()}admin_toolshed/browse_repositories`,
+                    url_data: Galaxy.params
+                })
+            );
         },
 
         show_tool_versions: function() {
-            this.page.display( new GridView( { url_base: Galaxy.root + 'admin/tool_versions_list', url_data: Galaxy.params, dict_format: true } ) );
+            this.page.display(
+                new GridView({
+                    url_base: `${getAppRoot()}admin/tool_versions_list`,
+                    url_data: Galaxy.params
+                })
+            );
         },
 
         show_quotas: function() {
-            this.page.display( new GridView( { url_base: Galaxy.root + 'admin/quotas_list', url_data: Galaxy.params, dict_format: true } ) );
+            this.page.display(
+                new GridView({
+                    url_base: `${getAppRoot()}admin/quotas_list`,
+                    url_data: Galaxy.params
+                })
+            );
         },
 
-        show_forms : function( form_id ) {
-            var id = '?id=' + QueryStringParsing.get( 'id' );
+        _display_vue_helper: function(component, props) {
+            let instance = Vue.extend(component);
+            let vm = document.createElement("div");
+            this.page.display(vm);
+            new instance(props).$mount(vm);
+        },
+
+        show_data_tables: function() {
+            this._display_vue_helper(DataTables);
+        },
+
+        show_data_types: function() {
+            this._display_vue_helper(DataTypes);
+        },
+
+        show_error_stack: function() {
+            this._display_vue_helper(ErrorStack);
+        },
+
+        show_display_applications: function() {
+            this._display_vue_helper(DisplayApplications);
+        },
+
+        show_data_manager: function(path) {
+            let vueMount = document.createElement("div");
+            this.page.display(vueMount);
+            // always set the route back to the base, i.e.
+            // `${getAppRoot()}admin/data_manager`
+            Galaxy.debug("show_data_manager: path='" + path + "'");
+            DataManagerRouter.replace(path || "/");
+            new Vue({ router: DataManagerRouter, render: h => h(DataManagerView) }).$mount(vueMount);
+        },
+
+        show_forms: function() {
+            this.page.display(
+                new GridView({
+                    url_base: `${getAppRoot()}forms/forms_list`,
+                    url_data: Galaxy.params
+                })
+            );
+        },
+
+        show_form: function(form_id) {
+            var id = `?id=${QueryStringParsing.get("id")}`;
             var form_defs = {
                 reset_user_password: {
-                    title           : 'Reset passwords',
-                    url             : 'admin/reset_user_password' + id,
-                    icon            : 'fa-user',
-                    submit_title    : 'Save new password',
-                    redirect        : 'admin/users'
+                    title: _l("Reset passwords"),
+                    url: `admin/reset_user_password${id}`,
+                    icon: "fa-user",
+                    submit_title: "Save new password",
+                    redirect: "admin/users"
                 },
                 manage_roles_and_groups_for_user: {
-                    url             : 'admin/manage_roles_and_groups_for_user' + id,
-                    icon            : 'fa-users',
-                    redirect        : 'admin/users'
+                    url: `admin/manage_roles_and_groups_for_user${id}`,
+                    icon: "fa-users",
+                    redirect: "admin/users"
                 },
                 manage_users_and_groups_for_role: {
-                    url             : 'admin/manage_users_and_groups_for_role' + id,
-                    redirect        : 'admin/roles'
+                    url: `admin/manage_users_and_groups_for_role${id}`,
+                    redirect: "admin/roles"
                 },
                 manage_users_and_roles_for_group: {
-                    url             : 'admin/manage_users_and_roles_for_group' + id,
-                    redirect        : 'admin/groups'
+                    url: `admin/manage_users_and_roles_for_group${id}`,
+                    redirect: "admin/groups"
                 },
                 manage_users_and_groups_for_quota: {
-                    url             : 'admin/manage_users_and_groups_for_quota' + id,
-                    redirect        : 'admin/quotas'
+                    url: `admin/manage_users_and_groups_for_quota${id}`,
+                    redirect: "admin/quotas"
                 },
                 create_role: {
-                    url             : 'admin/create_role',
-                    redirect        : 'admin/roles'
+                    url: "admin/create_role",
+                    redirect: "admin/roles"
                 },
                 create_group: {
-                    url             : 'admin/create_group',
-                    redirect        : 'admin/groups'
+                    url: "admin/create_group",
+                    redirect: "admin/groups"
                 },
                 create_quota: {
-                    url             : 'admin/create_quota',
-                    redirect        : 'admin/quotas'
+                    url: "admin/create_quota",
+                    redirect: "admin/quotas"
                 },
                 rename_role: {
-                    url             : 'admin/rename_role' + id,
-                    redirect        : 'admin/roles'
+                    url: `admin/rename_role${id}`,
+                    redirect: "admin/roles"
                 },
                 rename_group: {
-                    url             : 'admin/rename_group' + id,
-                    redirect        : 'admin/groups'
+                    url: `admin/rename_group${id}`,
+                    redirect: "admin/groups"
                 },
                 rename_quota: {
-                    url             : 'admin/rename_quota' + id,
-                    redirect        : 'admin/quotas'
+                    url: `admin/rename_quota${id}`,
+                    redirect: "admin/quotas"
                 },
                 edit_quota: {
-                    url             : 'admin/edit_quota' + id,
-                    redirect        : 'admin/quotas'
+                    url: `admin/edit_quota${id}`,
+                    redirect: "admin/quotas"
                 },
                 set_quota_default: {
-                    url             : 'admin/set_quota_default' + id,
-                    redirect        : 'admin/quotas'
+                    url: `admin/set_quota_default${id}`,
+                    redirect: "admin/quotas"
                 },
+                create_form: {
+                    url: "forms/create_form",
+                    redirect: "admin/forms"
+                },
+                edit_form: {
+                    url: `forms/edit_form${id}`,
+                    redirect: "admin/forms"
+                }
             };
-            this.page.display( new FormWrapper.View ( form_defs[ form_id ] ) );
+            this.page.display(new FormWrapper.View(form_defs[form_id]));
         }
     });
 
-    $(function() {
-        _.extend( options.config, { active_view : 'admin' } );
+    $(() => {
+        _.extend(options.config, { active_view: "admin" });
         Utils.setWindowTitle("Administration");
-        Galaxy.page = new Page.View( _.extend( options, {
-            Left    : AdminPanel,
-            Router  : AdminRouter
-        } ) );
+        Galaxy.page = new Page.View(
+            _.extend(options, {
+                Left: AdminPanel,
+                Router: AdminRouter
+            })
+        );
     });
 };

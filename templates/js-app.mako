@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
     <!--js-app.mako-->
@@ -20,59 +19,36 @@
         <link rel="index" href="${ h.url_for( '/' ) }"/>
         ## TODO: use loaders to move everything but the essentials below the fold
         ${ h.css(
-            'jquery.rating',
+            ## 'jquery.rating',
             'jquery-ui/smoothness/jquery-ui',
             ## base needs to come after jquery-ui because of ui-button, ui- etc. name collision
             'base',
-            'bootstrap-tour',
+            ##'bootstrap-tour',
         )}
         ${ page_setup() }
         <link rel="icon" href="static/favicon.png">
     </head>
 
     <body scroll="no" class="full-content">
-        <div id="everything" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-            ## TODO: needed?
-            <div id="background"></div>
 
-            %if masthead:
-            <div id="masthead" class="navbar navbar-fixed-top navbar-inverse"></div>
-            ## a div below the masthead to show server messages set in galaxy.ini
-            <div id="messagebox" style="display: none;"></div>
-            ## a message displayed when the user has been inactive and needs to reactivate their account
-            <div id="inactivebox" class="panel-warning-message" style="display: none;"></div>
-            %endif
-
-        </div><!--end everything-->
-        <div id='dd-helper' style="display: none;"></div>
         ${ js_disabled_warning() }
 
         ## js libraries and bundled js app
         ${ h.js(
             'libs/require',
-            'bundled/libs.bundled',
+            'bundled/libs.chunk',
+            'bundled/base.chunk',
             'bundled/' + js_app_name + '.bundled'
         )}
+
         <script type="text/javascript">
-            require.config({
-                baseUrl: "${h.url_for('/static/scripts') }",
-                shim: {
-                    "libs/underscore": {
-                        exports: "_"
-                    },
-                    "libs/backbone": {
-                        deps: [ 'jquery', 'libs/underscore' ],
-                        exports: "Backbone"
-                    }
-                },
-                // cache busting using time server was restarted
-                urlArgs: 'v=${app.server_starttime}',
-            });
+            console.debug("Initializing javascript application:", "${js_app_entry_fn}");
             ${js_app_entry_fn}(
                 ${ h.dumps( options ) },
                 ${ h.dumps( bootstrapped ) }
             );
         </script>
+
     </body>
 </html>
 
@@ -88,12 +64,6 @@
         %endif
     </script>
     %endif
-
-    <script type="text/javascript">
-        // this is needed *before* the app code is loaded - many MVC access Galaxy.root for their url
-        // TODO: change this by using a common Backbone.Model base class and url fn
-        window.Galaxy = { root: '${ options[ "root" ] }' };
-    </script>
 
     %if not form_input_auto_focus is UNDEFINED and form_input_auto_focus:
     <script type="text/javascript">

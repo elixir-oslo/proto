@@ -91,7 +91,7 @@ class MetadataCollection(object):
     def get(self, key, default=None):
         try:
             return self.__getattr__(key) or default
-        except:
+        except Exception:
             return default
 
     def items(self):
@@ -130,18 +130,11 @@ class MetadataCollection(object):
     def element_is_set(self, name):
         return bool(self.parent._metadata.get(name, False))
 
-    def get_html_by_name(self, name, **kwd):
-        if name in self.spec:
-            rval = self.spec[name].param.get_html(value=getattr(self, name), context=self, **kwd)
-            if rval is None:
-                return self.spec[name].no_value
-            return rval
-
     def get_metadata_parameter(self, name, **kwd):
         if name in self.spec:
-            html_field = self.spec[name].param.get_html_field(getattr(self, name), self, None, **kwd)
-            html_field.value = getattr(self, name)
-            return html_field
+            field = self.spec[name].param.get_field(getattr(self, name), self, None, **kwd)
+            field.value = getattr(self, name)
+            return field
 
     def make_dict_copy(self, to_copy):
         """Makes a deep copy of input iterable to_copy according to self.spec"""
@@ -150,6 +143,14 @@ class MetadataCollection(object):
             if key in self.spec:
                 rval[key] = self.spec[key].param.make_copy(value, target_context=self, source_context=to_copy)
         return rval
+
+    @property
+    def requires_dataset_id(self):
+        for key in self.spec:
+            if isinstance(self.spec[key].param, FileParameter):
+                return True
+
+        return False
 
     def from_JSON_dict(self, filename=None, path_rewriter=None, json_dict=None):
         dataset = self.parent
@@ -166,6 +167,13 @@ class MetadataCollection(object):
                 raise ValueError("json_dict must be either a dictionary or a string, got %s." % (type(json_dict)))
         else:
             raise ValueError("You must provide either a filename or a json_dict")
+
+        # We build a dictionary for metadata name / value pairs
+        # because when we copy MetadataTempFile objects we flush the datasets'
+        # session, but only include the newly created MetadataFile object.
+        # If we were to set the metadata elements in the first for loop we'd
+        # lose all previously set metadata elements
+        metadata_name_value = {}
         for name, spec in self.spec.items():
             if name in JSONified_dict:
                 from_ext_kwds = {}
@@ -173,11 +181,14 @@ class MetadataCollection(object):
                 param = spec.param
                 if isinstance(param, FileParameter):
                     from_ext_kwds['path_rewriter'] = path_rewriter
-                dataset._metadata[name] = param.from_external_value(external_value, dataset, **from_ext_kwds)
+                value = param.from_external_value(external_value, dataset, **from_ext_kwds)
+                metadata_name_value[name] = value
             elif name in dataset._metadata:
                 # if the metadata value is not found in our externally set metadata but it has a value in the 'old'
                 # metadata associated with our dataset, we'll delete it from our dataset's metadata dict
                 del dataset._metadata[name]
+        for name, value in metadata_name_value.items():
+            dataset._metadata[name] = value
         if '__extension__' in JSONified_dict:
             dataset.extension = JSONified_dict['__extension__']
 
@@ -192,7 +203,7 @@ class MetadataCollection(object):
             meta_dict['__extension__'] = dataset_meta_dict['__extension__']
         if filename is None:
             return json.dumps(meta_dict)
-        json.dump(meta_dict, open(filename, 'wb+'))
+        json.dump(meta_dict, open(filename, 'wt+'))
 
     def __getstate__(self):
         # cannot pickle a weakref item (self._parent), when
@@ -229,33 +240,10 @@ class MetadataParameter(object):
     def __init__(self, spec):
         self.spec = spec
 
-    def get_html_field(self, value=None, context=None, other_values=None, **kwd):
+    def get_field(self, value=None, context=None, other_values=None, **kwd):
         context = context or {}
         other_values = other_values or {}
         return form_builder.TextField(self.spec.name, value=value)
-
-    def get_html(self, value, context=None, other_values=None, **kwd):
-        """
-        The "context" is simply the metadata collection/bunch holding
-        this piece of metadata. This is passed in to allow for
-        metadata to validate against each other (note: this could turn
-        into a huge, recursive mess if not done with care). For
-        example, a column assignment should validate against the
-        number of columns in the dataset.
-        """
-        context = context or {}
-        other_values = other_values or {}
-
-        if self.spec.get("readonly"):
-            return value
-        if self.spec.get("optional"):
-            checked = False
-            if value:
-                checked = "true"
-            checkbox = form_builder.CheckboxField("is_" + self.spec.name, checked=checked)
-            return checkbox.get_html() + self.get_html_field(value=value, context=context, other_values=other_values, **kwd).get_html()
-        else:
-            return self.get_html_field(value=value, context=context, other_values=other_values, **kwd).get_html()
 
     def to_string(self, value):
         return str(value)
@@ -374,7 +362,7 @@ class SelectParameter(MetadataParameter):
             value = [value]
         return ",".join(map(str, value))
 
-    def get_html_field(self, value=None, context=None, other_values=None, values=None, **kwd):
+    def get_field(self, value=None, context=None, other_values=None, values=None, **kwd):
         context = context or {}
         other_values = other_values or {}
 
@@ -396,16 +384,6 @@ class SelectParameter(MetadataParameter):
             except TypeError:
                 field.add_option(val, label, selected=False)
         return field
-
-    def get_html(self, value, context=None, other_values=None, values=None, **kwd):
-        context = context or {}
-        other_values = other_values or {}
-
-        if self.spec.get("readonly"):
-            if value in [None, []]:
-                return str(self.spec.no_value)
-            return ", ".join(map(str, value))
-        return MetadataParameter.get_html(self, value, context=context, other_values=other_values, values=values, **kwd)
 
     def wrap(self, value, session):
         # do we really need this (wasteful)? - yes because we are not sure that
@@ -431,23 +409,14 @@ class SelectParameter(MetadataParameter):
 
 class DBKeyParameter(SelectParameter):
 
-    def get_html_field(self, value=None, context=None, other_values=None, values=None, **kwd):
+    def get_field(self, value=None, context=None, other_values=None, values=None, **kwd):
         context = context or {}
         other_values = other_values or {}
         try:
             values = kwd['trans'].app.genome_builds.get_genome_build_names(kwd['trans'])
         except KeyError:
             pass
-        return super(DBKeyParameter, self).get_html_field(value, context, other_values, values, **kwd)
-
-    def get_html(self, value=None, context=None, other_values=None, values=None, **kwd):
-        context = context or {}
-        other_values = other_values or {}
-        try:
-            values = kwd['trans'].app.genome_builds.get_genome_build_names(kwd['trans'])
-        except KeyError:
-            pass
-        return super(DBKeyParameter, self).get_html(value, context, other_values, values, **kwd)
+        return super(DBKeyParameter, self).get_field(value, context, other_values, values, **kwd)
 
 
 class RangeParameter(SelectParameter):
@@ -459,21 +428,13 @@ class RangeParameter(SelectParameter):
         self.max = spec.get("max") or 1
         self.step = self.spec.get("step") or 1
 
-    def get_html_field(self, value=None, context=None, other_values=None, values=None, **kwd):
+    def get_field(self, value=None, context=None, other_values=None, values=None, **kwd):
         context = context or {}
         other_values = other_values or {}
 
         if values is None:
             values = list(zip(range(self.min, self.max, self.step), range(self.min, self.max, self.step)))
-        return SelectParameter.get_html_field(self, value=value, context=context, other_values=other_values, values=values, **kwd)
-
-    def get_html(self, value, context=None, other_values=None, values=None, **kwd):
-        context = context or {}
-        other_values = other_values or {}
-
-        if values is None:
-            values = list(zip(range(self.min, self.max, self.step), range(self.min, self.max, self.step)))
-        return SelectParameter.get_html(self, value, context=context, other_values=other_values, values=values, **kwd)
+        return SelectParameter.get_field(self, value=value, context=context, other_values=other_values, values=values, **kwd)
 
     @classmethod
     def marshal(cls, value):
@@ -484,23 +445,14 @@ class RangeParameter(SelectParameter):
 
 class ColumnParameter(RangeParameter):
 
-    def get_html_field(self, value=None, context=None, other_values=None, values=None, **kwd):
+    def get_field(self, value=None, context=None, other_values=None, values=None, **kwd):
         context = context or {}
         other_values = other_values or {}
 
         if values is None and context:
             column_range = range(1, (context.columns or 0) + 1, 1)
             values = list(zip(column_range, column_range))
-        return RangeParameter.get_html_field(self, value=value, context=context, other_values=other_values, values=values, **kwd)
-
-    def get_html(self, value, context=None, other_values=None, values=None, **kwd):
-        context = context or {}
-        other_values = other_values or {}
-
-        if values is None and context:
-            column_range = range(1, (context.columns or 0) + 1, 1)
-            values = list(zip(column_range, column_range))
-        return RangeParameter.get_html(self, value, context=context, other_values=other_values, values=values, **kwd)
+        return RangeParameter.get_field(self, value=value, context=context, other_values=other_values, values=values, **kwd)
 
 
 class ColumnTypesParameter(MetadataParameter):
@@ -532,15 +484,10 @@ class PythonObjectParameter(MetadataParameter):
             return self.spec._to_string(self.spec.no_value)
         return self.spec._to_string(value)
 
-    def get_html_field(self, value=None, context=None, other_values=None, **kwd):
+    def get_field(self, value=None, context=None, other_values=None, **kwd):
         context = context or {}
         other_values = other_values or {}
         return form_builder.TextField(self.spec.name, value=self._to_string(value))
-
-    def get_html(self, value=None, context=None, other_values=None, **kwd):
-        context = context or {}
-        other_values = other_values or {}
-        return str(self)
 
     @classmethod
     def marshal(cls, value):
@@ -558,15 +505,10 @@ class FileParameter(MetadataParameter):
         # We do not sanitize file names
         return self.to_string(value)
 
-    def get_html_field(self, value=None, context=None, other_values=None, **kwd):
+    def get_field(self, value=None, context=None, other_values=None, **kwd):
         context = context or {}
         other_values = other_values or {}
         return form_builder.TextField(self.spec.name, value=str(value.id))
-
-    def get_html(self, value=None, context=None, other_values=None, **kwd):
-        context = context or {}
-        other_values = other_values or {}
-        return "<div>No display available for Metadata Files</div>"
 
     def wrap(self, value, session):
         if value is None:
@@ -813,25 +755,25 @@ class JobExternalOutputMetadataWrapper(object):
                 cPickle.dump(dataset, open(metadata_files.filename_in, 'wb+'))
                 # file to store metadata results of set_meta()
                 metadata_files.filename_out = abspath(tempfile.NamedTemporaryFile(dir=tmp_dir, prefix="metadata_out_%s_" % key).name)
-                open(metadata_files.filename_out, 'wb+')  # create the file on disk, so it cannot be reused by tempfile (unlikely, but possible)
+                open(metadata_files.filename_out, 'wt+')  # create the file on disk, so it cannot be reused by tempfile (unlikely, but possible)
                 # file to store a 'return code' indicating the results of the set_meta() call
                 # results code is like (True/False - if setting metadata was successful/failed , exception or string of reason of success/failure )
                 metadata_files.filename_results_code = abspath(tempfile.NamedTemporaryFile(dir=tmp_dir, prefix="metadata_results_%s_" % key).name)
                 # create the file on disk, so it cannot be reused by tempfile (unlikely, but possible)
-                json.dump((False, 'External set_meta() not called'), open(metadata_files.filename_results_code, 'wb+'))
+                json.dump((False, 'External set_meta() not called'), open(metadata_files.filename_results_code, 'wt+'))
                 # file to store kwds passed to set_meta()
                 metadata_files.filename_kwds = abspath(tempfile.NamedTemporaryFile(dir=tmp_dir, prefix="metadata_kwds_%s_" % key).name)
-                json.dump(kwds, open(metadata_files.filename_kwds, 'wb+'), ensure_ascii=True)
+                json.dump(kwds, open(metadata_files.filename_kwds, 'wt+'), ensure_ascii=True)
                 # existing metadata file parameters need to be overridden with cluster-writable file locations
                 metadata_files.filename_override_metadata = abspath(tempfile.NamedTemporaryFile(dir=tmp_dir, prefix="metadata_override_%s_" % key).name)
-                open(metadata_files.filename_override_metadata, 'wb+')  # create the file on disk, so it cannot be reused by tempfile (unlikely, but possible)
+                open(metadata_files.filename_override_metadata, 'wt+')  # create the file on disk, so it cannot be reused by tempfile (unlikely, but possible)
                 override_metadata = []
                 for meta_key, spec_value in dataset.metadata.spec.items():
                     if isinstance(spec_value.param, FileParameter) and dataset.metadata.get(meta_key, None) is not None:
                         metadata_temp = MetadataTempFile()
                         shutil.copy(dataset.metadata.get(meta_key, None).file_name, metadata_temp.file_name)
                         override_metadata.append((meta_key, metadata_temp.to_JSON()))
-                json.dump(override_metadata, open(metadata_files.filename_override_metadata, 'wb+'))
+                json.dump(override_metadata, open(metadata_files.filename_override_metadata, 'wt+'))
                 # add to session and flush
                 sa_session.add(metadata_files)
                 sa_session.flush()

@@ -21,14 +21,12 @@
             editor_base_path = "${h.url_for('/static/wymeditor')}/",
             iframe_base_path = "${h.url_for('/static/wymeditor/iframe/galaxy')}/",
             save_url = "${h.url_for(controller='page', action='save' )}";
+
+        $(function(){
+            bundleEntries.pages()
+        });
+
     </script>
-    ${h.js(
-        "libs/jquery/jquery.form",
-        "libs/jquery/jstorage",
-        "libs/jquery/jquery.wymeditor",
-        "libs/jquery/jquery.autocomplete",
-        "galaxy.pages"
-    )}
 </%def>
 
 <%def name="stylesheets()">
@@ -47,17 +45,14 @@
 <%def name="center_panel()">
 
     <div class="unified-panel-header" unselectable="on">
-        <div class="unified-panel-header-inner" style="float: right">
-            <a id="save-button" class="panel-header-button">Save</a>
-            <a id="close-button" class="panel-header-button">Close</a>
-        </div>
         <div class="unified-panel-header-inner">
-            Page Editor <span style="font-weight: normal">| Title : ${page.title | h}</span>
+            Page Editor: ${page.title | h}
+            <a id="save-button" class="btn btn-secondary fa fa-save float-right"></a>
         </div>
     </div>
 
     <div class="unified-panel-body">
-        <textarea name="page_content">${util.unicodify( page.latest_revision.content )}</textarea>
+        <textarea name="page_content">${ content }</textarea>
     </div>
 
 </%def>

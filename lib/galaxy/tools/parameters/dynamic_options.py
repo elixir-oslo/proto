@@ -14,7 +14,6 @@ from galaxy.model import (
     User
 )
 from galaxy.util import string_as_bool
-
 from . import validation
 
 log = logging.getLogger(__name__)
@@ -36,7 +35,7 @@ class Filter(object):
         self.elem = elem
 
     def get_dependency_name(self):
-        """Returns the name of any depedencies, otherwise None"""
+        """Returns the name of any dependencies, otherwise None"""
         return None
 
     def filter_options(self, options, trans, other_values):
@@ -72,7 +71,7 @@ class StaticValueFilter(Filter):
         filter_value = self.value
         try:
             filter_value = User.expand_user_properties(trans.user, filter_value)
-        except:
+        except Exception:
             pass
         for fields in options:
             if (self.keep and fields[self.column] == filter_value) or (not self.keep and fields[self.column] != filter_value):
@@ -389,7 +388,7 @@ class RemoveValueFilter(Filter):
         self.ref_name = elem.get("ref", None)
         self.meta_ref = elem.get("meta_ref", None)
         self.metadata_key = elem.get("key", None)
-        assert self.value is not None or ((self.ref_name is not None or self.meta_ref is not None)and self.metadata_key is not None), ValueError("Required 'value' or 'ref' and 'key' attributes missing from filter")
+        assert self.value is not None or self.ref_name is not None or (self.meta_ref is not None and self.metadata_key is not None), ValueError("Required 'value', or 'ref', or 'meta_ref' and 'key' attributes missing from filter")
         self.multiple = string_as_bool(elem.get("multiple", "False"))
         self.separator = elem.get("separator", ",")
 
@@ -402,13 +401,14 @@ class RemoveValueFilter(Filter):
                 if self.multiple:
                     option_value = option_value.split(self.separator)
                     for value in filter_value:
-                        if value not in filter_value:
+                        if value not in option_value:
                             return False
                     return True
                 return option_value in filter_value
             if self.multiple:
                 return filter_value in option_value.split(self.separator)
             return option_value == filter_value
+
         value = self.value
         if value is None:
             if self.ref_name is not None:
@@ -420,7 +420,9 @@ class RemoveValueFilter(Filter):
                 if not isinstance(data_ref, HistoryDatasetAssociation) and not isinstance(data_ref, galaxy.tools.wrappers.DatasetFilenameWrapper):
                     return options  # cannot modify options
                 value = data_ref.metadata.get(self.metadata_key, None)
-        return [(disp_name, optval, selected) for disp_name, optval, selected in options if not compare_value(optval, value)]
+        # Default to the second column (i.e. 1) since this used to work only on options produced by the data_meta filter
+        value_col = self.dynamic_option.columns.get('value', 1)
+        return [option for option in options if not compare_value(option[value_col], value)]
 
 
 class SortByColumnFilter(Filter):
@@ -471,7 +473,7 @@ class DynamicOptions(object):
             for field in from_parameter.split('.'):
                 obj = getattr(obj, field)
             if transform_lines:
-                obj = eval(transform_lines)
+                obj = eval(transform_lines, {'self': self, 'obj': obj})
             return self.parse_file_fields(obj)
         self.tool_param = tool_param
         self.columns = {}
@@ -616,11 +618,13 @@ class DynamicOptions(object):
             # Ensure parsing dynamic options does not consume more than a megabyte worth memory.
             path = dataset.file_name
             if os.path.getsize(path) < 1048576:
-                options = self.parse_file_fields(open(path))
+                with open(path) as fh:
+                    options = self.parse_file_fields(fh)
             else:
                 # Pass just the first megabyte to parse_file_fields.
                 log.warning("Attempting to load options from large file, reading just first megabyte")
-                contents = open(path, 'r').read(1048576)
+                with open(path, 'r') as fh:
+                    contents = fh.read(1048576)
                 options = self.parse_file_fields(StringIO(contents))
         elif self.tool_data_table:
             options = self.tool_data_table.get_fields()

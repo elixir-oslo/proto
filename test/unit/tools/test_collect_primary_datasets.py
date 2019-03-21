@@ -2,14 +2,13 @@ import json
 import os
 import unittest
 
-import tools_support
 from galaxy import (
     model,
     util
 )
 from galaxy.tools.parameters.output_collect import LegacyToolProvidedMetadata, NullToolProvidedMetadata
 from galaxy.tools.parser import output_collection_def
-
+from .. import tools_support
 
 DEFAULT_TOOL_OUTPUT = "out1"
 DEFAULT_EXTRA_NAME = "test1"
@@ -40,7 +39,7 @@ class CollectPrimaryDatasetsTestCase(unittest.TestCase, tools_support.UsesApp, t
 
         datasets = self._collect()
         assert DEFAULT_TOOL_OUTPUT in datasets
-        self.assertEquals(len(datasets[DEFAULT_TOOL_OUTPUT]), 2)
+        self.assertEqual(len(datasets[DEFAULT_TOOL_OUTPUT]), 2)
 
         # Test default order of collection.
         assert list(datasets[DEFAULT_TOOL_OUTPUT].keys()) == ["test1", "test2"]
@@ -57,6 +56,65 @@ class CollectPrimaryDatasetsTestCase(unittest.TestCase, tools_support.UsesApp, t
         # Since discovered_datasets not specified, older name based pattern
         # didn't result in a dbkey being set.
         assert created_hda_1.dbkey == "?"
+
+    def test_collect_multiple_recurse(self):
+        self._replace_output_collectors('''<output>
+            <discover_datasets pattern="__name__" directory="subdir1" recurse="true" ext="txt" />
+            <discover_datasets pattern="__name__" directory="subdir2" recurse="true" ext="txt" />
+        </output>''')
+        path1 = self._setup_extra_file(filename="test1", subdir="subdir1")
+        path2 = self._setup_extra_file(filename="test2", subdir="subdir2/nested1/")
+        path3 = self._setup_extra_file(filename="test3", subdir="subdir2")
+
+        datasets = self._collect()
+        assert DEFAULT_TOOL_OUTPUT in datasets
+        self.assertEqual(len(datasets[DEFAULT_TOOL_OUTPUT]), 3)
+
+        # Test default order of collection.
+        assert list(datasets[DEFAULT_TOOL_OUTPUT].keys()) == ["test1", "test2", "test3"]
+
+        created_hda_1 = datasets[DEFAULT_TOOL_OUTPUT]["test1"]
+        self.app.object_store.assert_created_with_path(created_hda_1.dataset, path1)
+
+        created_hda_2 = datasets[DEFAULT_TOOL_OUTPUT]["test2"]
+        self.app.object_store.assert_created_with_path(created_hda_2.dataset, path2)
+
+        created_hda_3 = datasets[DEFAULT_TOOL_OUTPUT]["test3"]
+        self.app.object_store.assert_created_with_path(created_hda_3.dataset, path3)
+
+    def test_collect_multiple_recurse_dict(self):
+        self._replace_output_collectors_from_dict({
+            "discover_datasets": [{
+                "pattern": "__name__",
+                "directory": "subdir1",
+                "recurse": True,
+                "format": "txt",
+            }, {
+                "pattern": "__name__",
+                "directory": "subdir2",
+                "recurse": True,
+                "format": "txt",
+            }]}
+        )
+        path1 = self._setup_extra_file(filename="test1", subdir="subdir1")
+        path2 = self._setup_extra_file(filename="test2", subdir="subdir2/nested1/")
+        path3 = self._setup_extra_file(filename="test3", subdir="subdir2")
+
+        datasets = self._collect()
+        assert DEFAULT_TOOL_OUTPUT in datasets
+        self.assertEqual(len(datasets[DEFAULT_TOOL_OUTPUT]), 3)
+
+        # Test default order of collection.
+        assert list(datasets[DEFAULT_TOOL_OUTPUT].keys()) == ["test1", "test2", "test3"]
+
+        created_hda_1 = datasets[DEFAULT_TOOL_OUTPUT]["test1"]
+        self.app.object_store.assert_created_with_path(created_hda_1.dataset, path1)
+
+        created_hda_2 = datasets[DEFAULT_TOOL_OUTPUT]["test2"]
+        self.app.object_store.assert_created_with_path(created_hda_2.dataset, path2)
+
+        created_hda_3 = datasets[DEFAULT_TOOL_OUTPUT]["test3"]
+        self.app.object_store.assert_created_with_path(created_hda_3.dataset, path3)
 
     def test_collect_sorted_reverse(self):
         self._replace_output_collectors('''<output>
@@ -165,7 +223,7 @@ class CollectPrimaryDatasetsTestCase(unittest.TestCase, tools_support.UsesApp, t
         assert len(self.job.output_datasets) == 1
         self._collect_default_extra()
         assert len(self.job.output_datasets) == 2
-        extra_job_assoc = filter(lambda job_assoc: job_assoc.name.startswith("__"), self.job.output_datasets)[0]
+        extra_job_assoc = [job_assoc for job_assoc in self.job.output_datasets if job_assoc.name.startswith("__")][0]
         assert extra_job_assoc.name == "__new_primary_file_out1|test1__"
 
     def test_pattern_override_designation(self):
@@ -195,6 +253,31 @@ class CollectPrimaryDatasetsTestCase(unittest.TestCase, tools_support.UsesApp, t
         # of files based on name and genome. Use custom regex pattern to grab
         # and classify these files.
         self._replace_output_collectors('''<output><discover_datasets pattern="(?P&lt;designation&gt;.*)__(?P&lt;dbkey&gt;.*).fasta" directory="genome_breakdown" ext="fasta" /></output>''')
+        self._setup_extra_file(subdir="genome_breakdown", filename="samp1__hg19.fasta")
+        self._setup_extra_file(subdir="genome_breakdown", filename="samp2__lactLact.fasta")
+        self._setup_extra_file(subdir="genome_breakdown", filename="samp3__hg19.fasta")
+        self._setup_extra_file(subdir="genome_breakdown", filename="samp4__lactPlan.fasta")
+        self._setup_extra_file(subdir="genome_breakdown", filename="samp5__fusoNucl.fasta")
+
+        # Put a file in directory we don't care about, just to make sure
+        # it doesn't get picked up by pattern.
+        self._setup_extra_file(subdir="genome_breakdown", filename="overview.txt")
+
+        primary_outputs = self._collect()[DEFAULT_TOOL_OUTPUT]
+        assert len(primary_outputs) == 5
+        genomes = dict(samp1="hg19", samp2="lactLact", samp3="hg19", samp4="lactPlan", samp5="fusoNucl")
+        for key, hda in primary_outputs.items():
+            assert hda.dbkey == genomes[key]
+
+    def test_custom_pattern_dict(self):
+        self._replace_output_collectors_from_dict({
+            "discover_datasets": {
+                "pattern": "(?P<designation>.*)__(?P<dbkey>.*).fasta",
+                "directory": "genome_breakdown",
+                "format": "fasta",
+            }
+        })
+
         self._setup_extra_file(subdir="genome_breakdown", filename="samp1__hg19.fasta")
         self._setup_extra_file(subdir="genome_breakdown", filename="samp2__lactLact.fasta")
         self._setup_extra_file(subdir="genome_breakdown", filename="samp3__hg19.fasta")
@@ -264,6 +347,9 @@ class CollectPrimaryDatasetsTestCase(unittest.TestCase, tools_support.UsesApp, t
         # supplied dataset_collector elem.
         elem = util.parse_xml_string(xml_str)
         self.tool.outputs[DEFAULT_TOOL_OUTPUT].dataset_collector_descriptions = output_collection_def.dataset_collector_descriptions_from_elem(elem)
+
+    def _replace_output_collectors_from_dict(self, output_dict):
+        self.tool.outputs[DEFAULT_TOOL_OUTPUT].dataset_collector_descriptions = output_collection_def.dataset_collector_descriptions_from_output_dict(output_dict)
 
     def _append_job_json(self, object, output_path=None, line_type="new_primary_dataset"):
         object["type"] = line_type

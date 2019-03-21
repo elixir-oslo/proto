@@ -1,20 +1,22 @@
 import logging
 import tarfile
 
-from galaxy.datatypes.binary import Binary, CompressedArchive
+from galaxy.datatypes.binary import CompressedArchive
 from galaxy.datatypes.data import get_file_peek, Text
+from galaxy.datatypes.sniff import build_sniff_from_prefix
 from galaxy.util import nice_size
 
 log = logging.getLogger(__name__)
 
 
+@build_sniff_from_prefix
 class SnapHmm(Text):
     file_ext = "snaphmm"
     edam_data = "data_1364"
 
     def set_peek(self, dataset, is_multi_byte=False):
         if not dataset.dataset.purged:
-            dataset.peek = get_file_peek(dataset.file_name, is_multi_byte=is_multi_byte)
+            dataset.peek = get_file_peek(dataset.file_name)
             dataset.blurb = "SNAP HMM model"
         else:
             dataset.peek = 'file does not exist'
@@ -23,16 +25,14 @@ class SnapHmm(Text):
     def display_peek(self, dataset):
         try:
             return dataset.peek
-        except:
+        except Exception:
             return "SNAP HMM model (%s)" % (nice_size(dataset.get_size()))
 
-    def sniff(self, filename):
+    def sniff_prefix(self, file_prefix):
         """
         SNAP model files start with zoeHMM
         """
-        with open(filename, 'r') as handle:
-            return handle.read(6) == 'zoeHMM'
-        return False
+        return file_prefix.startswith('zoeHMM')
 
 
 class Augustus(CompressedArchive):
@@ -54,7 +54,7 @@ class Augustus(CompressedArchive):
     def display_peek(self, dataset):
         try:
             return dataset.peek
-        except:
+        except Exception:
             return "Augustus model (%s)" % (nice_size(dataset.get_size()))
 
     def sniff(self, filename):
@@ -82,6 +82,3 @@ class Augustus(CompressedArchive):
         except Exception as e:
             log.warning('%s, sniff Exception: %s', self, e)
         return False
-
-
-Binary.register_sniffable_binary_format("augustus", "augustus", Augustus)
