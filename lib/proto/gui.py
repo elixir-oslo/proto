@@ -100,20 +100,23 @@ class GalaxyWrapper:
     def optionsFromHistoryFn(self, exts = None, tools = None, select = None):
         html = '<option value=""> --- Select --- </option>\n'
         vals = [None]
+        sel_val = None
         for dataset in self.getHistory(exts):
             if tools:
                 job = getJobFromDataset(dataset)
                 tool_id = job.tool_id if job else None
             if tools is None or tool_id in tools:
-                option, val = self.makeHistoryOption(dataset, select)
+                option, val, selected = self.makeHistoryOption(dataset, select)
                 vals.append(val)
+                if selected:
+                    sel_val = val
                 html += option
-        return html, vals
+        return html, vals, sel_val
 
     def itemsFromHistoryFn(self, exts = None):
         items = OrderedDict()
         for dataset in self.getHistory(exts):
-            option_tag, val = self.makeHistoryOption(dataset)
+            option_tag, val = self.makeHistoryOption(dataset)[:2]
             items[unicode(dataset.dataset_id)] = val
         return items
 
@@ -128,8 +131,9 @@ class GalaxyWrapper:
             vals = ['galaxy', dataset.extension, self.encode_id(dataset.dataset_id), self.makeHistoryOptionName(dataset)]
 
         val = sep.join(vals)
-        html = '<option value="%s" %s>%d: %s [%s]</option>\n' % (val, selected(dataset.dataset_id, sel_id), dataset.hid, name, dataset.dbkey)
-        return (html, val)
+        sel_param = selected(dataset.dataset_id, sel_id)
+        html = '<option value="%s" %s>%d: %s [%s]</option>\n' % (val, sel_param, dataset.hid, name, dataset.dbkey)
+        return html, val, sel_param != ''
 
     def getHistoryOptionSecureIdAndExt(self, select):
         from proto.CommonFunctions import getSecureIdAndExtFromDatasetInfoAsStr

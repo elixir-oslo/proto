@@ -10,7 +10,7 @@ from base64 import urlsafe_b64decode, urlsafe_b64encode, b64encode, b64decode
 from collections import namedtuple, OrderedDict, defaultdict
 from urllib import quote, unquote
 
-from proto.CommonFunctions import makeUnicode
+from proto.CommonFunctions import makeUnicodeIfString
 from proto.tools.GeneralGuiTool import HistElement
 from proto.HtmlCore import HtmlCore
 from proto.config.Config import URL_PREFIX, GALAXY_BASE_DIR
@@ -129,7 +129,7 @@ class GenericToolController(BaseToolController):
             else:
                 id = 'box' + str(1 + i)
             self.inputIds.append(id)
-            self.inputNames.append(makeUnicode(name))
+            self.inputNames.append(makeUnicodeIfString(name))
 
     def _getIdxList(self, inputList):
         idxList = []
@@ -330,17 +330,21 @@ class GenericToolController(BaseToolController):
                     opts = (val, 1, False)
 
             elif isinstance(opts, tuple):
-                if opts[0] == '__history__':
+                if opts[0] in ['__history__', '__toolhistory__']:
                     self.inputTypes += opts[:1]
-                    opts = self.galaxy.optionsFromHistoryFn(exts = opts[1:] if len(opts)>1 else None, select = val)
-                    if val is None and opts and len(opts[1]) > 0:
-                        val = opts[1][0]
-                    #opts = self.galaxy.getHistory(GalaxyInterface.getSupportedGalaxyFileFormats())
-                elif opts[0] == '__toolhistory__':
-                    self.inputTypes += opts[:1]
-                    opts = self.galaxy.optionsFromHistoryFn(tools = opts[1:] if len(opts)>1 else None, select = val)
-                    if val is None and opts and len(opts[1]) > 0:
-                        val = opts[1][0]
+
+                    if opts[0] == '__history__':
+                        opts_html, opts_val, sel_val = self.galaxy.optionsFromHistoryFn(exts=opts[1:] if len(opts) > 1 else None, select=val)
+                    else:
+                        opts_html, opts_val, sel_val = self.galaxy.optionsFromHistoryFn(tools=opts[1:] if len(opts) > 1 else None, select=val)
+                    opts = (opts_html, opts_val)
+
+                    if opts_val and len(opts_val) > 0:
+                        if val is None:
+                            val = opts_val[0]
+                        elif sel_val:
+                            val = sel_val
+
                 elif opts[0] == '__multihistory__':
                     self.inputTypes += opts[:1]
                     opts = self.galaxy.itemsFromHistoryFn(opts[1:] if len(opts)>1 else None)
@@ -398,20 +402,23 @@ class GenericToolController(BaseToolController):
 
                 else:
                     self.inputTypes += ['select']
-                    if len(opts) > 0 and (val is None or makeUnicode(val) not in opts):
+                    if len(opts) > 0 and (val is None or makeUnicodeIfString(val) not in opts):
                         val = opts[0]
 
             elif isinstance(opts, bool):
                 self.inputTypes += ['checkbox']
-                val = True if val == "True" else opts if self.use_default else False
+                if self.use_default:
+                    val = opts
+                else:
+                    val = True if val == "True" else False
 
             #elif isinstance(opts, list) and len(opts) == 0:
             #    self.inputTypes += ['text']
             #    if val is None:
             #        val = ''
 
-            self.displayValues.append(makeUnicode(val) if isinstance(val, basestring) else repr(val))
-            self.inputValues.append(None if display_only else makeUnicode(val))
+            self.displayValues.append(makeUnicodeIfString(val) if isinstance(val, basestring) else repr(val))
+            self.inputValues.append(None if display_only else makeUnicodeIfString(val))
             self.options.append(opts)
 
             oldval = self.oldValues[id] if id in self.oldValues else None
@@ -422,7 +429,7 @@ class GenericToolController(BaseToolController):
 
             if not self.input_changed:
                 if val or self.cachedParams[id]:
-                    self.input_changed = (makeUnicode(val) != makeUnicode(self.cachedParams[id]))
+                    self.input_changed = (makeUnicodeIfString(val) != makeUnicodeIfString(self.cachedParams[id]))
                 # print u'Loaded values from cache. id: {}, val: {}, cached: {}, ' \
                 #       u'input changed: {}'.format(
                 #           id, repr(val), repr(self.cachedParams[id]), self.input_changed)
@@ -519,7 +526,7 @@ class GenericToolController(BaseToolController):
 #             if isinstance(opts, bool):
 #                 choice = True if choice == "True" else False
 
-            self.inputValues.append(makeUnicode(choice))
+            self.inputValues.append(makeUnicodeIfString(choice))
 
         # if self.params.has_key('Track_state'):
         #     self.inputValues.append(unquote(self.params['Track_state']))

@@ -3,7 +3,7 @@ import os
 
 import shutil
 
-from proto.CommonFunctions import makeUnicode
+from proto.CommonFunctions import makeUnicodeIfString
 from proto.config.Config import STATIC_PATH, GALAXY_FILE_PATH, GALAXY_BASE_DIR
 from proto.config.Security import GALAXY_SECURITY_HELPER_OBJ
 from proto.tools.GeneralGuiTool import GeneralGuiTool
@@ -254,7 +254,7 @@ class FileImport(GeneralGuiTool):
         try:
             input = base64.urlsafe_b64decode(input)
             input = GALAXY_SECURITY_HELPER_OBJ.decode_guid(input)
-            input = makeUnicode(input)
+            input = makeUnicodeIfString(input)
         except:
             raise Exception('Old-style "import to history" URLs have been deprecated due to '
                             'security concerns. If you clicked from the output of an analysis '

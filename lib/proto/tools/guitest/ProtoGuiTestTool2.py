@@ -1,6 +1,5 @@
 from collections import OrderedDict
 
-from proto.CommonFunctions import makeUnicode
 from proto.HtmlCore import HtmlCore
 from proto.tools.GeneralGuiTool import GeneralGuiTool
 

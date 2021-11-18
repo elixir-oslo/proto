@@ -328,8 +328,8 @@ def isSamePath(path, otherPath):
     return os.path.abspath(path) == os.path.abspath(otherPath)
 
 
-def makeUnicode(obj):
-    if not any(isinstance(obj, x) for x in [basestring, Number, bool]):
+def makeUnicodeIfString(obj):
+    if not isinstance(obj, basestring):
         return obj
     try:
         return obj.decode('utf-8')

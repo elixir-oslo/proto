@@ -44,34 +44,34 @@ It is highly recommended that users of Galaxy ProTo create a GitHub fork of the 
 
 1. Create a github user (if you do not already have one), at https://github.com, and sign in.
 2. Fork Galaxy Proto:
-  1. Access "https://github.com/elixir-no-nels/proto"
-  2. Click the fork button and follow the guide
-  3. Note the URL to your forked repo, e.g. "https://github.com/user/proto"
+   1. Access "https://github.com/elixir-no-nels/proto"
+   2. Click the fork button and follow the guide
+   3. Note the URL to your forked repo, e.g. "https://github.com/user/proto"
 3. Clone your GitHub fork to your computer/server:
-  1. `git clone https://github.com/user/proto galaxy_proto` using the URL to your forked repo
-  2. `cd galaxy_proto`
-  3. `git remote add upstream https://github.com/elixir-no-nels/proto`
-  4. `git checkout proto_master`
+   1. `git clone https://github.com/user/proto galaxy_proto` using the URL to your forked repo
+   2. `cd galaxy_proto`
+   3. `git remote add upstream https://github.com/elixir-no-nels/proto`
+   4. `git checkout proto_master`
 4. Create your own GIT branch for your tools, in this guide named "myproject_dev":
-  1. `git branch myproject_dev`
-  2. `git checkout myproject_dev`
+   1. `git branch myproject_dev`
+   2. `git checkout myproject_dev`
 5. Set up the main Galaxy config files:
-  1. `cd config`
-  2. `cp galaxy.ini.sample galaxy.ini`
-  3. `cp tool_conf.xml.sample tool_conf.xml`
+   1. `cd config`
+   2. `cp galaxy.ini.sample galaxy.ini`
+   3. `cp tool_conf.xml.sample tool_conf.xml`
 6. Set up an empty PostgreSQL database (follow a PostgreSQL tutorial to do this). See [Known Limitations](#known-limitations).
 7. Edit galaxy.ini:
-  1. Uncomment "port" and set it to an unused port number (or keep the default 8080 if you want).
-  2. Uncomment "host" and set it to `0.0.0.0` (given that you want to access the Galaxy ProTo web server from other computers).
-  3. Uncomment "database_connection" and set it to point to your PostgreSQL database, as explained in the [Galaxy Wiki](https://wiki.galaxyproject.org/Admin/Config/Performance/ProductionServer#Switching_to_a_database_server).
-  4. Uncomment "admin_users" and add the email address(es) for the admins. An admin account is needed to publish finished ProTo tools to the tool menu. You will need to register with the same address in Galaxy to get the admin account.
-  5. Uncomment "id_secret" and set it to the result of the one-liner generation code in the comments.
-  6. Uncomment "restricted_users" and add any users that need access to private development tools (e.g. developers or test users). Admin users are by default also restricted users and no not need to be listed twice.
-  7. Uncomment "proto_id_secret" and set it to the result of the one-liner generation code in the comments, but with a different code than "id_secret". NOTE: This step is important if you want to maintain the redo functionality, see "Known Limitations" above.
+   1. Uncomment "port" and set it to an unused port number (or keep the default 8080 if you want).
+   2. Uncomment "host" and set it to `0.0.0.0` (given that you want to access the Galaxy ProTo web server from other computers).
+   3. Uncomment "database_connection" and set it to point to your PostgreSQL database, as explained in the [Galaxy Wiki](https://wiki.galaxyproject.org/Admin/Config/Performance/ProductionServer#Switching_to_a_database_server).
+   4. Uncomment "admin_users" and add the email address(es) for the admins. An admin account is needed to publish finished ProTo tools to the tool menu. You will need to register with the same address in Galaxy to get the admin account.
+   5. Uncomment "id_secret" and set it to the result of the one-liner generation code in the comments.
+   6. Uncomment "restricted_users" and add any users that need access to private development tools (e.g. developers or test users). Admin users are by default also restricted users and no not need to be listed twice.
+   7. Uncomment "proto_id_secret" and set it to the result of the one-liner generation code in the comments, but with a different code than "id_secret". NOTE: This step is important if you want to maintain the redo functionality, see "Known Limitations" above.
 8. Start up Galaxy ProTo:
-  1. `cd ..` (to exit the "config" directory).
-  2. `./run.sh`. The Galaxy should now be accessible from e.g. http://yourserver.edu:8080, where the hostname and port will change according to your setup.
-  - For making Galaxy run in the background, use `./run.sh --daemon` to start it and `./run.sh --stop-daemon` to stop it.
+   1. `cd ..` (to exit the "config" directory).
+   2. `./run.sh`. The Galaxy should now be accessible from e.g. http://yourserver.edu:8080, where the hostname and port will change according to your setup.
+   - For making Galaxy run in the background, use `./run.sh --daemon` to start it and `./run.sh --stop-daemon` to stop it.
 9. In order to commit code changes and push to your github fork, run:
     - `git add $FILE` for all new and changed files
     - `git commit -m "Some nice commit message"`
@@ -128,7 +128,7 @@ To make an options box visible only if the user has selected something in a prev
 @classmethod
 def getOptionBoxHideable(cls, prevChoices):
     if prevChoices.history:
-        return ['Choice1', 'Choice2']</code>
+        return ['Choice1', 'Choice2']
 ```
 
 The reason this works is that returning None from an getOptionsBox method hides the box. If no return is specified in a Python method, it by default returns None.
@@ -398,6 +398,8 @@ For historical reasons, Galaxy ProTo is implemented using "camelCase" (or "mixed
 
 ## Version log
 
+* v1.2.5: Fixed checkboxes
+* v1.2.4: Bugfix for job rerun when dataset label has changed. Formatting of README.md.
 * v1.2.3: Bugfix to support full paths from galaxy.ini
 * v1.2.2: Small addition in StaticFile.
 * v1.2.1: File browser can now be output as a separate history element. Fixed package install bug.
