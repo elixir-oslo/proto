@@ -491,6 +491,50 @@ class WorkflowsApiTestCase(BaseWorkflowsApiTestCase):
                 'label',
             )
 
+    @skip_without_tool('output_filter_with_input')
+    def test_export_editor_filtered_outputs(self):
+        template = """
+class: GalaxyWorkflow
+steps:
+  - tool_id: output_filter_with_input
+    state:
+      produce_out_1: {produce_out_1}
+      filter_text_1: {filter_text_1}
+      produce_collection: false
+      produce_paired_collection: false
+"""
+        workflow_id = self._upload_yaml_workflow(template.format(produce_out_1='false', filter_text_1='false'))
+        downloaded_workflow = self._download_workflow(workflow_id, style="editor")
+        outputs = downloaded_workflow['steps']['0']['outputs']
+        assert len(outputs) == 1
+        assert outputs[0]['name'] == 'out_3'
+        workflow_id = self._upload_yaml_workflow(template.format(produce_out_1='true', filter_text_1='false'))
+        downloaded_workflow = self._download_workflow(workflow_id, style="editor")
+        outputs = downloaded_workflow['steps']['0']['outputs']
+        assert len(outputs) == 2
+        assert outputs[0]['name'] == 'out_1'
+        assert outputs[1]['name'] == 'out_3'
+        workflow_id = self._upload_yaml_workflow(template.format(produce_out_1='true', filter_text_1='foo'))
+        downloaded_workflow = self._download_workflow(workflow_id, style="editor")
+        outputs = downloaded_workflow['steps']['0']['outputs']
+        assert len(outputs) == 3
+        assert outputs[0]['name'] == 'out_1'
+        assert outputs[1]['name'] == 'out_2'
+        assert outputs[2]['name'] == 'out_3'
+
+    @skip_without_tool('output_filter_exception_1')
+    def test_export_editor_filtered_outputs_exception_handling(self):
+        workflow_id = self._upload_yaml_workflow("""
+class: GalaxyWorkflow
+steps:
+  - tool_id: output_filter_exception_1
+""")
+        downloaded_workflow = self._download_workflow(workflow_id, style="editor")
+        outputs = downloaded_workflow['steps']['0']['outputs']
+        assert len(outputs) == 2
+        assert outputs[0]['name'] == 'out_1'
+        assert outputs[1]['name'] == 'out_2'
+
     @skip_without_tool('collection_type_source')
     def test_export_editor_collection_type_source(self):
         workflow_id = self._upload_yaml_workflow("""
@@ -1085,6 +1129,41 @@ steps:
             identifiers = [e['element_identifier'] for e in elements]
             assert len(identifiers) == 6
             assert "oe1-ie1" in identifiers
+
+    @skip_without_tool("collection_paired_test")
+    def test_workflow_flatten_with_mapped_over_execution(self):
+        with self.dataset_populator.test_history() as history_id:
+            self._run_jobs(r"""
+class: GalaxyWorkflow
+inputs:
+  input_fastqs: collection
+steps:
+  split_up:
+    tool_id: collection_split_on_column
+    in:
+      input1: input_fastqs
+  flatten:
+    tool_id: '__FLATTEN__'
+    in:
+      input: split_up/split_output
+    join_identifier: '-'
+test_data:
+  input_fastqs:
+    type: list
+    elements:
+      - identifier: samp1
+        content: "0\n1"
+""", history_id=history_id)
+            history = self._get('histories/%s/contents' % history_id).json()
+            flattened_collection = history[-1]
+            assert flattened_collection['history_content_type'] == 'dataset_collection'
+            assert flattened_collection['collection_type'] == 'list'
+            assert flattened_collection['element_count'] == 2
+            nested_collection = self.dataset_populator.get_history_collection_details(history_id, hid=3)
+            assert nested_collection['collection_type'] == 'list:list'
+            assert nested_collection['element_count'] == 1
+            assert nested_collection['elements'][0]['object']['populated']
+            assert nested_collection['elements'][0]['object']['element_count'] == 2
 
     @skip_without_tool("__APPLY_RULES__")
     def test_workflow_run_apply_rules(self):
@@ -3143,6 +3222,9 @@ input:
         with self._different_user():
             usage_details_response = self._get("workflows/%s/usage/%s" % (workflow_id, usage["id"]))
             self._assert_status_code_is(usage_details_response, 403)
+            index_response = self._get("workflows/%s/invocations" % workflow_id)
+            self._assert_status_code_is(index_response, 200)
+            assert len(index_response.json()) == 0
 
         invocation_ids = self._all_user_invocation_ids()
         assert usage["id"] in invocation_ids
