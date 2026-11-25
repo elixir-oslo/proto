@@ -1,3 +1,4 @@
+[![Project Status: Inactive](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
 # Galaxy ProTo
 ## Table of Contents
 
